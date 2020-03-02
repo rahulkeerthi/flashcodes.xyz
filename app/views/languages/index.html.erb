@@ -1,0 +1,11 @@
+<h1>Languages#index</h1>
+<p>Find me in app/views/languages/index.html.erb</p>
+
+<ul>
+  <% @languages.each do |language| %>
+    <li>
+      <h4><%= language.name %></h3>
+      <small><%= language.description %></small>
+    </li>
+  <% end %>
+</ul>
