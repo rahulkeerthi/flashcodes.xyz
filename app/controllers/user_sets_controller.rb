@@ -1,4 +1,4 @@
-class UserSetController < ApplicationController
+class UserSetsController < ApplicationController
   def create
   end
 
