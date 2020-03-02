@@ -1,2 +1,36 @@
-<h1>CardSets#index</h1>
-<p>Find me in app/views/card_sets/index.html.erb</p>
+<h1><%= @language %> card sets</h1>
+<div>
+  <h2>Easy sets: </h2>
+  <% @easy_sets.each do |set| %>
+    <div>
+      <% if current_user.user_sets.include?(set) %>
+        <!--logic for later, add something if user has completed this set-->
+      <% end %>
+      <%= set.title %>
+    </div>
+  <% end %>
+</div>
+
+<div>
+  <h2>Medium sets: </h2>
+  <% @medium_sets.each do |set| %>
+    <div>
+      <% if current_user.user_sets.include?(set) %>
+        <!--logic for later, add something if user has completed this set-->
+      <% end %>
+      <%= set.title %>
+    </div>
+  <% end %>
+</div>
+
+<div>
+  <h2>Hard sets: </h2>
+  <% @hard_sets.each do |set| %>
+    <div>
+      <% if current_user.user_sets.include?(set) %>
+        <!--logic for later, add something if user has completed this set-->
+      <% end %>
+      <%= set.title %>
+    </div>
+  <% end %>
+</div>
