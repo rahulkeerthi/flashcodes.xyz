@@ -3,15 +3,21 @@
   <h2>Easy sets: </h2>
   <% @easy_sets.each do |set| %>
     <div>
+      <% if current_user.user_sets.include?(set) %>
+        <!--logic for later, add something if user has completed this set-->
+      <% end %>
       <%= set.title %>
     </div>
   <% end %>
 </div>
 
 <div>
-  <h2>Intermediate sets: </h2>
-  <% @intermediate_sets.each do |set| %>
+  <h2>Medium sets: </h2>
+  <% @medium_sets.each do |set| %>
     <div>
+      <% if current_user.user_sets.include?(set) %>
+        <!--logic for later, add something if user has completed this set-->
+      <% end %>
       <%= set.title %>
     </div>
   <% end %>
@@ -21,6 +27,9 @@
   <h2>Hard sets: </h2>
   <% @hard_sets.each do |set| %>
     <div>
+      <% if current_user.user_sets.include?(set) %>
+        <!--logic for later, add something if user has completed this set-->
+      <% end %>
       <%= set.title %>
     </div>
   <% end %>
