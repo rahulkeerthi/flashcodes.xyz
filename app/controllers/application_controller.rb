@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :set_languages
+  before_action :set_footer_languages
   include Pundit
 
 
@@ -15,8 +15,8 @@ class ApplicationController < ActionController::Base
     redirect_to(root_path)
   end
 
-  def set_languages
-    @languages = Language.all.limit(8)
+  def set_footer_languages
+    @footerlangs = policy_scope(Language.all.limit(8))
   end
 
   private
