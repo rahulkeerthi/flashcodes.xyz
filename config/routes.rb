@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :languages, only: :index
   get 'user_answers/create'
   get 'user_answers/update'
   get 'user_answers/index'
