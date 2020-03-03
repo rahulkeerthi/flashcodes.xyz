@@ -1,0 +1,18 @@
+<div class="footer">
+  <div class="footer-links">
+    <a href="https://www.instagram.com/duolingo/" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.facebook.com/duolingo/" target="_blank"><i class="fab fa-facebook"></i></a>
+    <a href="https://www.twitter.com/duolingo/" target="_blank"><i class="fab fa-twitter"></i></a>
+  </div>
+  <div class="d-flex align-items-center">
+    <div id="footer-header">Popular Languages</div>
+    <div id="footer-lang-list">
+      <% @footerlangs.each do |language| %>
+        <div class=""><%= link_to language.name, root_path %></div>
+      <% end %>
+    </div>
+  </div>
+  <div class="footer-copyright">
+    Built with <i class="fas fa-heart"></i> during Le Wagon LDN #361
+  </div>
+</div>
