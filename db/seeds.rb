@@ -14,7 +14,9 @@ puts "SEEDING USERS"
 
 5.times do
   user = User.new(username: Faker::Internet.username, email: Faker::Internet.email, password: "123456", password_confirmation: "123456", bio: Faker::Hacker.say_something_smart)
-  user.save
+  file = URI.open("https://www.rd.com/wp-content/uploads/2017/09/01-shutterstock_476340928-Irina-Bg-1024x683.jpg")
+  user.photo.attach(io: file, filename: 'nes.png')
+  user.save!
 end
 
 puts "SEEDING LANGUAGES"
