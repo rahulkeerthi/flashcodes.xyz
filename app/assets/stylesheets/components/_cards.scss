@@ -1,0 +1,31 @@
+.card {
+  padding: 16px;
+  margin: 8px;
+}
+
+.image {
+  border: 4px solid $border;
+  background-color: #FFFAF2;
+  width: 100%;
+  margin-bottom: 2px;
+  img {
+    width: 100%;
+  }
+}
+
+
+.info {
+  background-color: $info-color;
+  border: 4px solid $border;
+  padding: 20px;
+  margin: 2px 2px 0 0;
+
+}
+
+.price {
+  background-color: $info-color;
+  border: 4px solid $border;
+  padding: 20px;
+  margin: 2px 0 0 2px;
+
+}
