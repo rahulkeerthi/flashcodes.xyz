@@ -1,0 +1,48 @@
+.footer {
+  background: $black;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  height: 5rem;
+  padding: 0px 50px;
+}
+.footer-links {
+  display: flex;
+  align-items: center;
+}
+
+.footer-links a {
+  color: $orange;
+  opacity: 0.8;
+  text-decoration: none;
+  font-size: 1.5rem;
+  padding: 0px 10px;
+}
+.footer-links a:hover {
+  opacity: 1;
+}
+
+.footer-copyright {
+  color: $orange;
+}
+
+.fa-heart {
+  color: red;
+}
+
+#footer-lang-list {
+  color: $light-gray;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 0 1em;
+  text-align: center;
+  font-size: 0.75em;
+}
+
+#footer-header {
+  color: white;
+  font-size: 1em;
+}
