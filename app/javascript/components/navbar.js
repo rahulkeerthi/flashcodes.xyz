@@ -3,9 +3,9 @@ const initUpdateNavbarOnScroll = () => {
   if (navbar) {
     window.addEventListener('scroll', () => {
       if (window.scrollY >= window.innerHeight) {
-        navbar.classList.add('navbar-lewagon-bg');
+        navbar.classList.add('navbar-lewagon-trans');
       } else {
-        navbar.classList.remove('navbar-lewagon-bg');
+        navbar.classList.remove('navbar-lewagon-trans');
       }
     });
   }
