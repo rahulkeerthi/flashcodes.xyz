@@ -21,12 +21,14 @@ end
 
 puts "SEEDING FLASHCARDS AND CARD SETS"
 
-200.times do
-  card = Flashcard.new(question: Faker::Lorem.question(word_count: 6), correct_answer: "Correct", answer_1: "Wrong 1", answer_2: "Wrong 2", answer_3: "Wrong 3")
+10.times do
   set = CardSet.new(title: "#{Faker::Hacker.ingverb} #{Faker::Hacker.noun}".capitalize, description: Faker::Hacker.say_something_smart, difficulty: ["Easy","Medium","Hard"].sample)
   offset = rand(Language.count)
   set.language = Language.offset(offset).first
   set.save
-  card.card_set = set
-  card.save
+  10.times do
+    card = Flashcard.new(question: Faker::Lorem.question(word_count: 6), correct_answer: "Correct", answer_1: "Wrong 1", answer_2: "Wrong 2", answer_3: "Wrong 3")
+    card.card_set = set
+    card.save
+  end
 end
