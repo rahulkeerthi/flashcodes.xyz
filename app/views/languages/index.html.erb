@@ -1,0 +1,21 @@
+<h1>All Languages</h1>
+
+<p>------------------</p>
+
+<h3>Your 3 most recent languages</h3>
+<ul>
+  <% @top3.each do |language| %>
+    <%= language %>
+  <% end %>
+</ul>
+
+<p>-------------------</p>
+
+<ul>
+  <% @languages.each do |language| %>
+    <li>
+      <h4><%= language.name %></h3>
+      <small><%= language.description %></small>
+    </li>
+  <% end %>
+</ul>
