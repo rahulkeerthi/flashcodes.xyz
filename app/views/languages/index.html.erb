@@ -1,5 +1,15 @@
-<h1>Languages#index</h1>
-<p>Find me in app/views/languages/index.html.erb</p>
+<h1>All Languages</h1>
+
+<p>------------------</p>
+
+<h3>Your 3 most recent languages</h3>
+<ul>
+  <% @top3.each do |language| %>
+    <%= language %>
+  <% end %>
+</ul>
+
+<p>-------------------</p>
 
 <ul>
   <% @languages.each do |language| %>
