@@ -1,9 +1,11 @@
 // Import Google fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Work+Sans:400,700&display=swap');
+// SOURCE: https://fonts.google.com/specimen/Catamaran?selection.family=Catamaran:400,700
 
-// Define fonts for body and headers
-$body-font: "Work Sans", "Helvetica", "sans-serif";
-$headers-font: "Nunito", "Helvetica", "sans-serif";
+@import url('https://fonts.googleapis.com/css?family=Catamaran:400,700&display=swap&subset=latin-ext');
+
+// Fonts for body and headers
+$body-font: "Catamaran", "Helvetica", "sans-serif";
+$headers-font: "Catamaran", "Raleway", "sans-serif";
 
 // To use a font file (.woff) uncomment following lines
 // @font-face {

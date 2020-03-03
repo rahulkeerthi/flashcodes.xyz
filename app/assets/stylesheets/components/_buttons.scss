@@ -1,0 +1,25 @@
+.button {
+  border: 1px solid black;
+  color: white;
+  padding: 10px 15px;
+  margin: 5px;
+}
+
+.button:hover {
+  box-shadow: none;
+}
+
+.blue-button {
+  // background-color: $blue-button;
+  box-shadow: 4px 4px 1px rgba(0, 130, 249, 0.25);
+}
+
+.red-button {
+  // background-color: $red-button;
+  box-shadow: 4px 4px 1px rgba(236, 28, 36, 0.25);
+}
+
+.yellow-button {
+  // background-color: $yellow-button;
+  color: black
+}
