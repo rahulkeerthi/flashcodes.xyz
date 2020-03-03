@@ -14,6 +14,7 @@
 <ul>
   <% @languages.each do |language| %>
     <li>
+      <%= cl_image_tag language.photo.key, height: 300, width: 400, crop: :fill%>
       <h4><%= language.name %></h3>
       <small><%= language.description %></small>
     </li>
