@@ -1,44 +1,84 @@
-.button {
-  border: 1px solid black;
-  color: white;
-  padding: 10px 15px;
-  margin: 5px;
-}
-
-.button:hover {
-  box-shadow: none;
-}
+// PRIMARY CTA
 
 .primary-cta {
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 2rem;
   text-align: center;
   background: #E4740B;
   border: 2px solid #FFFFFF;
   // box-sizing: border-box;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 26px;
+  transition: 0.3s ease;
+  &:active {
+    transform: translateY(2px);
+    box-shadow: 2px 2px 6px rgba(25, 25, 25, 0.3);
+    transition: 0s linear;
+  }
+  &:hover {
+    background-color: #C05D00;
+    color: white;
+  }
 }
 
+// SECONDARY BUTTON
+
 .secondary-btn {
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 2rem;
   text-align: center;
   background: #FFFFFF;
   border: 2px solid #004E89;
   box-sizing: border-box;
   border-radius: 26px;
+  &:hover {
+    color: #E4740B;
+    border: 2px solid #E4740B;
+    transition: 0.3s;
+  }
 }
 
+// BACK AND FWD NAV BUTTONS (ARROWS ARE VIA FONTAWESOME)
+
 .nav {
-  padding: 0.5rem 1rem;
+  display: inline-block;
+  padding: 0.5rem 2rem;
   text-align: center;
   background: #004E89;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 4px;
+  transition: 0.3s ease;
+  &:active {
+    transform: translateY(2px);
+    box-shadow: 2px 2px 6px rgba(25, 25, 25, 0.3);
+    transition: 0s linear;
+  }
+  &:hover {
+    background: #1E788B;
+    color: white;
+  }
 }
+
+// SUBMIT BUTTON
 
 .submit-btn {
-
+  text-align: center;
+  padding: 0.5rem 2rem;
+  border: 2px solid #004E89;
+  box-sizing: border-box;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  width: 100%;
+  transition: 0.3s ease;
+  &:active {
+    transform: translateY(2px);
+    box-shadow: 2px 2px 6px rgba(25, 25, 25, 0.3);
+    transition: 0s linear;
+  }
+  &:hover {
+    color: lighten($blue, 10%);
+  }
 }
+
+// FONT COLOURS FOR BUTTONS
 
 .dark-font {
   font-family: $headers-font;
