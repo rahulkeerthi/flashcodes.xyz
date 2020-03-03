@@ -2,6 +2,7 @@ class User < ApplicationRecord
   attr_writer :login
   has_many :user_sets
   has_one_attached :photo
+  validates :photo, presence: :true
   validates :username, presence: :true, uniqueness: { case_sensitive: false }
   validate :validate_username
   validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
