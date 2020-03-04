@@ -1,9 +1,20 @@
-<h1>CardSets#show</h1>
-<p>Find me in app/views/card_sets/show.html.erb</p>
-<% @flashcards.each do |flashcard| %>
-<p><%= flashcard.question%></p>
-<% end %>
-<br><%= @user_set.user.email %>
-<br><%= @user_set.card_set.id %>
-<br><%= @user_set.completed %>
+<div>
+  <h1><%= @card_set.title %></h1>
+</div>
+<div>
 
+  <% @flashcard_set.each do |flashcard| %>
+    <% @answers = [flashcard.correct_answer, flashcard.answer_1, flashcard.answer_2, flashcard.answer_3] %>
+    <% @answers.shuffle! %>
+
+    <div>
+      <h2><%= flashcard.question %></h2>
+    </div>
+
+    <div>
+      <%= render "question_form", options: @answers, flashcard: flashcard %>
+    </div>
+
+  <% end %>
+
+</div>

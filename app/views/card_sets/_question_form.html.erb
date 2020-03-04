@@ -1,0 +1,5 @@
+<%= simple_form_for(@answer) do |f| %>
+  <%= f.input :answer, as: :radio_buttons, collection: options %>
+  <%= hidden_field_tag(:flashcard_id, flashcard.id) %>
+  <%= f.submit "Submit", class: 'btn btn-primary' %>
+<% end %>

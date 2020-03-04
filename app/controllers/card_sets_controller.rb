@@ -9,9 +9,11 @@ class CardSetsController < ApplicationController
   end
 
   def show
+    @answer = UserAnswer.new
     @card_set = CardSet.find(params[:id])
     @user_set = UserSet.new(completed: false, card_set: @card_set, user: current_user)
     @user_set.save
-    @flashcards = @card_set.flashcards
+    @flashcard_set = @card_set.flashcards
+    # @flashcard_set = @flashcard_set.shuffle
   end
 end
