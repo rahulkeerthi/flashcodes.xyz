@@ -3,20 +3,23 @@
 <hr>
 
 <h3>Your 3 most recent languages</h3>
-<ul>
+<div class="language-grid">
   <% @top3.each do |language| %>
-    <%= language %>
+    <div class="card-language"><%= language %></div>
   <% end %>
-</ul>
+</div>
 
 <hr>
 
-<ul>
+<div class="language-grid">
   <% @languages.each do |language| %>
-    <li>
+  <div class="card-language">
+      <%= language.name %>
+      <div class="card-language-tooltip">
+        <i class="btn text-white fas fa-info-circle"></i>
+      </div>
       <%= cl_image_tag language.photo.key, height: 300, width: 400, crop: :fill%>
-      <h4><%= language.name %></h3>
       <small><%= language.description %></small>
-    </li>
+    </div>
   <% end %>
-</ul>
+</div>
