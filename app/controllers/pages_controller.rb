@@ -17,7 +17,7 @@ class PagesController < ApplicationController
   private
 
   def set_user_set
-    @user_set = current_user.user_sets.order(updated_at: :asc).first
+    @most_recent_user_set = current_user.user_sets.order(updated_at: :asc).first
   end
 
   def next_card_set
