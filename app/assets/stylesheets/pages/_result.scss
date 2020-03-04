@@ -1,0 +1,17 @@
+.results {
+  border: 1px solid black;
+  padding: 16px;
+  margin-right: 16px;
+}
+
+.next-set {
+  border: 1px solid black;
+  padding: 16px;
+}
+
+.stats {
+  margin-right: 16px;
+  .percentage {
+    border-right: 1px solid black;
+  }
+}

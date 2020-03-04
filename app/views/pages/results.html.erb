@@ -1,11 +1,29 @@
 <h1><%= @card_set.language.name %> - <%= @card_set.title %></h1>
 
+<div class="container d-flex">
+  <div class="results d-flex">
+    <div class="stats">
+      <div class="percentage">
+        <p>Percentage: <%= @percentage %>%</p>
+        <p>Correct answers: <%= @correct %></p>
+        <p>Incorrect answers: <%= @incorrect %></p>
+      </div>
+      <div class="link">
+        <%= link_to "Revisit set", '#' %>
+      </div>
+    </div>
 
-<p>Correct answers: <%= @correct %></p>
-<p>Incorrect answers: <%= @incorrect %></p>
-<p>Percentage: <%= @percentage %>%</p>
+    <div class="experience">
+      <h4>Experience</h4>
+      <p>1500 EXP</p>
+      <p>Total EXP 103040</p>
+    </div>
+  </div>
+  <div class="next-set">
+    <h4><%= @next_set.card_set.title %></h4>
+    <p><%= @next_set.card_set.description %></p>
+    <small><%= @next_set.card_set.difficulty %></small>
+    <%= link_to "Start your next set", '#' %>
+  </div>
+</div>
 
-<%= @next_set %>
-
-<%= link_to "Start your next set", '#' %>
-<%= link_to "Revisit set", '#' %>
