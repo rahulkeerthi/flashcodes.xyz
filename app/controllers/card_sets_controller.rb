@@ -9,5 +9,9 @@ class CardSetsController < ApplicationController
   end
 
   def show
+    @card_set = CardSet.find(params[:id])
+    @user_set = UserSet.new(completed: false, card_set: @card_set, user: current_user)
+    @user_set.save
+    @flashcards = @card_set.flashcards
   end
 end
