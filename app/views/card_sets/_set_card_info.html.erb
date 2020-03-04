@@ -4,5 +4,7 @@
     <!--EXP-->
   </div>
   <p><%= set.description %></p>
-  <%= link_to "Start", "#" %>
+  <%= simple_form_for([set, UserSet.new]) do |f| %>
+    <%= f.submit %>
+  <% end %>
 </div>

@@ -11,8 +11,9 @@ class CardSetsController < ApplicationController
   def show
     @answer = UserAnswer.new
     @card_set = CardSet.find(params[:id])
-    @user_set = UserSet.new(completed: false, card_set: @card_set, user: current_user)
-    @user_set.save
+    @user_set = UserSet.where(card_set: @card_set, user: current_user).first_or_create do |user_set|
+      user_set.completed = false
+    end
     @flashcard_set = @card_set.flashcards
     # @flashcard_set = @flashcard_set.shuffle
   end

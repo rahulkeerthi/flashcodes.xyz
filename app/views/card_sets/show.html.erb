@@ -1,18 +1,16 @@
 <div>
-  <h1><%= @card_set.title %></h1>
+  <h1><%= @card_set.title %> - <%= @user_set.id %> - <%= @user_set.completed %></h1>
 </div>
 <div>
-
-  <% @flashcard_set.each do |flashcard| %>
-    <% @answers = [flashcard.correct_answer, flashcard.answer_1, flashcard.answer_2, flashcard.answer_3] %>
+  <% @user_set.user_answers.each do |answer| %>
+    <% @answers = [answer.flashcard.correct_answer, answer.flashcard.answer_1, answer.flashcard.answer_2, answer.flashcard.answer_3] %>
     <% @answers.shuffle! %>
-
     <div>
-      <h2><%= flashcard.question %></h2>
+      <h2><%= answer.flashcard.question %></h2>
     </div>
 
     <div>
-      <%= render "question_form", options: @answers, flashcard: flashcard %>
+      <%= render "question_form", options: @answers, user_answer: answer %>
     </div>
 
   <% end %>
