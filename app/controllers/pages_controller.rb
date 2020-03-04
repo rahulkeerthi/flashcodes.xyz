@@ -16,7 +16,7 @@ class PagesController < ApplicationController
 
   private
 
-  def set_user_set
+  def set_most_recent_user_set
     @most_recent_user_set = current_user.user_sets.order(updated_at: :asc).first
   end
 
