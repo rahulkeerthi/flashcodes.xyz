@@ -7,7 +7,7 @@ class PagesController < ApplicationController
   end
 
   def results
-    @card_set = @user_set.card_set
+    @card_set = @most_recent_user_set.card_set
     @correct = @most_recent_user_set.user_answers.count { |answer| answer.correct == true }
     @incorrect = @most_recent_user_set.user_answers.count { |answer| answer.correct == false }
     @flashcards = @most_recent_user_set.card_set.flashcards
