@@ -1,0 +1,8 @@
+<h1>Hi, <%= @user.username %>. This is your profile page</h1>
+
+<%= cl_image_tag @user.photo.key, height: 300, width: 400, crop: :fill %>
+
+
+<h3>Your current points: <%= @user.points %></h3>
+
+<h3>Your bio: <%= @user.bio %></h3>
