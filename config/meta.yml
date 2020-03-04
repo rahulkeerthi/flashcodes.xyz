@@ -1,5 +1,5 @@
 meta_product_name: "Flashcodes"
 meta_title: "Flashcodes - Learn to Code, in a Flash"
 meta_description: "Learn coding with flashcards by going on adventures with friends!"
-meta_image: "cover.jpg" # should exist in `app/assets/images/`
-twitter_account: "@flashcodes"   # required for Twitter Cards
+meta_image: "cover.png" # should exist in `app/assets/images/`
+twitter_account: "@flashcodesxyz"   # required for Twitter Cards
