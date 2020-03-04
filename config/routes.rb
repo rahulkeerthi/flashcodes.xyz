@@ -8,4 +8,6 @@ Rails.application.routes.draw do
 
   resources :card_sets, only: :show
   resources :users, only: :show
+
+  get 'results', to: 'pages#results'
 end
