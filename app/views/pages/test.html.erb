@@ -1,0 +1,89 @@
+<h1>Testing H1</h1>
+<h2>Testing H2</h2>
+<h3>Testing H3</h3>
+<p>Testing paragraph text</p>
+
+<a href="#">Testing Link Text</a>
+
+<hr>
+
+<h2>Quick Links for Dev</h2>
+<%= link_to "Languages List", languages_path %> | <%= link_to "Sets List", language_card_sets_path(Language.first) %>
+
+<hr>
+<h2>Buttons</h2>
+
+<div class="primary-cta btn light-font">PRIMARY CTA</div>
+
+<div class="secondary-btn btn dark-font">SECONDARY BTN</div>
+
+<div class="btn nav light-font">
+  <span><i class="fas fa-arrow-left"></i>  BACK</span>
+</div>
+
+<div class="btn nav light-font">
+  <span>NEXT  <i class="fas fa-arrow-right"></i></span>
+</div>
+<br>
+<br>
+<div class="btn submit-btn dark-font">SUBMIT</div>
+
+<hr>
+<h2>CARDS</h2>
+
+<div class="language-grid">
+  <div class="card-language">
+    LANGUAGE
+    <div class="card-language-tooltip">
+      <i class="btn text-white fas fa-info-circle"></i>
+    </div>
+  </div>
+  <div class="card-language">
+    LANGUAGE
+    <div class="card-language-tooltip">
+      <i class="btn text-white fas fa-info-circle"></i>
+    </div>
+  </div>
+  <div class="card-language">
+    LANGUAGE
+    <div class="card-language-tooltip">
+      <i class="btn text-white fas fa-info-circle"></i>
+    </div>
+  </div>
+  <div class="card-language">
+    LANGUAGE
+    <div class="card-language-tooltip">
+      <i class="btn text-white fas fa-info-circle"></i>
+    </div>
+  </div>
+</div>
+<br>
+<div class="sets-grid">
+<% 3.times do %>
+  <div class="card-set">
+    <div class="card-set-left">
+      <div class="card-set-title">
+        <p class="light-font">TITLE OF THE CARD SET</p>
+      </div>
+      <div class="light-font card-set-description">
+        This is a description of the card set to help you pick it. There is more info on the next line.
+      </div>
+    </div>
+    <div class="card-set-count">
+      <p class="light-font">20 cards</p>
+    </div>
+  </div>
+<% end %>
+</div>
+
+<hr>
+
+<h2>SEARCH BAR</h2>
+<%= simple_form_for :search, url: test_path, method: :get do |f| %>
+  <div class="search-form-control form-group">
+    <input class="form-control string required dark-font" type="text" name="search[query]" id="search_query" placeholder="Search all card sets..."/>
+    <button name="button" type="submit" class="btn btn-primary light-font">
+      <i class="fas fa-search"></i> Search
+    </button>
+  </div>
+<% end %>

@@ -1,0 +1,157 @@
+
+// LANGUAGES GRID LAYOUT
+
+.language-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 1rem;
+}
+
+@media (min-width: 100px) and (max-width: 575px) {
+  .language-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 576px) {
+  .language-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 768px) {
+  .language-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media (min-width: 992px) {
+  .language-grid {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+
+@media (min-width: 1200px) {
+  .language-grid {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+
+// LANGUAGE CARDS
+
+.card-language {
+  background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(lang-card-bg.jpg);
+  background-size: cover;
+  background-position: center;
+  height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  font: $headers-font;
+  font-size: 1.5rem;
+  position: relative;
+}
+
+.card-language-tooltip {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  color: $light-gray;
+  font-size: 1rem;
+}
+
+// CARD SETS GRID LAYOUT
+
+.sets-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
+}
+
+@media (min-width: 100px) and (max-width: 575px) {
+  .sets-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 576px) {
+  .sets-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 768px) {
+  .sets-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 992px) {
+  .sets-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1200px) {
+  .sets-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+// CARD SET STYLING
+
+.card-set {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #004E89;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 101px;
+  padding: 1rem;
+  height: 120px;
+  font: $headers-font;
+  position: relative;
+}
+
+.card-set-left {
+  position: absolute;
+  top: 20%;
+  left: 10%;
+  height: 90%;
+  width: auto;
+}
+
+.card-set-title {
+  font-size: 1rem !important;
+  width: 70%;
+}
+
+
+.card-set-description {
+  font-size: 0.5rem !important;
+  width: 90%;
+  margin-top: -10px;
+}
+
+
+.card-set-count {
+  position: absolute;
+  top: 20%;
+  right: 10%;
+  height: 90%;
+  // text-align: right;
+}
+
+
+.set-completed {
+
+}
+
+.set-attempted {
+
+}
