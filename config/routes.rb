@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   end
   resources :users, only: :show
 
+  get 'results', to: 'pages#results'
 end
