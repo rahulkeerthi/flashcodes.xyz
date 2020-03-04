@@ -11,6 +11,7 @@
       placeholder: "Search all card sets..." %>
     <% end %>
   </div>
+  <h1><%= @language.name %></h1>
 
   <!--Easy Sets div-->
   <div class="p-3">
@@ -121,10 +122,10 @@
   $(document).on('click', '.set-card', function(){
     $(".set-card-info").removeClass('active')
     if($(this).parent().next().is(':last-child')) {
-      $(this).parent().next().addClass('active')
+      $(this).parent().next().toggle('active')
     }
     else {
-      $(this).parent().next().next().addClass('active')
+      $(this).parent().next().next().toggle('active')
     }
   })
 </script>
