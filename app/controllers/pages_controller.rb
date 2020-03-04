@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: :home
-  before_action :set_user_set, only: :results
+  before_action :set_most_recent_user_set, only: :results
   before_action :next_card_set, only: :results
 
   def home
