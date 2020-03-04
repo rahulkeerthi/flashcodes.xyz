@@ -1,2 +1,9 @@
 <h1>CardSets#show</h1>
 <p>Find me in app/views/card_sets/show.html.erb</p>
+<% @flashcards.each do |flashcard| %>
+<p><%= flashcard.question%></p>
+<% end %>
+<br><%= @user_set.user.email %>
+<br><%= @user_set.card_set.id %>
+<br><%= @user_set.completed %>
+
