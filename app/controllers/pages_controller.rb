@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:home]
-  before_action :set_user_set, only: [:results]
+  skip_before_action :authenticate_user!, only: :home
+  before_action :set_user_set, only: :results
+  before_action :next_card_set, only: :results
 
   def home
   end
@@ -17,5 +18,9 @@ class PagesController < ApplicationController
 
   def set_user_set
     @user_set = current_user.user_sets.order(updated_at: :asc).first
+  end
+
+  def next_card_set
+    @next_set = UserSet.create(card_set: CardSet.find(UserSet.first.card_set.id+1), user: current_user,completed: false)
   end
 end
