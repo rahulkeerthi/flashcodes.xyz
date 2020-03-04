@@ -27,6 +27,7 @@
 
 .footer-copyright {
   color: $orange;
+  font-size: 1rem;
 }
 
 .fa-heart {
@@ -40,6 +41,9 @@
   grid-gap: 0 1em;
   padding-left: 1em;
   text-align: center;
+  opacity: 1;
+
+  // position: relative;
   // font-size: 1em;
   a {
     color: white;
@@ -56,4 +60,25 @@
   font-size: 0.75em;
   width: 3rem;
   text-align: center;
+  position: relative;
+  opacity: 1;
+}
+
+@media (min-width: 100px) and (max-width: 768px) {
+  #footer-lang-list {
+    opacity: 0;
+    position: absolute;
+  }
+
+  #footer-header {
+    opacity: 0;
+    position: absolute;
+  }
+
+  .footer-copyright {
+    font-size: 0.75rem;
+    transition: 0.5s ease;
+    margin-left: 30%;
+    text-align: right;
+  }
 }
