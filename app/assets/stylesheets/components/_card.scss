@@ -147,11 +147,20 @@
   // text-align: right;
 }
 
-
 .set-completed {
 
 }
 
 .set-attempted {
 
+}
+
+// FROM MAX
+
+.set-card-info {
+  display: none;
+}
+
+.set-card-info.active {
+  display: block;
 }
