@@ -9,7 +9,7 @@ class PagesController < ApplicationController
   def results
     @card_set = @user_set.card_set
     @correct = @user_set.user_answers.count { |answer| answer.correct == true }
-    @incorrect = @user_set.user_answers.count { |answer| answer.correct == false }
+    @incorrect = @most_recent_user_set.user_answers.count { |answer| answer.correct == false }
     @flashcards = @most_recent_user_set.card_set.flashcards
     @percentage = (@correct.to_f / @flashcards.length) * 100
   end
