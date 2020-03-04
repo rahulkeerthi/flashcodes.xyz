@@ -23,3 +23,10 @@ $border-radius-lg: 2px;
 $border-radius-sm: 2px;
 
 // Override other variables below!
+
+$link-color: $primary !default;
+$link-decoration: none !default;
+$link-hover-color: darken($link-color, 10%) !default;
+$link-hover-decoration: none !default;
+
+$headings-font-weight: 700 !default;

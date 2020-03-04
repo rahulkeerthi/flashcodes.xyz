@@ -1,12 +1,10 @@
 Rails.application.routes.draw do
   resources :languages, only: :index do
-    resources :card_sets, only: :index
+   resources :card_sets, only: [:index, :show]
   end
-  get 'user_answers/create'
-  get 'user_answers/update'
-  get 'user_answers/index'
-  get 'sets/index'
-  get 'sets/show'
+  resources :user_answers, only: [:create, :update, :index]
   devise_for :users
   root to: 'pages#home'
+
+  resources :users, only: :show
 end

@@ -1,0 +1,38 @@
+h1 {
+  font-size: 3rem;
+  font-weight: bolder;
+  color: $orange;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: $blue;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: $black;
+}
+
+p {
+  font-size: 1rem;
+  font-weight: 400;
+  color: $black;
+}
+
+a:link {
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 400;
+  color: $blue;
+}
+
+a:hover {
+  color: $orange;
+}
+
+a:active {
+  color: $orange;
+}

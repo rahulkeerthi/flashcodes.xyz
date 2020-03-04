@@ -1,5 +1,4 @@
 class CardSetsController < ApplicationController
-
   def index
     @language = policy_scope(Language).find(params[:language_id])
     @easy_sets = CardSet.where(language: @language, difficulty: "Easy")
