@@ -17,3 +17,30 @@
 .navbar-lewagon .navbar-brand img {
   width: 80px;
 }
+
+.game-progress {
+  width: 220px;
+  height: 50px;
+}
+
+.username {
+  p {
+    font-size: 14px;
+    margin-left: 8px;
+    margin-bottom: 4px;
+  }
+}
+.progress {
+  width: 100px;
+  height: 10px;
+  margin-left: 8px;
+  border-radius: 8px;
+}
+
+.level {
+  p {
+    margin-left: 12px;
+    margin-top: 15px;
+    font-size: 18px;
+  }
+}
