@@ -1,30 +1,43 @@
 <div class="banner">
-  <div class="home">
-    <h1>Flashcodes</h1>
-    <p>some nice catch phrase</p>
+  <div class="container">
+    <div class="logo">
+      <%= image_tag 'logo.png', class: "responsive-image" %>
+    </div>
+    <h1>learn to <strong class="text-warning">.code</strong> — in a <i class="fas fa-bolt"></i>!</h1>
     <div class="buttons">
       <%= link_to "Get started", new_user_registration_path, class: 'btn primary-cta' %>
-      <%= link_to "I already have an account", new_user_session_path, class: 'btn secondary-btn' %>
+      <%= link_to "See the Languages", languages_path ,class: 'btn secondary-btn' %>
     </div>
   </div>
 </div>
-<div class="filler"></div>
-  <div class="description">
-    <h1>Flashcodes</h1>
-    <div class="pictures">
-      <div class="focus">
-        <div class="focus-pic picture"></div>
-        <p>All your vocabulary. In one place</p>
+<!-- <div class="contain">
+  <div class="banner">
+    <div class="home">
+      <h2>Learn to Code, in a <i class="fas fa-bolt"></i>!</h2>
+      <div class="container buttons">
       </div>
-      <div class="progress-div">
-        <div class="progress-pic picture"></div>
-        <p>keep track of your progress and improvement</p>
-      </div>
-      <div class="social">
-        <div class="social-pic picture"></div>
-        <p>Join a worldwide community of learners</p>
-      </div>
+    </div>
   </div>
-<div class="all-languages">
-  <%= link_to "Discover all the languages", languages_path ,class: 'btn primary-cta all-languages' %>
+  <div class="filler">
+    <div class="description">
+      <h1>No Way!</h1>
+      <div class="pictures">
+        <div class="focus">
+          <div class="focus-pic picture"></div>
+          <p>Yes way. </p>
+        </div>
+        <div class="progress-div">
+          <div class="progress-pic picture"></div>
+          <p>keep track of your progress and improvement</p>
+        </div>
+        <div class="social">
+          <div class="social-pic picture"></div>
+          <p>Join a worldwide community of learners</p>
+        </div>
+      </div>
+    </div>
+    <div class="all-languages">
+    </div>
+  </div>
 </div>
+ -->
