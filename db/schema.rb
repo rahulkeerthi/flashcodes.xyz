@@ -79,7 +79,7 @@ ActiveRecord::Schema.define(version: 2020_03_04_173855) do
   create_table "user_sets", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "card_set_id", null: false
-    t.boolean "completed", default: false
+    t.boolean "completed"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "answer_counter"
