@@ -1,26 +1,34 @@
 <h1><%= @card_set.language.name %> - <%= @card_set.title %></h1>
 
-<div class="container d-flex">
-  <div class="results d-flex">
-    <div class="stats">
-      <div class="percentage">
-        <p>Percentage: <%= @percentage %>%</p>
-        <p>Correct answers: <%= @correct %></p>
-        <p>Incorrect answers: <%= @incorrect %></p>
-      </div>
-      <div class="link">
-        <%= link_to "Revisit set", card_set_path(@card_set) %>
+<div class="results-container">
+  <div class="row">
+    <div class="col-sm-12 col-md-6">
+      <div class="results d-flex">
+        <div class="stats">
+          <div class="percentage">
+            <h4>Stats</h4>
+            <p>Percentage: <%= @percentage %>%</p>
+            <p>Correct answers: <%= @correct %></p>
+            <p>Incorrect answers: <%= @incorrect %></p>
+          </div>
+          <div class="link">
+            <%= link_to "Revisit set", card_set_path(@card_set) %>
+          </div>
+        </div>
+
+        <div class="experience">
+          <h4>Experience</h4>
+          <p><%= @most_recent_user_set.points_earned %> EXP</p>
+          <p>Total EXP <%= current_user.points %></p>
+        </div>
       </div>
     </div>
-
-    <div class="experience">
-      <h4>Experience</h4>
-      <p><%= @most_recent_user_set.points_earned %> EXP</p>
-      <p>Total EXP <%= current_user.points %></p>
+    <div class="col-sm-12 col-md-6">
+      <div class="next-set">
+        <h3><%= link_to "Start your next set >", card_set_path(@next_set) %></h3>
+        <p><%= @next_set.title %></p>
+        <small><%= @next_set.description %></small>
+      </div>
     </div>
-  </div>
-
-  <div>
-    <p>Try this set <%= link_to "next!", card_set_path(@next_set) %></p>
   </div>
 </div>
