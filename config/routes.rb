@@ -11,8 +11,9 @@ Rails.application.routes.draw do
   end
 
   # UN-NESTED ROUTES
-  resources :user_answers, only: [:create, :update]
   resources :users, only: :show
+  resources :user_answers, only: :create
+  patch 'user_answers', to: 'user_answers#update'
 
   # STANDALONE ROUTES
   root to: 'pages#home'

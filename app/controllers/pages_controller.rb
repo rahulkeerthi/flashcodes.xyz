@@ -24,6 +24,6 @@ class PagesController < ApplicationController
   end
 
   def next_card_set
-    @next_set = UserSet.create(card_set: CardSet.find(UserSet.first.card_set.id+1), user: current_user,completed: false)
+    # @next_set = UserSet.create(card_set: CardSet.find(UserSet.first.card_set.id+1), user: current_user,completed: false)
   end
 end
