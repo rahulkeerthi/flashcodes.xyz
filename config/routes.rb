@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   resources :languages, only: :index do
    resources :card_sets, only: :index
   end
-  resources :user_answers, only: [:create, :update]
+  resources :user_answers, only: :create
+  patch 'user_answers', to: 'user_answers#update'
   devise_for :users
   root to: 'pages#home'
 

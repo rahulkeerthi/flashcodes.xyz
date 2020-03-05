@@ -13,119 +13,56 @@
   </div>
   <h1><%= @language.name %></h1>
 
-  <!--Easy Sets div-->
-  <div class="p-3">
-    <h2>Easy</h2>
-    <div class="row m-3">
-      <% counter = 0 %>
-      <% @easy_sets.each do |set| %>
-        <% counter += 1 %>
-        <% @temp = set if counter.odd? %>
-        <div class="col-sm-12 col-md-6 d-flex justify-content-center">
-
-          <% if @user_sets.include?(set) %>
-
-            <% if UserSets.find(set.id).completed %>
-              <!--logic for later, add something if user has completed this set-->
-              <%= render "set_card", { set: set, add_class: "set-completed"} %>
-            <% else %>
-              <!--logic for later, add something if user has attempted, but failed this set-->
-              <%= render "set_card", { set: set, add_class: "set-attempted"} %>
-            <% end %>
-
-          <% else %>
-            <%= render "set_card", set: set %>
-          <% end %>
-        </div>
-        <% if counter.even? %>
-          <%= render "set_card_info", set: @temp %>
-          <%= render "set_card_info", set: set %>
-        <% end %>
-      <% end %>
-      <% if counter.odd? %>
-        <%= render "set_card_info", set: @temp %>
-      <% end %>
-    </div>
-  </div>
-  <!--Medium Sets div-->
   <div>
-    <h2>Medium</h2>
-    <div class="row m-3">
-      <% counter = 0 %>
-      <% @medium_sets.each do |set| %>
-        <% counter += 1 %>
-        <% @temp = set if counter.odd? %>
-        <div class="col-sm-12 col-md-6 d-flex justify-content-center">
+    <% @difficulties.each do |difficulty| %>
+      <div class="p-3">
+        <h2><%= difficulty %></h2>
+        <div class="row m-3">
+          <% counter = 0 %>
+          <% CardSet.where(language: @language, difficulty: difficulty).each do |set| %>
+            <% counter += 1 %>
+            <% @temp = set if counter.odd? %>
+            <div class="col-sm-12 col-md-6 d-flex justify-content-center">
 
-          <% if @user_sets.include?(set) %>
+              <% if @user_sets.include?(set) %>
 
-            <% if UserSets.find(set.id).completed %>
-              <!--logic for later, add something if user has completed this set-->
-              <%= render "set_card", { set: set, add_class: "set-completed"} %>
-            <% else %>
-              <!--logic for later, add something if user has attempted, but failed this set-->
-              <%= render "set_card", { set: set, add_class: "set-attempted"} %>
+                <% if UserSets.find(set.id).completed %>
+                  <!--logic for later, add something if user has completed this set-->
+                  <%= render "set_card", { set: set, add_class: "set-completed"} %>
+                <% else %>
+                  <!--logic for later, add something if user has attempted, but failed this set-->
+                  <%= render "set_card", { set: set, add_class: "set-attempted"} %>
+                <% end %>
+
+              <% else %>
+                <%= render "set_card", set: set %>
+              <% end %>
+            </div>
+            <% if counter.even? %>
+              <%= render "set_card_info", set: @temp %>
+              <%= render "set_card_info", set: set %>
             <% end %>
-
-          <% else %>
-            <%= render "set_card", set: set %>
+          <% end %>
+          <% if counter.odd? %>
+            <%= render "set_card_info", set: @temp %>
           <% end %>
         </div>
-        <% if counter.even? %>
-          <%= render "set_card_info", set: @temp %>
-          <%= render "set_card_info", set: set %>
-        <% end %>
-      <% end %>
-      <% if counter.odd? %>
-        <%= render "set_card_info", set: @temp %>
-      <% end %>
-    </div>
-  </div>
-  <!--Hard Sets div-->
-  <div>
-    <h2>Hard</h2>
-    <div class="row m-3">
-      <% counter = 0 %>
-      <% @hard_sets.each do |set| %>
-        <% counter += 1 %>
-        <% @temp = set if counter.odd? %>
-        <div class="col-sm-12 col-md-6 d-flex justify-content-center">
-
-          <% if @user_sets.include?(set) %>
-
-            <% if UserSets.find(set.id).completed %>
-              <!--logic for later, add something if user has completed this set-->
-              <%= render "set_card", { set: set, add_class: "set-completed"} %>
-            <% else %>
-              <!--logic for later, add something if user has attempted, but failed this set-->
-              <%= render "set_card", { set: set, add_class: "set-attempted"} %>
-            <% end %>
-
-          <% else %>
-            <%= render "set_card", set: set %>
-          <% end %>
-        </div>
-        <% if counter.even? %>
-          <%= render "set_card_info", set: @temp %>
-          <%= render "set_card_info", set: set %>
-        <% end %>
-      <% end %>
-      <% if counter.odd? %>
-        <%= render "set_card_info", set: @temp %>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
   </div>
 </div>
-
 
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script type="text/javascript">
   $(document).on('click', '.set-card', function(){
-    $(".set-card-info").removeClass('active')
     if($(this).parent().next().is(':last-child')) {
+      $(this).parent().next().siblings().hide()
+      $(this).parent().parent().parent().siblings().children().children().hide()
       $(this).parent().next().toggle('active')
     }
     else {
+      $(this).parent().next().next().siblings().hide()
+      $(this).parent().parent().parent().siblings().children().children().hide()
       $(this).parent().next().next().toggle('active')
     }
   })
