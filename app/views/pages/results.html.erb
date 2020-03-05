@@ -9,20 +9,18 @@
         <p>Incorrect answers: <%= @incorrect %></p>
       </div>
       <div class="link">
-        <%= link_to "Revisit set", '#' %>
+        <%= link_to "Revisit set", card_set_path(@card_set) %>
       </div>
     </div>
 
     <div class="experience">
       <h4>Experience</h4>
-      <p><%= @correct.count * 25 %> EXP</p>
+      <p><%= @most_recent_user_set.points_earned %> EXP</p>
       <p>Total EXP <%= current_user.points %></p>
     </div>
   </div>
-  <div class="next-set">
-    <h4><%= @next_set.card_set.title %></h4>
-    <p><%= @next_set.card_set.description %></p>
-    <small><%= @next_set.card_set.difficulty %></small>
-    <%= link_to "Start your next set", '#' %>
+
+  <div>
+    <p>Try this set <%= link_to "next!", card_set_path(@next_set) %></p>
   </div>
 </div>
