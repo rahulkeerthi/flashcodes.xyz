@@ -24,7 +24,7 @@ class UserAnswersController < ApplicationController
     @user_answer.update(user_answer_params)
     @user_answer.correct = @user_answer.flashcard.correct_answer == user_answer_params[:answer]
     @user_answer.save
-    redirect_to card_set_path(@user_answer.user_set)
+    redirect_to card_set_path(@user_answer.user_set.card_set)
   end
 
   def index
