@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_footer_languages, :authenticate_user!
-  before_action :user_level, if: :devise_controller?
+  before_action :user_level, if: :signed_in?
   include Pundit
 
 
@@ -33,6 +33,10 @@ class ApplicationController < ActionController::Base
 
   def skip_pundit?
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
+  end
+
+  def singned_in?
+    !current_user.nil?
   end
 
   protected
