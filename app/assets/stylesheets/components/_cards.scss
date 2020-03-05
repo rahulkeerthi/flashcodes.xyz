@@ -1,0 +1,15 @@
+.set-card-info {
+  display: none;
+}
+
+.set-card-info.active {
+  display: block;
+}
+
+.flashcard {
+  position: absolute;
+  top: 160px;
+  background: $orange;
+  width: 50%;
+  margin: 0 auto;
+}
