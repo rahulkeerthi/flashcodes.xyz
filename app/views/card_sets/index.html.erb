@@ -10,12 +10,22 @@
   <hr>
   <div class="container col-12 col-xs-8 col-sm-8 col-md-8 col-lg-8 col-xl-8">
     <%= simple_form_for :search, url: language_card_sets_path, method: :get do |f| %>
+      <%=
+        text_field_tag :query,
+        params[:query],
+        placeholder: "Search all card sets...",
+        class: "form-control string required dark-font search-form-control form-group" %>
+      <%=
+        submit_tag "search",
+        class: "btn btn-primary light-font" %>
+      <!--
       <div class="search-form-control form-group">
         <input class="form-control string required dark-font" type="text" name="search[query]" id="search_query" placeholder="Search all card sets..."/>
         <button name="button" type="submit" class="btn btn-primary light-font">
           <i class="fas fa-search"></i> Search
         </button>
       </div>
+      -->
     <% end %>
   </div>
   <h1><%= @language.name %></h1>
@@ -26,7 +36,7 @@
         <h2><%= difficulty %></h2>
         <div class="row m-3">
           <% counter = 0 %>
-          <% CardSet.where(language: @language, difficulty: difficulty).each do |set| %>
+          <% @card_sets.select{ |set| set.difficulty == difficulty}.each do |set| %>
             <% counter += 1 %>
             <% @temp = set if counter.odd? %>
             <div class="col-sm-12 col-md-6 d-flex justify-content-center">

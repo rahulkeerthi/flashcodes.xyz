@@ -31,11 +31,15 @@
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
     <%= favicon_link_tag "favicon.ico" %>
   </head>
-  <body class="page-container">
-      <%= render 'shared/navbar' %>
+    <body class="page-container">
+      <%= render 'shared/navbar' unless current_page?(root_path) %>
       <%= render 'shared/flashes' %>
+  <% unless current_page?(root_path) %>
     <div class="content-wrapper">
       <div class="container py-3">
+  <% else %>
+    <div><div>
+  <% end %>
         <%= yield %>
       </div>
     </div>
