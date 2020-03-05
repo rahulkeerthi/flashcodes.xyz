@@ -1,1 +1,31 @@
 // Specific CSS for your home-page
+.banner {
+  width: 100vw;
+  height: calc(100vh - 70px);
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url("home.png");
+  background-size: 100%;
+  position: absolute;
+  padding: 250px 0;
+  left: 0;
+  top: 70px;
+  h1 {
+    color: white;
+    font-size: 144px;
+  }
+  p {
+    font-size: 24px;
+    color: white;
+  }
+}
+.filler {
+  height: calc(100vh - 70px);
+}
+.home {
+  text-align: center;
+}
+.buttons {
+  margin:  60px auto;
+  display: flex;
+  justify-content: space-between;
+  width: 600px;
+}
