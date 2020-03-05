@@ -59,12 +59,16 @@
 <script type="text/javascript">
   $(document).on('click', '.set-card', function(){
     if($(this).parent().next().is(':last-child')) {
+      // hide siblings with same difficulty
       $(this).parent().next().siblings().hide()
+      // hide siblings with different difficulty
       $(this).parent().parent().parent().siblings().children().children().hide()
       $(this).parent().next().toggle('active')
     }
     else {
+      // hide siblings with same difficulty
       $(this).parent().next().next().siblings().hide()
+      // hide siblings with different difficulty
       $(this).parent().parent().parent().siblings().children().children().hide()
       $(this).parent().next().next().toggle('active')
     }
