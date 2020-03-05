@@ -20,7 +20,10 @@
 $(document).on('submit', '.flash-form', function() {
   if($(this).parent().parent().siblings().length < 1) {
     let redirect = window.location.protocol + "//" + window.location.host + "/results"
-    window.location.replace(redirect)
+    // timeout to prevent from the result page getting rendered before last answer is processed
+    setTimeout (function () {
+      window.location.replace(redirect)
+    }, 100);
   }
   else {
     $(this).parent().parent().remove();
