@@ -28,6 +28,7 @@
 .footer-copyright {
   color: $orange;
   font-size: 1rem;
+  text-align: right;
 }
 
 .fa-heart {
@@ -64,21 +65,23 @@
   opacity: 1;
 }
 
-@media (min-width: 100px) and (max-width: 768px) {
+
+@media (min-width: 100px) and (max-width: 900px) {
   #footer-lang-list {
     opacity: 0;
     position: absolute;
   }
-
   #footer-header {
     opacity: 0;
     position: absolute;
   }
-
-  .footer-copyright {
-    font-size: 0.75rem;
-    transition: 0.5s ease;
-    margin-left: 30%;
-    text-align: right;
+  @media (min-width: 100px) and (max-width: 500px) {
+    .footer-copyright {
+      font-size: 0.6rem;
+      transition: 0.5s ease;
+      margin-left: 10%;
+      text-align: right;
+    }
   }
 }
+
