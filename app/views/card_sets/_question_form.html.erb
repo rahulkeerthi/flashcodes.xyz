@@ -1,11 +1,11 @@
 <div class="flashcard">
-  <div>
+  <div class="flashcard-question">
     <h2><%= flashcard.question %></h2>
   </div>
 
   <div class="flash-form">
-    <%= simple_form_for @answer, method: :patch, remote: true do |f| %>
-      <%= f.input :answer, as: :radio_buttons, collection: options %>
+    <%= simple_form_for @answer, namespace: "flashcard"+flashcard.id.to_s, method: :patch, remote: true do |f| %>
+      <%= f.input :answer, as: :radio_buttons, collection: options, wrapper: :vertical_collection_inline %>
       <%= f.hidden_field :flashcard, value: flashcard.id %>
       <%= f.hidden_field :user_set, value: user_set.id %>
       <%= f.submit "Submit", class: 'submit-answer' %>
