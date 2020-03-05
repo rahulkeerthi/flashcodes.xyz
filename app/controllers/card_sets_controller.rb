@@ -1,6 +1,13 @@
 class CardSetsController < ApplicationController
   def index
     @language = policy_scope(Language).find(params[:language_id])
+    if params[:query].blank?
+      @card_sets = CardSet.where(language: @language)
+    else
+      @card_sets = CardSet.search_by_title_and_description(params[:query]).select{ |set| set.language == @language }
+      @card_sets = CardSet.where(language: @language) if @card_sets.blank?
+    end
+
     @difficulties = ["Easy", "Medium", "Hard"]
     @user_sets = current_user.user_sets if signed_in?
     @temp
