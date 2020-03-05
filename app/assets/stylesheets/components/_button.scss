@@ -5,6 +5,7 @@
   text-align: center;
   background: #E4740B;
   border: 2px solid #FFFFFF;
+  margin-bottom: 0.5rem;
   // box-sizing: border-box;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 26px;
@@ -23,29 +24,31 @@
 // SECONDARY BUTTON
 
 .secondary-btn {
-  padding: 0.5rem 2rem;
+  margin-bottom: 0.5rem;
+  padding: 8px 24px;
   text-align: center;
   background: #FFFFFF;
   border: 2px solid #004E89;
-  box-sizing: border-box;
   border-radius: 26px;
   &:hover {
-    color: #E4740B;
-    border: 2px solid #E4740B;
-    transition: 0.3s;
+    color: green;
+    border: 2px solid green;
+    transition: 0.3s ease;
   }
 }
 
 // BACK AND FWD NAV BUTTONS (ARROWS ARE VIA FONTAWESOME)
 
 .nav {
+  margin-bottom: 0.5rem;
   display: inline-block;
-  padding: 0.5rem 2rem;
+  padding: 0.5rem 1rem;
   text-align: center;
   background: #004E89;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 4px;
   transition: 0.3s ease;
+  color: white !important;
   &:active {
     transform: translateY(2px);
     box-shadow: 2px 2px 6px rgba(25, 25, 25, 0.3);
@@ -60,6 +63,7 @@
 // SUBMIT BUTTON
 
 .submit-btn {
+  margin-bottom: 0.5rem;
   text-align: center;
   padding: 0.5rem 2rem;
   border: 2px solid #004E89;
@@ -78,16 +82,4 @@
   }
 }
 
-// FONT COLOURS FOR BUTTONS
 
-.dark-font {
-  font-family: $headers-font;
-  font-weight: 700;
-  color: $blue;
-}
-
-.light-font {
-  font-family: $headers-font;
-  font-weight: 700;
-  color: white;
-}
