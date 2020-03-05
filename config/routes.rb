@@ -21,4 +21,5 @@ Rails.application.routes.draw do
 
   # FOR TESTING CSS AND STYLES
   get 'test', to: 'pages#test'
+  get 'languages/:language_id/search/', to: 'card_sets#search', as: 'search'
 end

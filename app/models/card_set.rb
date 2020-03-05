@@ -5,4 +5,11 @@ class CardSet < ApplicationRecord
 
   validates :title, :description, :difficulty, presence: true
   validates :difficulty, inclusion: { in: ["Easy", "Medium", "Hard"] }
+
+  include PgSearch::Model
+  pg_search_scope :search_by_title_and_description,
+    against: [ :title, :description ],
+    using: {
+      tsearch: { prefix: true }
+    }
 end
