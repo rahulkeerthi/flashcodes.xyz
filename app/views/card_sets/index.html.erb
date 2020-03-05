@@ -1,118 +1,124 @@
 <div class="container text-center">
   <div class="d-flex justify-content-center align-items-center">
-    <%= link_to "Back", languages_path %>
-    <h1>Pick a set of flashcards</h1>
+    <div class="btn nav"><i class="fas fa-arrow-left"></i>   <%= link_to "Back", languages_path, class: "light-font" %></div>
+    <h1 class="flex-grow-1">Pick a set of <%= @language.name %> flashcards!</h1>
   </div>
-  <div class="d-flex justify-content-center">
-    <%= form_tag language_card_sets_path(@language), method: :get do %>
-      <%= text_field_tag :query,
-      params[:query],
-      class: "form-control form",
-      placeholder: "Search all card sets..." %>
+  <hr>
+  <div class="container col-12 col-xs-8 col-sm-8 col-md-8 col-lg-8 col-xl-8">
+    <%= simple_form_for :search, url: language_card_sets_path, method: :get do |f| %>
+      <div class="search-form-control form-group">
+        <input class="form-control string required dark-font" type="text" name="search[query]" id="search_query" placeholder="Search all card sets..."/>
+        <button name="button" type="submit" class="btn btn-primary light-font">
+          <i class="fas fa-search"></i> Search
+        </button>
+      </div>
     <% end %>
   </div>
-  <h1><%= @language.name %></h1>
-
   <!--Easy Sets div-->
-  <div class="p-3">
-    <h2>Easy</h2>
-    <div class="row m-3">
-      <% counter = 0 %>
-      <% @easy_sets.each do |set| %>
-        <% counter += 1 %>
-        <% @temp = set if counter.odd? %>
-        <div class="col-sm-12 col-md-6 d-flex justify-content-center">
+  <div class="container col-10">
+    <div class="p-3">
+      <h2>Easy</h2>
+      <hr>
+      <div class="row m-3">
+        <% counter = 0 %>
+        <% @easy_sets.each do |set| %>
+          <% counter += 1 %>
+          <% @temp = set if counter.odd? %>
+          <div class="col-sm-12 col-md-6 d-flex justify-content-center">
 
-          <% if @user_sets.include?(set) %>
+            <% if @user_sets.include?(set) %>
 
-            <% if UserSets.find(set.id).completed %>
-              <!--logic for later, add something if user has completed this set-->
-              <%= render "set_card", { set: set, add_class: "set-completed"} %>
+              <% if UserSets.find(set.id).completed %>
+                <!--logic for later, add something if user has completed this set-->
+                <%= render "set_card", { set: set, add_class: "set-completed"} %>
+              <% else %>
+                <!--logic for later, add something if user has attempted, but failed this set-->
+                <%= render "set_card", { set: set, add_class: "set-attempted"} %>
+              <% end %>
+
             <% else %>
-              <!--logic for later, add something if user has attempted, but failed this set-->
-              <%= render "set_card", { set: set, add_class: "set-attempted"} %>
+              <%= render "set_card", set: set %>
             <% end %>
-
-          <% else %>
-            <%= render "set_card", set: set %>
+          </div>
+          <% if counter.even? %>
+            <%= render "set_card_info_left", set: @temp %>
+            <%= render "set_card_info_left", set: set %>
           <% end %>
-        </div>
-        <% if counter.even? %>
-          <%= render "set_card_info", set: @temp %>
-          <%= render "set_card_info", set: set %>
         <% end %>
-      <% end %>
-      <% if counter.odd? %>
-        <%= render "set_card_info", set: @temp %>
-      <% end %>
+        <% if counter.odd? %>
+          <%= render "set_card_info_right", set: @temp %>
+        <% end %>
+      </div>
     </div>
-  </div>
-  <!--Medium Sets div-->
-  <div>
-    <h2>Medium</h2>
-    <div class="row m-3">
-      <% counter = 0 %>
-      <% @medium_sets.each do |set| %>
-        <% counter += 1 %>
-        <% @temp = set if counter.odd? %>
-        <div class="col-sm-12 col-md-6 d-flex justify-content-center">
+    <!--Medium Sets div-->
+    <div>
+      <h2>Medium</h2>
+      <hr>
+      <div class="row m-3">
+        <% counter = 0 %>
+        <% @medium_sets.each do |set| %>
+          <% counter += 1 %>
+          <% @temp = set if counter.odd? %>
+          <div class="col-sm-12 col-md-6 d-flex justify-content-center">
 
-          <% if @user_sets.include?(set) %>
+            <% if @user_sets.include?(set) %>
 
-            <% if UserSets.find(set.id).completed %>
-              <!--logic for later, add something if user has completed this set-->
-              <%= render "set_card", { set: set, add_class: "set-completed"} %>
+              <% if UserSets.find(set.id).completed %>
+                <!--logic for later, add something if user has completed this set-->
+                <%= render "set_card", { set: set, add_class: "set-completed"} %>
+              <% else %>
+                <!--logic for later, add something if user has attempted, but failed this set-->
+                <%= render "set_card", { set: set, add_class: "set-attempted"} %>
+              <% end %>
+
             <% else %>
-              <!--logic for later, add something if user has attempted, but failed this set-->
-              <%= render "set_card", { set: set, add_class: "set-attempted"} %>
+              <%= render "set_card", set: set %>
             <% end %>
-
-          <% else %>
-            <%= render "set_card", set: set %>
+          </div>
+          <% if counter.even? %>
+            <%= render "set_card_info_left", set: @temp %>
+            <%= render "set_card_info_left", set: set %>
           <% end %>
-        </div>
-        <% if counter.even? %>
-          <%= render "set_card_info", set: @temp %>
-          <%= render "set_card_info", set: set %>
         <% end %>
-      <% end %>
-      <% if counter.odd? %>
-        <%= render "set_card_info", set: @temp %>
-      <% end %>
+        <% if counter.odd? %>
+          <%= render "set_card_info_right", set: @temp %>
+        <% end %>
+      </div>
     </div>
-  </div>
-  <!--Hard Sets div-->
-  <div>
-    <h2>Hard</h2>
-    <div class="row m-3">
-      <% counter = 0 %>
-      <% @hard_sets.each do |set| %>
-        <% counter += 1 %>
-        <% @temp = set if counter.odd? %>
-        <div class="col-sm-12 col-md-6 d-flex justify-content-center">
+    <!--Hard Sets div-->
+    <div>
+      <h2>Hard</h2>
+      <hr>
+      <div class="row m-3">
+        <% counter = 0 %>
+        <% @hard_sets.each do |set| %>
+          <% counter += 1 %>
+          <% @temp = set if counter.odd? %>
+          <div class="col-sm-12 col-md-6 d-flex justify-content-center">
 
-          <% if @user_sets.include?(set) %>
+            <% if @user_sets.include?(set) %>
 
-            <% if UserSets.find(set.id).completed %>
-              <!--logic for later, add something if user has completed this set-->
-              <%= render "set_card", { set: set, add_class: "set-completed"} %>
+              <% if UserSets.find(set.id).completed %>
+                <!--logic for later, add something if user has completed this set-->
+                <%= render "set_card", { set: set, add_class: "set-completed"} %>
+              <% else %>
+                <!--logic for later, add something if user has attempted, but failed this set-->
+                <%= render "set_card", { set: set, add_class: "set-attempted"} %>
+              <% end %>
+
             <% else %>
-              <!--logic for later, add something if user has attempted, but failed this set-->
-              <%= render "set_card", { set: set, add_class: "set-attempted"} %>
+              <%= render "set_card", set: set %>
             <% end %>
-
-          <% else %>
-            <%= render "set_card", set: set %>
+          </div>
+          <% if counter.even? %>
+            <%= render "set_card_info_left", set: @temp %>
+            <%= render "set_card_info_left", set: set %>
           <% end %>
-        </div>
-        <% if counter.even? %>
-          <%= render "set_card_info", set: @temp %>
-          <%= render "set_card_info", set: set %>
         <% end %>
-      <% end %>
-      <% if counter.odd? %>
-        <%= render "set_card_info", set: @temp %>
-      <% end %>
+        <% if counter.odd? %>
+          <%= render "set_card_info_right", set: @temp %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

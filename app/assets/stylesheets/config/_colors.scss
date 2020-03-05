@@ -10,9 +10,29 @@ $light-gray: #F4F4F4;
 // FLAG Colours
 
 $orange: #E4740B;
-$blue: #225560;
+$blue: #004E89;
 $black: #272D2D;
 $green: #419D78;
 
 $link-color: #3990A3;
 $navbar-color: #fff8eb;
+
+// HEAVY FONT WITH COLOURS
+
+.dark-font {
+  font-family: $headers-font;
+  font-weight: 700;
+  color: $blue !important;
+}
+
+.light-font {
+  font-family: $headers-font;
+  font-weight: 700;
+  color: white !important;
+}
+
+.font {
+  font-family: $headers-font;
+  font-weight: 400;
+}
+
