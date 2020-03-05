@@ -1,0 +1,18 @@
+<div class="set-card-info col-sm-12 set-tooltiptext-left">
+  <div class="set-info-bg">
+    <div class="text-left head">
+      <div class="text-white">
+        <%= set.title %> - <%= set.difficulty %>
+      </div>
+      <p class="text-white">
+        <%= set.description %>
+      </p>
+      <div class="btn secondary-btn">
+        <%= link_to "Start", card_set_path(set) %>
+      </div>
+    </div>
+    <div class="set-card-info-exp btn btn-warning">
+      <%= set.flashcards.count * 10 %> XP
+    </div>
+  </div>
+</div>

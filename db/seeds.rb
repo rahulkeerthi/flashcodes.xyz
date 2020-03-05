@@ -37,6 +37,7 @@ end
 
 puts "SEEDING FLASHCARDS AND CARD SETS"
 
+
 Language.all.each do |lang|
   10.times do
     set = CardSet.new(title: "#{Faker::Hacker.ingverb} #{Faker::Hacker.noun}".capitalize, description: Faker::Hacker.say_something_smart, difficulty: ["Easy","Medium","Hard"].sample)

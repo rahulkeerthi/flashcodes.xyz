@@ -34,3 +34,35 @@
   border-style: solid;
   border-color: $blue transparent transparent transparent;
 }
+
+.set-tooltiptext-left {
+  padding: 5px 0;
+  border-radius: 6px;
+}
+
+.set-tooltiptext-left::after {
+  content: " ";
+  position: absolute;
+  top: 0%;
+  left: 24%;
+  margin-left: -5px;
+  border-width: 1rem;
+  border-style: solid;
+  border-color: $blue transparent transparent transparent;
+}
+
+.set-tooltiptext-right {
+  padding: 5px 0;
+  border-radius: 6px;
+}
+
+.set-tooltiptext-right::after {
+  content: " ";
+  position: absolute;
+  top: 0%;
+  right: 23%;
+  margin-left: -5px;
+  border-width: 1rem;
+  border-style: solid;
+  border-color: $blue transparent transparent transparent;
+}

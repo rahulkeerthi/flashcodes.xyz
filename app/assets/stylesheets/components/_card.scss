@@ -66,45 +66,46 @@
 
 // CARD SETS GRID LAYOUT
 
-.sets-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 1rem;
-}
+// .sets-grid {
+//   display: grid;
+//   grid-template-columns: 1fr 1fr;
+//   grid-gap: 1rem;
+// }
 
-@media (min-width: 100px) and (max-width: 575px) {
-  .sets-grid {
-    grid-template-columns: 1fr;
-  }
-}
+// @media (min-width: 100px) and (max-width: 575px) {
+//   .sets-grid {
+//     grid-template-columns: 1fr;
+//   }
+// }
 
-@media (min-width: 576px) {
-  .sets-grid {
-    grid-template-columns: 1fr;
-  }
-}
+// @media (min-width: 576px) {
+//   .sets-grid {
+//     grid-template-columns: 1fr;
+//   }
+// }
 
-@media (min-width: 768px) {
-  .sets-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-}
+// @media (min-width: 768px) {
+//   .sets-grid {
+//     grid-template-columns: 1fr 1fr;
+//   }
+// }
 
-@media (min-width: 992px) {
-  .sets-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-}
+// @media (min-width: 992px) {
+//   .sets-grid {
+//     grid-template-columns: 1fr 1fr;
+//   }
+// }
 
-@media (min-width: 1200px) {
-  .sets-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-}
+// @media (min-width: 1200px) {
+//   .sets-grid {
+//     grid-template-columns: 1fr 1fr;
+//   }
+// }
 
 // CARD SET STYLING
 
 .card-set {
+  width: inherit;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -112,6 +113,7 @@
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 101px;
   padding: 1rem;
+  margin-top: 1rem;
   height: 120px;
   font: $headers-font;
   position: relative;
@@ -119,30 +121,36 @@
 
 .card-set-left {
   position: absolute;
-  top: 20%;
-  left: 10%;
+  top: 1.5em;
+  // left: 1em;
   height: 90%;
-  width: auto;
+  // width: auto;
 }
 
 .card-set-title {
-  font-size: 1rem !important;
+  font-size: 1em;
+  padding-left: 3rem;
   width: 70%;
+  text-align: left;
 }
 
 
 .card-set-description {
-  font-size: 0.5rem !important;
+  font-size: 0.75em;
   width: 90%;
-  margin-top: -10px;
+  padding-left: 3rem;
+  padding-top: 0.5rem;
+  text-align: left;
+  color: lightgray;
 }
 
 
 .card-set-count {
   position: absolute;
-  top: 20%;
+  top: 1.5em;
   right: 10%;
   height: 90%;
+  // color: $orange !important;
   // text-align: right;
 }
 
@@ -154,6 +162,13 @@
 
 }
 
+.set-info-bg {
+  background-color: #004E89;
+  border-radius: 10px;
+  margin-top: 1rem;
+  padding: 2rem 5rem;
+}
+
 // FROM MAX
 
 .set-card-info {
@@ -162,4 +177,14 @@
 
 .set-card-info.active {
   display: block;
+}
+
+.set-card-info-exp {
+  position: absolute;
+  top: 3.5rem;
+  right: 5em;
+}
+
+.head {
+  position: relative;
 }
