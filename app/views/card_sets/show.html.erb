@@ -2,7 +2,7 @@
   <h1><%= @card_set.title %></h1>
 </div>
 <div>
-  <% @card_set.flashcards.each do |flashcard| %>
+  <% @card_set.flashcards.shuffle.each do |flashcard| %>
     <% @answers = [flashcard.correct_answer, flashcard.answer_1, flashcard.answer_2, flashcard.answer_3] %>
     <% @answers.shuffle! %>
 

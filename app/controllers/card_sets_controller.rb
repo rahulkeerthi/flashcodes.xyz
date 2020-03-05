@@ -12,8 +12,13 @@ class CardSetsController < ApplicationController
     # @user_set = UserSet.where(card_set: @card_set, user: current_user).first_or_create { |user_set| user_set.completed = false }
     if attempted?
       @user_set = UserSet.where(card_set: @card_set, user: current_user).first
+      @user_set.last_attempted = Time.now
+      @user_set.points_earned = 0
+      @user_set.save
     else
-      @user_set = UserSet.create(user: current_user, card_set: @card_set, completed: false)
+      @user_set = UserSet.new(user: current_user, card_set: @card_set, completed: false, points_earned: 0)
+      @user_set.last_attempted = Time.now
+      @user_set.save
       generate_user_answers(@user_set)
     end
   end
