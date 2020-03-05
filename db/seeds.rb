@@ -25,11 +25,13 @@ f = File.open("db/sourcedata/proglangs.csv", "r")
 f.each_line do |line|
   fields = line.split("|")
   lang = Language.new(name: fields[0].tr_s('"', '').strip, description: fields[1].tr_s('"', '').strip)
-  file = URI.open(fields[2].tr_s('"', '').strip)
+  file = URI.open(fields[2])
   # binding.pry
+  puts "attaching image"
   lang.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
   begin
     lang.save!
+    puts "language saved"
   rescue
     puts "Something wrong with #{fields[0].tr_s('"', '').strip}"
   end
