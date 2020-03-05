@@ -8,7 +8,7 @@
     <div id="footer-header">Popular Languages</div>
     <div id="footer-lang-list">
       <% @footerlangs.each do |language| %>
-        <div class=""><%= link_to language.name, root_path %></div>
+        <div class=""><%= link_to language.name, language_card_sets_path(language) %></div>
       <% end %>
     </div>
   </div>

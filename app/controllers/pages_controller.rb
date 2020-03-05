@@ -6,6 +6,9 @@ class PagesController < ApplicationController
   def home
   end
 
+  def test
+  end
+
   def results
     @card_set = @most_recent_user_set.card_set
     @correct = @most_recent_user_set.user_answers.count { |answer| answer.correct == true }

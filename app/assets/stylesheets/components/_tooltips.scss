@@ -1,0 +1,73 @@
+// TOOLTIPS FOR LANGUAGES
+
+.lang-tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.lang-tooltip .lang-tooltiptext {
+  visibility: hidden;
+  width: 200px;
+  background-color: $blue;
+  color: white;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  // right: 25%;
+  margin-left: -158px;
+  font-size: 0.75rem;
+}
+
+.lang-tooltip:hover .lang-tooltiptext {
+  visibility: visible;
+  opacity: 0.9;
+}
+
+.lang-tooltip .lang-tooltiptext::after {
+  content: " ";
+  position: absolute;
+  top: 100%;
+  left: 75%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: $blue transparent transparent transparent;
+}
+
+
+//  DROPDOWN TIPS FOR CARD SETS
+
+.set-tooltiptext-left {
+  padding: 5px 0;
+  border-radius: 6px;
+}
+
+.set-tooltiptext-left::after {
+  content: " ";
+  position: absolute;
+  top: 0%;
+  left: 24%;
+  margin-left: -5px;
+  border-width: 1rem;
+  border-style: solid;
+  border-color: $blue transparent transparent transparent;
+}
+
+.set-tooltiptext-right {
+  padding: 5px 0;
+  border-radius: 6px;
+}
+
+.set-tooltiptext-right::after {
+  content: " ";
+  position: absolute;
+  top: 0%;
+  right: 23%;
+  margin-left: -5px;
+  border-width: 1rem;
+  border-style: solid;
+  border-color: $blue transparent transparent transparent;
+}

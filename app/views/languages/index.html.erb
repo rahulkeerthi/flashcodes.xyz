@@ -1,22 +1,32 @@
-<h1>All Languages</h1>
+<h1>Select a Language to Learn!</h1>
 
 <hr>
 
-<h3>Your 3 most recent languages</h3>
-<ul>
+<h3>Recent Languages</h3>
+<div class="language-grid">
   <% @top3.each do |language| %>
-    <%= language %>
+    <%= link_to language_card_sets_path(language) do %>
+      <div class="card-language" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(<%= cl_image_path language.photo.key, height: 180, crop: :thumb ; %>)">
+        <%= language.name %>
+      </div>
+    <% end %>
   <% end %>
-</ul>
+</div>
 
-<hr>
-
-<ul>
+<hr/>
+<h3>All Languages</h3>
+<div class="language-grid">
   <% @languages.each do |language| %>
-    <li>
-      <%= cl_image_tag language.photo.key, height: 300, width: 400, crop: :fill%>
-      <h4><%= language.name %></h3>
-      <small><%= language.description %></small>
-    </li>
+    <%= link_to language_card_sets_path(language) do %>
+      <div class="card-language" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(<%= cl_image_path language.photo.key, height: 180, crop: :thumb ; %>)">
+        <%= language.name %>
+        <div class="card-language-tooltip">
+          <div class="lang-tooltip">
+            <span><i class="fas fa-info-circle "></i><span>
+            <span class="lang-tooltiptext"><%= language.description %></span>
+          </div>
+        </div>
+      </div>
+    <% end %>
   <% end %>
-</ul>
+</div>
