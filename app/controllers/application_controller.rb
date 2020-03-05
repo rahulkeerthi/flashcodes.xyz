@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :set_footer_languages, :user_level, :authenticate_user!
+  before_action :set_footer_languages, :authenticate_user!
+  before_action :user_level, if: :devise_controller?
   include Pundit
 
 
