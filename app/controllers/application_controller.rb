@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
-  before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :set_footer_languages
+  before_action :set_footer_languages, :authenticate_user!
+  before_action :user_level, if: :signed_in?
   include Pundit
 
 
@@ -23,10 +23,20 @@ class ApplicationController < ActionController::Base
     @footerlangs = policy_scope(Language.all.limit(8))
   end
 
+  def user_level
+    user_points = current_user.points
+    @level =  1 + user_points / 50
+    @percentage = (user_points%50.to_f / 50) * 100
+  end
+
   private
 
   def skip_pundit?
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
+  end
+
+  def singned_in?
+    !current_user.nil?
   end
 
   protected
