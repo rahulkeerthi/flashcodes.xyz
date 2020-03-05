@@ -2,14 +2,16 @@ Rails.application.routes.draw do
   # DEVISE ROUTES
   devise_for :users
 
-  # LANGUAGES AND THEIR CARD SETS
+  # NESTED ROUTES
   resources :languages, only: :index do
    resources :card_sets, only: :index
+  end
+  resources :card_sets, only: :show do
+    resources :user_sets, only: [:create, :update]
   end
 
   # UN-NESTED ROUTES
   resources :user_answers, only: [:create, :update]
-  resources :card_sets, only: :show
   resources :users, only: :show
 
   # STANDALONE ROUTES

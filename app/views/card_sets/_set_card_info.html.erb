@@ -1,0 +1,10 @@
+<div class="set-card-info col-sm-12">
+  <div class="head">
+    <h1><%= set.title %> - <%= set.difficulty %></h1>
+    <!--EXP-->
+  </div>
+  <p><%= set.description %></p>
+  <%= simple_form_for([set, UserSet.new]) do |f| %>
+    <%= f.submit %>
+  <% end %>
+</div>
