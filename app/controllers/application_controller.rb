@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
-  before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :set_footer_languages
+  before_action :set_footer_languages, :user_level, :authenticate_user!
   include Pundit
 
 
@@ -21,6 +20,12 @@ class ApplicationController < ActionController::Base
 
   def set_footer_languages
     @footerlangs = policy_scope(Language.all.limit(8))
+  end
+
+  def user_level
+    user_points = current_user.points
+    @level =  1 + user_points / 50
+    @percentage = (user_points%50.to_f / 50) * 100
   end
 
   private
