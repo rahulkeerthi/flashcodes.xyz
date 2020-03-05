@@ -1,18 +1,29 @@
 <div>
-  <h1><%= @card_set.title %> - <%= @user_set.id %> - <%= @user_set.completed %></h1>
+  <h1><%= @card_set.title %></h1>
 </div>
 <div>
-  <% @user_set.user_answers.each do |answer| %>
-    <% @answers = [answer.flashcard.correct_answer, answer.flashcard.answer_1, answer.flashcard.answer_2, answer.flashcard.answer_3] %>
+  <% @card_set.flashcards.each do |flashcard| %>
+    <% @answers = [flashcard.correct_answer, flashcard.answer_1, flashcard.answer_2, flashcard.answer_3] %>
     <% @answers.shuffle! %>
-    <div>
-      <h2><%= answer.flashcard.question %></h2>
-    </div>
 
     <div>
-      <%= render "question_form", options: @answers, user_answer: answer %>
+      <%= render "question_form", options: @answers, flashcard: flashcard, user_set: @user_set %>
     </div>
 
   <% end %>
 
 </div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script type="text/javascript">
+
+$(document).on('submit', '.flash-form', function() {
+  if($(this).parent().parent().siblings().length < 1) {
+    let redirect = window.location.protocol + "//" + window.location.host + "/results"
+    window.location.replace(redirect)
+  }
+  else {
+    $(this).parent().parent().remove();
+  }
+});
+</script>
