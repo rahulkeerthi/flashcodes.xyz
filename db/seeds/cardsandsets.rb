@@ -2,12 +2,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 
-puts "CLEANING DB"
-Flashcard.destroy_all
-CardSet.destroy_all
-
 puts "SEEDING FLASHCARDS AND CARD SETS"
-
 
 Language.all.each do |lang|
   10.times do
