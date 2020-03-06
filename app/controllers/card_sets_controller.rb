@@ -1,5 +1,6 @@
 class CardSetsController < ApplicationController
   def index
+    @difficulty_value = 0
     @language = Language.find(params[:language_id])
     if params[:query].blank?
       @card_sets = CardSet.where(language: @language)
