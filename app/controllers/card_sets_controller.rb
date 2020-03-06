@@ -1,6 +1,6 @@
 class CardSetsController < ApplicationController
   def index
-    @language = policy_scope(Language).find(params[:language_id])
+    @language = Language.find(params[:language_id])
     if params[:query].blank?
       @card_sets = CardSet.where(language: @language)
     else
@@ -8,7 +8,8 @@ class CardSetsController < ApplicationController
       @card_sets = CardSet.where(language: @language) if @card_sets.blank?
     end
 
-    @difficulties = ["Easy", "Medium", "Hard"]
+    @difficulties = CardSet.select(:difficulty).distinct.map { |set| set.difficulty }
+    # ["Easy", "Medium", "Hard"]
     @user_sets = current_user.user_sets if signed_in?
     @temp
   end
@@ -16,12 +17,15 @@ class CardSetsController < ApplicationController
   def show
     @answer = UserAnswer.new
     set_card_set
-    # @user_set = UserSet.where(card_set: @card_set, user: current_user).first_or_create { |user_set| user_set.completed = false }
+    # Check if the user has previously attempted the selected card set
+    # Load the corresponding user set if attempted? returns true and resets points earned
+    # points are reset so that we only hold points earned from current run
     if attempted?
       @user_set = UserSet.where(card_set: @card_set, user: current_user).first
       @user_set.last_attempted = Time.now
       @user_set.points_earned = 0
       @user_set.save
+    # if not attempted before, create a new user set for the selected card set and generate correct number of unser answers, all set to false
     else
       @user_set = UserSet.new(user: current_user, card_set: @card_set, completed: false, points_earned: 0)
       @user_set.last_attempted = Time.now
