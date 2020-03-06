@@ -54,6 +54,13 @@
   border-width: 1rem;
   border-style: solid;
   border-color: $blue transparent transparent transparent;
+  .set-completed {
+    border: 2px solid green;
+  }
+
+  .set-attempted {
+    border: 2px solid red;
+  }
 }
 
 .set-tooltiptext-right {
@@ -70,4 +77,11 @@
   border-width: 1rem;
   border-style: solid;
   border-color: $blue transparent transparent transparent;
+  .set-completed {
+    border: 2px solid green;
+  }
+
+  .set-attempted {
+    border: 2px solid red;
+  }
 }
