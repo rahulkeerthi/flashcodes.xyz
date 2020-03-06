@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
   def user_level
     user_points = current_user.points
     @level =  1 + user_points / 50
-    @percentage = (user_points%50.to_f / 50) * 100
+    @level_percentage = (user_points%50.to_f / 50) * 100
   end
 
   private

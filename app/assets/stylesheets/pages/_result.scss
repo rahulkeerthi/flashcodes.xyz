@@ -1,17 +1,84 @@
+.results-container {
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-between;
+}
+
 .results {
-  border: 1px solid black;
-  padding: 16px;
-  margin-right: 16px;
+  box-shadow: 0px 0px 10px rgba(0, 78, 137, 0.25);
+  border-radius: 8px;
+  padding: 30px;
+  justify-content: space-around;
+}
+
+.percentage {
+  p {
+    margin-bottom: 16px;
+  }
+}
+
+.link {
+  margin-top: 32px;
+  min-width: 150px;
 }
 
 .next-set {
-  border: 1px solid black;
-  padding: 16px;
+  padding: 24px;
+  background: #E4740B;
+  box-shadow: 0px 0px 10px rgba(0, 78, 137, 0.25);
+  border-radius: 8px;
+  a {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  a, p,{
+    text-decoration: none;
+    color: white;
+  }
+  small {
+    color: white;
+    opacity: 0.8;
+  }
+  h3 {
+    color: white;
+  }
 }
 
 .stats {
   margin-right: 16px;
-  .percentage {
-    border-right: 1px solid black;
+}
+.line {
+  width: 90px;
+  border-bottom: 1px solid white;
+  margin-bottom: 16px;
+}
+
+.xp-earned {
+  margin: 24px auto;
+  align-items: center;
+  height: 100px;
+  width: 100px;
+  background-color: #1F4C85;
+  display: flex;
+  justify-content: center;
+  border-radius: 50%;
+  p {
+    color: white;
+    margin: 0;
+  }
+}
+
+.xp-total {
+  text-align: center;
+}
+
+.vertical-line {
+  border-left: 1px solid black;
+  height: 200px;
+}
+
+.next-xp {
+  p {
+    margin: 16px 0px 0px 0px;
   }
 }
