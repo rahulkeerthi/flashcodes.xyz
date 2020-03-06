@@ -1,14 +1,28 @@
-.results-container {
-  margin-top: 50px;
-  display: flex;
-  justify-content: space-between;
+.row {
+  justify-content: space-around;
+  margin-top: 64px;
 }
 
 .results {
   box-shadow: 0px 0px 10px rgba(0, 78, 137, 0.25);
   border-radius: 8px;
   padding: 30px;
-  justify-content: space-around;
+  justify-content: space-between;
+  min-width: 400px;
+}
+
+.stats {
+  #stats {
+    text-align: center;
+    font-size: 2em;
+    font-weight: bolder;
+  }
+  #correct {
+    margin-bottom: 8px;
+  }
+  #incorrect {
+    margin-bottom: 20px;
+  }
 }
 
 .percentage {
@@ -18,11 +32,13 @@
 }
 
 .link {
-  margin-top: 32px;
+  margin-top: 80px;
   min-width: 150px;
 }
 
 .next-set {
+  min-width: 500px;
+  max-width: 600px;
   padding: 24px;
   background: #E4740B;
   box-shadow: 0px 0px 10px rgba(0, 78, 137, 0.25);
@@ -42,10 +58,6 @@
   h3 {
     color: white;
   }
-}
-
-.stats {
-  margin-right: 16px;
 }
 .line {
   width: 90px;

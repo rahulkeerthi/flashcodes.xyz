@@ -31,10 +31,14 @@
   background: white;
   border: 2px solid $blue;
   border-radius: 26px;
+  text-decoration: none;
+  color: $blue;
   &:hover {
     color: lighten($blue, 10%);
     border: 2px solid $blue-dark;
     transition: 0.3s ease;
+    text-decoration: none;
+    color: $blue;
   }
 }
 
