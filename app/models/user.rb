@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   attr_writer :login
-  has_many :user_sets
+  has_many :user_sets, dependent: :destroy
   has_one_attached :photo
   validates :photo, presence: :true
   validates :username, presence: :true, uniqueness: { case_sensitive: false }
