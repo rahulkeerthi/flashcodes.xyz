@@ -5,14 +5,6 @@ class UserAnswersController < ApplicationController
       "Hard": 30,
       "Impossible": 50
     }
-  #def update
-  #  raise
-  #  @user_answer = UserAnswer.find(params[:id])
-  #  @user_answer.update(user_answer_params)
-  #  @user_answer.correct = @user_answer.flashcard.correct_answer == user_answer_params[:answer]
-  #  @user_answer.save
-  #  redirect_to card_set_path(@user_answer.user_set.card_set)
-  #end
 
   def update
 
@@ -36,12 +28,4 @@ class UserAnswersController < ApplicationController
     user_set.save
   end
 
-  #def index
-  #end
-
-  #private
-
-  #def user_answer_params
-  #  params.require(:user_answer).permit(:answer)
-  #end
 end

@@ -2,7 +2,7 @@
   <div class="d-flex justify-content-center align-items-center">
     <%= link_to languages_path, class: "light-font" do %>
     <div class="btn nav">
-      <i class="fas fa-arrow-left">Back</i>
+      <i class="fas fa-arrow-left"> <span class="light-font">Back</span></i>
     </div>
     <% end %>
     <h1 class="flex-grow-1">Pick a set of <%= @language.name %> flashcards!</h1>
@@ -10,22 +10,18 @@
   <hr>
   <div class="container col-12 col-xs-8 col-sm-8 col-md-8 col-lg-8 col-xl-8">
     <%= simple_form_for :search, url: language_card_sets_path, method: :get do |f| %>
-      <%=
-        text_field_tag :query,
-        params[:query],
-        placeholder: "Search all card sets...",
-        class: "form-control string required dark-font search-form-control form-group" %>
-      <%=
-        submit_tag "search",
-        class: "btn btn-primary light-font" %>
-      <!--
       <div class="search-form-control form-group">
-        <input class="form-control string required dark-font" type="text" name="search[query]" id="search_query" placeholder="Search all card sets..."/>
-        <button name="button" type="submit" class="btn btn-primary light-font">
-          <i class="fas fa-search"></i> Search
-        </button>
+        <%=
+          text_field_tag :query,
+          params[:query],
+          placeholder: "Search all card sets...",
+          class: "string required form-control" %>
+        <div>
+          <%= button_tag(type: 'submit', class: "btn btn-primary", data: { disable_with: "Searching..." } ) do %>
+            <div class="light-font"><i class="fas fa-search"></i>  Search</div>
+          <% end %>
+        </div>
       </div>
-      -->
     <% end %>
   </div>
 
@@ -35,33 +31,39 @@
         <h2><%= difficulty %></h2>
         <div class="row m-3">
           <% counter = 0 %>
+
           <% @card_sets.select{ |set| set.difficulty == difficulty}.each do |set| %>
             <% counter += 1 %>
             <% @temp = set if counter.odd? %>
+
             <div class="col-sm-12 col-md-6 d-flex justify-content-center">
 
-              <% if @user_sets.include?(set) %>
+              <!--Check if the user has attempted this set-->
+              <% unless @user_sets.find{ |user_set| user_set.card_set.id == set.id }.nil? %>
 
-                <% if UserSets.find(set.id).completed %>
-                  <!--logic for later, add something if user has completed this set-->
-                  <%= render "set_card", { set: set, add_class: "set-completed"} %>
+                <% if @user_sets.find{ |user_set| user_set.card_set.id == set.id }.completed %>
+                  <!--user has completed this set-->
+                  <%= render "set_card", { set: set, add: "set-completed"} %>
                 <% else %>
-                  <!--logic for later, add something if user has attempted, but failed this set-->
-                  <%= render "set_card", { set: set, add_class: "set-attempted"} %>
+                  <!--user has attempted, but didn't answer all cards correctly-->
+                  <%= render "set_card", { set: set, add: "set-attempted"} %>
                 <% end %>
-
+              <!--Else if user never attempted this set, render without adding any additional classes to card set div-->
               <% else %>
-                <%= render "set_card", set: set %>
+                <%= render "set_card", set: set, add: "" %>
               <% end %>
+
             </div>
             <% if counter.even? %>
               <%= render "set_card_info", set: @temp %>
               <%= render "set_card_info", set: set %>
             <% end %>
           <% end %>
+
           <% if counter.odd? %>
             <%= render "set_card_info", set: @temp %>
           <% end %>
+
         </div>
       </div>
     <% end %>
