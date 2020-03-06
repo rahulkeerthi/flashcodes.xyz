@@ -1,34 +1,68 @@
 // Specific CSS for your home-page
+
 .banner {
-  width: 100vw;
-  height: calc(100vh - 70px);
-  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url("home.png");
-  background-size: 100%;
-  position: absolute;
-  padding: 250px 0;
-  left: 0;
-  top: 70px;
-  h1 {
-    color: white;
-    font-size: 144px;
-  }
-  p {
-    font-size: 24px;
-    color: white;
-  }
+  background-size: cover;
+  background-position: center;
+  padding: 20vh 0;
+  height: 100vh;
 }
-.filler {
-  height: calc(100vh - 70px);
+
+.logo {
+  padding-bottom: 3rem;
 }
-.home {
-  text-align: center;
+
+.responsive-image {
+  padding-left: 10%;
+  width: 500px;
+  max-width: 80vw;
+  height: auto;
 }
+
+.banner h1 {
+  margin: 0;
+  padding-left: 10%;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-size: 6vw;
+  font-weight: bold;
+  padding-bottom: 3rem;
+}
+
 .buttons {
-  margin:  60px auto;
-  display: flex;
-  justify-content: space-between;
-  width: 600px;
+  margin: 0 1rem 0 0;
+  padding-left: 10%;
+  padding-bottom: 3rem;
 }
+
+@media (min-width: 100px) and (max-width: 500px) {
+  .responsive-image {
+    padding-left: 0;
+  }
+
+  .banner {
+    background-repeat: none;
+  }
+
+  .logo {
+    text-align: center;
+    padding-left: 0;
+    padding-bottom: 3rem;
+  }
+
+  .banner h1 {
+    padding-left: 0;
+    text-align: center;
+    padding-bottom: 1rem;
+  }
+
+  .buttons {
+    text-align: center;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+
 .description {
   text-align: center;
   margin-top: 60px;
@@ -37,6 +71,7 @@
     color: #004E89;
   }
 }
+
 .pictures {
   margin-top: 48px;
   display: flex;
@@ -60,9 +95,11 @@
 .focus-pic {
   background-image: url("focus.png")
 }
+
 .progress-pic {
   background-image: url("progress.png")
 }
+
 .social-pic {
   background-image: url("social.png")
 }

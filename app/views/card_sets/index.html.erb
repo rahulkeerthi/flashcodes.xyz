@@ -1,6 +1,10 @@
 <div class="container text-center">
   <div class="d-flex justify-content-center align-items-center">
-    <div class="btn nav"><i class="fas fa-arrow-left"></i>   <%= link_to "Back", languages_path, class: "light-font" %></div>
+    <%= link_to languages_path, class: "light-font" do %>
+    <div class="btn nav">
+      <i class="fas fa-arrow-left">Back</i>
+    </div>
+    <% end %>
     <h1 class="flex-grow-1">Pick a set of <%= @language.name %> flashcards!</h1>
   </div>
   <hr>
@@ -24,7 +28,6 @@
       -->
     <% end %>
   </div>
-  <h1><%= @language.name %></h1>
 
   <div>
     <% @difficulties.each do |difficulty| %>
