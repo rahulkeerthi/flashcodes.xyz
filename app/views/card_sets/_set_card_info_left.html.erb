@@ -2,11 +2,11 @@
   <div class="set-info-bg">
     <div class="text-left head">
       <div class="text-white">
-        <%= set.title %> - <%= set.difficulty %>
+        <h1><%= set.title %></h1>
       </div>
-      <p class="text-white">
+      <h4 class="text-white">
         <%= set.description %>
-      </p>
+      </h4>
       <%= link_to card_set_path(set) do %>
         <div class="btn secondary-btn">
           Start
