@@ -20,7 +20,14 @@
     </div>
   </div>
 
-  <div>
-    <p>Try this set <%= link_to "next!", card_set_path(@next_set) %></p>
-  </div>
+  <% if @next_set.nil? %>
+    <div>
+      <p>You have completed every set for this language!</p>
+    </div>
+  <% else %>
+    <div>
+      <p>Try <%= link_to "this set next!", card_set_path(@next_set) %></p>
+    </div>
+  <% end %>
+
 </div>
