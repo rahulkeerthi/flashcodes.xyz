@@ -4,6 +4,9 @@ class ApplicationController < ActionController::Base
   before_action :user_level, if: :signed_in?
   include Pundit
 
+  # LEVEL THRESHOLD
+  LEVEL_THRESHOLD = 500
+
 
   # after_action :verify_authorized, except: :index, unless: :skip_pundit?
   # after_action :verify_policy_scoped, only: :index, unless: :skip_pundit?
@@ -25,8 +28,8 @@ class ApplicationController < ActionController::Base
 
   def user_level
     user_points = current_user.points
-    @level =  1 + user_points / 50
-    @level_percentage = (user_points%50.to_f / 50) * 100
+    @level =  1 + user_points / LEVEL_THRESHOLD
+    @level_percentage = (user_points%LEVEL_THRESHOLD.to_f / LEVEL_THRESHOLD) * 100
   end
 
   private
