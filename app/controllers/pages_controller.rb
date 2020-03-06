@@ -28,7 +28,7 @@ class PagesController < ApplicationController
 
   def sort_by_difficulty(language)
     sorted = []
-    difficulties = ["Easy", "Medium", "Hard"]
+    difficulties = ["Easy", "Medium", "Hard", "Impossible"]
     difficulties.each do |difficulty|
       CardSet.where(language: language, difficulty: difficulty).each do |set|
         sorted << set

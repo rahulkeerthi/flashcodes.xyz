@@ -2,7 +2,8 @@ class UserAnswersController < ApplicationController
   POINTS = {
       "Easy": 10,
       "Medium": 20,
-      "Hard": 30
+      "Hard": 30,
+      "Impossible": 50
     }
   #def update
   #  raise

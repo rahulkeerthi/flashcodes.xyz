@@ -8,7 +8,7 @@ class CardSetsController < ApplicationController
       @card_sets = CardSet.where(language: @language) if @card_sets.blank?
     end
 
-    @difficulties = ["Easy", "Medium", "Hard"]
+    @difficulties = ["Easy", "Medium", "Hard", "Impossible"]
     @user_sets = current_user.user_sets if signed_in?
     @temp
   end
