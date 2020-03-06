@@ -1,15 +1,16 @@
-<div class="banner">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url(<%= asset_path('home.jpg') %>)">
   <div class="container">
     <div class="logo">
       <%= image_tag 'logo.png', class: "responsive-image" %>
     </div>
     <h1>learn to <strong class="text-warning">.code</strong> — in a <i class="fas fa-bolt"></i>!</h1>
     <div class="buttons">
-      <%= link_to "Get started", new_user_registration_path, class: 'btn primary-cta' %>
+      <%= link_to "Get Started", new_user_registration_path, class: 'btn primary-cta' %>
       <%= link_to "See the Languages", languages_path ,class: 'btn secondary-btn' %>
     </div>
   </div>
 </div>
+
 <!-- <div class="contain">
   <div class="banner">
     <div class="home">
