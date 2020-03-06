@@ -1,4 +1,4 @@
-<div class="container text-center">
+<div class="container">
   <div class="d-flex justify-content-center align-items-center">
     <%= link_to languages_path, class: "light-font" do %>
     <div class="btn nav">
@@ -32,7 +32,7 @@
 
       <div class="p-3">
         <h2><%= difficulty unless @card_sets.select{ |set| set.difficulty == difficulty}.empty? %></h2>
-        <div class="row m-3">
+        <div class="row m-3 justify-content-start">
           <% counter = 0 %>
 
           <% @card_sets.select{ |set| set.difficulty == difficulty}.each do |set| %>
