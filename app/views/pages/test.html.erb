@@ -65,18 +65,33 @@
 </div>
 <br>
 <div class="sets-grid">
-<% 3.times do %>
-  <div class="card-set">
-    <div class="card-set-left">
-      <div class="card-set-title">
-        <p class="light-font">TITLE OF THE CARD SET</p>
+<% 2.times do %>
+  <div class="d-flex">
+    <div class="card-set mx-3">
+      <div class="card-set-left">
+        <div class="card-set-title">
+          <p class="light-font">TITLE OF THE CARD SET</p>
+        </div>
+        <div class="light-font card-set-description">
+          This is a description of the card set to help you pick it. There is more info on the next line.
+        </div>
       </div>
-      <div class="light-font card-set-description">
-        This is a description of the card set to help you pick it. There is more info on the next line.
+      <div class="card-set-count">
+        <p class="light-font">20 cards</p>
       </div>
     </div>
-    <div class="card-set-count">
-      <p class="light-font">20 cards</p>
+    <div class="card-set mx-3">
+      <div class="card-set-left">
+        <div class="card-set-title">
+          <p class="light-font">TITLE OF THE CARD SET</p>
+        </div>
+        <div class="light-font card-set-description">
+          This is a description of the card set to help you pick it. There is more info on the next line.
+        </div>
+      </div>
+      <div class="card-set-count">
+        <p class="light-font">20 cards</p>
+      </div>
     </div>
   </div>
 <% end %>
@@ -87,7 +102,7 @@
 <h2>SEARCH BAR</h2>
 
 <div class="container col-12 col-xs-8 col-sm-8 col-md-8 col-lg-8 col-xl-8">
-  <%= simple_form_for :search, url: language_card_sets_path, method: :get do |f| %>
+  <%= simple_form_for :search, url: root_path, method: :get do |f| %>
     <div class="search-form-control form-group">
       <%=
         text_field_tag :query,

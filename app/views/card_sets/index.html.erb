@@ -55,13 +55,13 @@
 
             </div>
             <% if counter.even? %>
-              <%= render "set_card_info", set: @temp %>
-              <%= render "set_card_info", set: set %>
+              <%= render "set_card_info_left", set: @temp %>
+              <%= render "set_card_info_right", set: set %>
             <% end %>
           <% end %>
 
           <% if counter.odd? %>
-            <%= render "set_card_info", set: @temp %>
+            <%= render "set_card_info_left", set: @temp %>
           <% end %>
 
         </div>

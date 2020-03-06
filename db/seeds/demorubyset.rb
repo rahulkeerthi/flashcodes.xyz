@@ -24,9 +24,9 @@ card = Flashcard.new(
   correct_answer: "You can call #reject iterator on it, passing it the condition in a block",
   answer_1: "#{Faker::Hacker.say_something_smart}.",
   answer_2: "#{Faker::Hacker.say_something_smart}.",
-  answer_3: "#{Faker::Hacker.say_something_smart}.",
-  card_set: set
+  answer_3: "#{Faker::Hacker.say_something_smart}."
   )
+card.card_set = set
 card.save
 
 card = Flashcard.new(
@@ -34,9 +34,9 @@ card = Flashcard.new(
   correct_answer: "You can use #each_with_index",
   answer_1: "#{Faker::Hacker.say_something_smart}.",
   answer_2: "#{Faker::Hacker.say_something_smart}.",
-  answer_3: "#{Faker::Hacker.say_something_smart}.",
-  card_set: set
+  answer_3: "#{Faker::Hacker.say_something_smart}."
   )
+card.card_set = set
 card.save
 
 card = Flashcard.new(
@@ -44,9 +44,9 @@ card = Flashcard.new(
   correct_answer: "You can build a Range instance on which you call #to_a",
   answer_1: "#{Faker::Hacker.say_something_smart}.",
   answer_2: "#{Faker::Hacker.say_something_smart}.",
-  answer_3: "#{Faker::Hacker.say_something_smart}.",
-  card_set: set
+  answer_3: "#{Faker::Hacker.say_something_smart}."
   )
+card.card_set = set
 card.save
 
 card = Flashcard.new(
@@ -54,9 +54,9 @@ card = Flashcard.new(
   correct_answer: "You need to use the yield keyword in your method’s definition. When the method is called with a block, the block will be called when yield occurs.",
   answer_1: "#{Faker::Hacker.say_something_smart}.",
   answer_2: "#{Faker::Hacker.say_something_smart}.",
-  answer_3: "#{Faker::Hacker.say_something_smart}.",
-  card_set: set
+  answer_3: "#{Faker::Hacker.say_something_smart}."
   )
+card.card_set = set
 card.save
 
 card = Flashcard.new(
@@ -64,9 +64,9 @@ card = Flashcard.new(
   correct_answer: "You can call #sum iterator on it.",
   answer_1: "#{Faker::Hacker.say_something_smart}.",
   answer_2: "#{Faker::Hacker.say_something_smart}.",
-  answer_3: "#{Faker::Hacker.say_something_smart}.",
-  card_set: set
+  answer_3: "#{Faker::Hacker.say_something_smart}."
   )
+card.card_set = set
 card.save
 
 card = Flashcard.new(
@@ -74,9 +74,9 @@ card = Flashcard.new(
   correct_answer: "You can use #each_with_index",
   answer_1: "#{Faker::Hacker.say_something_smart}.",
   answer_2: "#{Faker::Hacker.say_something_smart}.",
-  answer_3: "#{Faker::Hacker.say_something_smart}.",
-  card_set: set
+  answer_3: "#{Faker::Hacker.say_something_smart}."
   )
+card.card_set = set
 card.save
 
 card = Flashcard.new(
@@ -84,9 +84,9 @@ card = Flashcard.new(
   correct_answer: "You can call #sort_by on it, passing it the sorting criteria in a block.",
   answer_1: "#{Faker::Hacker.say_something_smart}.",
   answer_2: "#{Faker::Hacker.say_something_smart}.",
-  answer_3: "#{Faker::Hacker.say_something_smart}.",
-  card_set: set
+  answer_3: "#{Faker::Hacker.say_something_smart}."
   )
+card.card_set = set
 card.save
 
 card = Flashcard.new(
@@ -94,9 +94,9 @@ card = Flashcard.new(
   correct_answer: "Submit a ticket.",
   answer_1: "#{Faker::Hacker.say_something_smart}.",
   answer_2: "#{Faker::Hacker.say_something_smart}.",
-  answer_3: "#{Faker::Hacker.say_something_smart}.",
-  card_set: set
+  answer_3: "#{Faker::Hacker.say_something_smart}."
   )
+card.card_set = set
 card.save
 
 card = Flashcard.new(
@@ -104,9 +104,9 @@ card = Flashcard.new(
   correct_answer: "You need to use yield(parameters).",
   answer_1: "#{Faker::Hacker.say_something_smart}.",
   answer_2: "#{Faker::Hacker.say_something_smart}.",
-  answer_3: "#{Faker::Hacker.say_something_smart}.",
-  card_set: set
+  answer_3: "#{Faker::Hacker.say_something_smart}."
   )
+card.card_set = set
 card.save
 
 card = Flashcard.new(
@@ -114,8 +114,8 @@ card = Flashcard.new(
   correct_answer: "You should use #map.",
   answer_1: "#{Faker::Hacker.say_something_smart}.",
   answer_2: "#{Faker::Hacker.say_something_smart}.",
-  answer_3: "#{Faker::Hacker.say_something_smart}.",
-  card_set: set
+  answer_3: "#{Faker::Hacker.say_something_smart}."
   )
+card.card_set = set
 card.save
 
