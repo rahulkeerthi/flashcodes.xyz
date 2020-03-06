@@ -19,7 +19,7 @@ class PagesController < ApplicationController
     @correct = @most_recent_user_set.user_answers.where(correct: true).count
     @incorrect = @card_set.flashcards.count - @correct
     @flashcards = @most_recent_user_set.card_set.flashcards
-    @percentage = (@correct.to_f / @flashcards.length) * 100
+    @percentage = ((@correct.to_f / @flashcards.length) * 100).round
     @next_set = next_card_set
   end
 
