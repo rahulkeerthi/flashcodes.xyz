@@ -2,7 +2,7 @@
   <div class="d-flex justify-content-center align-items-center">
     <%= link_to languages_path, class: "light-font" do %>
     <div class="btn nav">
-      <i class="fas fa-arrow-left">Back</i>
+      <i class="fas fa-arrow-left"> <span class="light-font">Back</span></i>
     </div>
     <% end %>
     <h1 class="flex-grow-1">Pick a set of <%= @language.name %> flashcards!</h1>
@@ -10,22 +10,18 @@
   <hr>
   <div class="container col-12 col-xs-8 col-sm-8 col-md-8 col-lg-8 col-xl-8">
     <%= simple_form_for :search, url: language_card_sets_path, method: :get do |f| %>
-      <%=
-        text_field_tag :query,
-        params[:query],
-        placeholder: "Search all card sets...",
-        class: "form-control string required dark-font search-form-control form-group" %>
-      <%=
-        submit_tag "search",
-        class: "btn btn-primary light-font" %>
-      <!--
       <div class="search-form-control form-group">
-        <input class="form-control string required dark-font" type="text" name="search[query]" id="search_query" placeholder="Search all card sets..."/>
-        <button name="button" type="submit" class="btn btn-primary light-font">
-          <i class="fas fa-search"></i> Search
-        </button>
+        <%=
+          text_field_tag :query,
+          params[:query],
+          placeholder: "Search all card sets...",
+          class: "string required form-control" %>
+        <div>
+          <%= button_tag(type: 'submit', class: "btn btn-primary", data: { disable_with: "Searching..." } ) do %>
+            <div class="light-font"><i class="fas fa-search"></i>  Search</div>
+          <% end %>
+        </div>
       </div>
-      -->
     <% end %>
   </div>
 
