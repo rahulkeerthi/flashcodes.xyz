@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   # STANDALONE ROUTES
   root to: 'pages#home'
   get 'results', to: 'pages#results'
+  get 'social', to: 'pages#social'
 
   # FOR TESTING CSS AND STYLES
   get 'test', to: 'pages#test'
