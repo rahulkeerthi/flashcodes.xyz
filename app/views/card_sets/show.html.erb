@@ -25,7 +25,7 @@ $(document).on('submit', '.flash-form', function() {
     }, 200);
   }
   else {
-    $(this).parent().parent().remove();
+    $(this).parent().parent().delay(2500).remove();
   }
 });
 </script>

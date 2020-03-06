@@ -26,7 +26,10 @@
   </div>
 
   <div>
+
     <% @difficulties.each do |difficulty| %>
+      <% @difficulty_value += 1 %>
+
       <div class="p-3">
         <h2><%= difficulty %></h2>
         <div class="row m-3">
@@ -55,13 +58,13 @@
 
             </div>
             <% if counter.even? %>
-              <%= render "set_card_info_left", set: @temp %>
-              <%= render "set_card_info_right", set: set %>
+              <%= render "set_card_info_left", set: @temp, value: @difficulty_value %>
+              <%= render "set_card_info_right", set: set, value: @difficulty_value %>
             <% end %>
           <% end %>
 
           <% if counter.odd? %>
-            <%= render "set_card_info_left", set: @temp %>
+            <%= render "set_card_info_left", set: @temp, value: @difficulty_value %>
           <% end %>
 
         </div>
