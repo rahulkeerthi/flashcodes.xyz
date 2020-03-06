@@ -7,12 +7,14 @@
       <p class="text-white">
         <%= set.description %>
       </p>
-      <div class="btn secondary-btn">
-        <%= link_to "Start", card_set_path(set) %>
-      </div>
+      <%= link_to card_set_path(set) do %>
+        <div class="btn secondary-btn">
+          Start
+        </div>
+      <% end %>
     </div>
     <div class="set-card-info-exp btn btn-warning">
-      <%= set.flashcards.count * 10 %> XP
+      <%= set.flashcards.count * value %> XP
     </div>
   </div>
 </div>
