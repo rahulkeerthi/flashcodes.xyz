@@ -1,7 +1,7 @@
 <h1><%= @card_set.language.name %> - <%= @card_set.title %></h1>
 
 <div class="results-container">
-  <div class="row">
+  <div class="row align-items-stretch">
     <div class="col-sm-12 col-md-6">
       <div class="results d-flex">
         <div class="stats">
@@ -30,6 +30,9 @@
     </div>
     <div class="col-sm-12 col-md-6">
       <div class="next-set">
+        <% if @next_set.nil? %>
+          <h3>You have completed every set for this language!</h3>
+        <% else %>
         <h3><%= link_to "Start your next set >", card_set_path(@next_set) %></h3>
         <div class="line"></div>
         <p><%= @next_set.title %></p>
@@ -37,16 +40,9 @@
         <div class="next-xp">
           <p><%= @next_set.flashcards.count * 10 %> XP</p>
         </div>
+        <% end %>
       </div>
     </div>
   </div>
-  <% if @next_set.nil? %>
-    <div>
-      <p>You have completed every set for this language!</p>
-    </div>
-  <% else %>
-    <div>
-      <p>Try <%= link_to "this set next!", card_set_path(@next_set) %></p>
-    </div>
-  <% end %>
 </div>
+

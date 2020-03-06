@@ -11,6 +11,17 @@
   justify-content: space-around;
 }
 
+.percentage {
+  p {
+    margin-bottom: 16px;
+  }
+}
+
+.link {
+  margin-top: 32px;
+  min-width: 150px;
+}
+
 .next-set {
   padding: 24px;
   background: #E4740B;
@@ -27,6 +38,9 @@
   small {
     color: white;
     opacity: 0.8;
+  }
+  h3 {
+    color: white;
   }
 }
 

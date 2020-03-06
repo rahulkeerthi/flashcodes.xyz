@@ -17,7 +17,7 @@ class PagesController < ApplicationController
     @incorrect = @card_set.flashcards.count - @correct
     @flashcards = @most_recent_user_set.card_set.flashcards
     @percentage = (@correct.to_f / @flashcards.length) * 100
-    @next_set = next_card_set.first
+    @next_set = next_card_set
   end
 
   private
