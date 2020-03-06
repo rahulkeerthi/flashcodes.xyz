@@ -32,9 +32,9 @@
     <%= favicon_link_tag "favicon.ico" %>
   </head>
     <body class="page-container">
-      <%= render 'shared/navbar' unless current_page?(root_path) %>
+      <%= render 'shared/navbar' unless current_page?(root_path)  %>
       <%= render 'shared/flashes' %>
-  <% unless current_page?(root_path) %>
+  <% unless current_page?(root_path) || current_page?(social_path) %>
     <div class="content-wrapper">
       <div class="container py-3">
   <% else %>

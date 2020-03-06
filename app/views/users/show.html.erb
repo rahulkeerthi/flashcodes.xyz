@@ -1,8 +1,15 @@
-<h1>Hi, <%= @user.username %>. This is your profile page</h1>
 
-<%= cl_image_tag @user.photo.key, height: 300, width: 400, crop: :fill %>
-
-
-<h3>Your current points: <%= @user.points %></h3>
-
-<h3>Your bio: <%= @user.bio %></h3>
+<div class="pt-5">
+  <div class="border rounded-pill bg-white p-3 d-flex justify-content-center align-items-center">
+    <div class="mr-3">
+      <h1>Welcome, <%= @user.username.capitalize %>!</h1>
+      <h2><%= Time.now.strftime("%A") == "Friday"? "Happy Friday!" : "" %> How're you doing?</h2>
+      <h3>Your current points: <%= @user.points %></h3>
+      <h3>Your team: The Fiery Powder Kegs</h3>
+      <h3>Your next quest: Finish <%= link_to "Interators and Blocks", languages_path, style: "font-size: 2rem; font-weight: 700; color: darkorange;" %></h3>
+    </div>
+    <div>
+      <%= cl_image_tag @user.photo.key, height: 300, crop: :fill, class: "avatar-bordered ml-3" %>
+    </div>
+  </div>
+</div>

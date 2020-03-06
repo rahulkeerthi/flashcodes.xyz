@@ -11,6 +11,9 @@ class PagesController < ApplicationController
   def test
   end
 
+  def social
+  end
+
   def results
     @card_set = @most_recent_user_set.card_set
     @correct = @most_recent_user_set.user_answers.where(correct: true).count

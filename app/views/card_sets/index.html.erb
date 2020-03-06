@@ -31,7 +31,7 @@
       <% @difficulty_value += 10 %>
 
       <div class="p-3">
-        <h2><%= difficulty %></h2>
+        <h2><%= difficulty unless @card_sets.select{ |set| set.difficulty == difficulty}.empty? %></h2>
         <div class="row m-3">
           <% counter = 0 %>
 
