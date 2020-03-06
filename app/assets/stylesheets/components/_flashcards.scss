@@ -27,7 +27,7 @@
 .flashcard {
   text-align: center;
   background: $light-gray;
-  padding: 3rem;
+  padding: 5rem;
 }
 
 .flashcard-question {
@@ -72,8 +72,8 @@
   padding: 16px 24px;
   font-size: 16px;
   margin: 8px 16px;
-  min-width: 300px;
-  min-height: 100px;
+  width: 300px;
+  min-height: 175px;
   &:hover {
     border: 1px solid $blue;
     color: $blue;
@@ -89,10 +89,9 @@ legend {
   // background-color: red;
   // display: grid;
   // grid-template-columns: 100px 100px;
-  max-width: 700px;
   margin: 0 auto;
 }
 
-.form-check-inline {
-  margin: 0
-}
+// .form-check-inline {
+//   margin: 0
+// }
