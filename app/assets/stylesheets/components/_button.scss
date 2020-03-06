@@ -65,8 +65,9 @@
 
 .submit-btn {
   margin-bottom: 0.5rem;
+  color: $blue;
   text-align: center;
-  padding: 0.5rem 2rem;
+  padding: 1rem 2rem;
   border: 2px solid #004E89;
   box-sizing: border-box;
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.25);
@@ -77,6 +78,7 @@
     transform: translateY(2px);
     box-shadow: 2px 2px 6px rgba(25, 25, 25, 0.3);
     transition: 0s linear;
+    text-decoration: none;
   }
   &:hover {
     color: $blue-dark;

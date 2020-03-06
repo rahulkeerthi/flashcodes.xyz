@@ -1,17 +1,16 @@
-<div>
-  <h1><%= @card_set.title %></h1>
+<div class="d-flex align-items-center">
+  <div class="btn nav"><i class="fas fa-arrow-left"></i>   <%= link_to "Back",  language_card_sets_path(@card_set.language), class: "light-font" %></div>
+  <h1 class="flex-grow-1 flashcard-title"><%= @card_set.title %></h1>
 </div>
-<div>
+<hr>
+<div class="flashcard-container">
   <% @card_set.flashcards.shuffle.each do |flashcard| %>
     <% @answers = [flashcard.correct_answer, flashcard.answer_1, flashcard.answer_2, flashcard.answer_3] %>
     <% @answers.shuffle! %>
-
-    <div>
+    <div class="card-parent">
       <%= render "question_form", options: @answers, flashcard: flashcard, user_set: @user_set %>
     </div>
-
   <% end %>
-
 </div>
 
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
