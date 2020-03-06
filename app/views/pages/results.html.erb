@@ -7,27 +7,36 @@
         <div class="stats">
           <div class="percentage">
             <h4>Stats</h4>
-            <p>Percentage: <%= @percentage %>%</p>
-            <p>Correct answers: <%= @correct %></p>
-            <p>Incorrect answers: <%= @incorrect %></p>
+            <p><%= @percentage %>%</p>
+            <p><strong>Correct</strong> <%= @correct %></p>
+            <p><strong>Incorrect</strong> <%= @incorrect %></p>
           </div>
           <div class="link">
-            <%= link_to "Revisit set", card_set_path(@card_set) %>
+            <%= link_to "Revisit set", card_set_path(@card_set), class: 'secondary-btn' %>
           </div>
         </div>
-
+        <div class="vertical-line">
+        </div>
         <div class="experience">
           <h4>Experience</h4>
-          <p><%= @most_recent_user_set.points_earned %> EXP</p>
-          <p>Total EXP <%= current_user.points %></p>
+          <div class="xp-earned">
+            <p><%= @most_recent_user_set.points_earned %> XP</p>
+          </div>
+          <div class="xp-total">
+            <p>Total XP <%= current_user.points %></p>
+          </div>
         </div>
       </div>
     </div>
     <div class="col-sm-12 col-md-6">
       <div class="next-set">
         <h3><%= link_to "Start your next set >", card_set_path(@next_set) %></h3>
+        <div class="line"></div>
         <p><%= @next_set.title %></p>
         <small><%= @next_set.description %></small>
+        <div class="next-xp">
+          <p><%= @next_set.flashcards.count * 10 %> XP</p>
+        </div>
       </div>
     </div>
   </div>
