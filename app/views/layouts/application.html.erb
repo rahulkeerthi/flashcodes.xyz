@@ -43,7 +43,7 @@
         <%= yield %>
       </div>
     </div>
-      <%= render 'shared/footer' %>
+      <%= render 'shared/footer' unless current_page?(card_set_path) %>
     <%= javascript_pack_tag 'application' %>
   </body>
 </html>
