@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_09_102846) do
+ActiveRecord::Schema.define(version: 2020_03_09_154249) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,14 +59,12 @@ ActiveRecord::Schema.define(version: 2020_03_09_102846) do
   end
 
   create_table "group_memberships", force: :cascade do |t|
-    t.integer "points"
-    t.bigint "language_id", null: false
+    t.integer "points", default: 0
     t.bigint "user_id", null: false
     t.bigint "group_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["group_id"], name: "index_group_memberships_on_group_id"
-    t.index ["language_id"], name: "index_group_memberships_on_language_id"
     t.index ["user_id"], name: "index_group_memberships_on_user_id"
   end
 
@@ -74,6 +72,10 @@ ActiveRecord::Schema.define(version: 2020_03_09_102846) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "full"
+    t.bigint "language_id", null: false
+    t.integer "target_points", default: 5000
+    t.index ["language_id"], name: "index_groups_on_language_id"
   end
 
   create_table "languages", force: :cascade do |t|
@@ -89,7 +91,6 @@ ActiveRecord::Schema.define(version: 2020_03_09_102846) do
     t.bigint "flashcard_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "answer"
     t.index ["flashcard_id"], name: "index_user_answers_on_flashcard_id"
     t.index ["user_set_id"], name: "index_user_answers_on_user_set_id"
   end
@@ -126,8 +127,8 @@ ActiveRecord::Schema.define(version: 2020_03_09_102846) do
   add_foreign_key "card_sets", "languages"
   add_foreign_key "flashcards", "card_sets"
   add_foreign_key "group_memberships", "groups"
-  add_foreign_key "group_memberships", "languages"
   add_foreign_key "group_memberships", "users"
+  add_foreign_key "groups", "languages"
   add_foreign_key "user_answers", "flashcards"
   add_foreign_key "user_answers", "user_sets"
   add_foreign_key "user_sets", "card_sets"
