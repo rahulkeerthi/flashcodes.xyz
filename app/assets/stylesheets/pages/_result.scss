@@ -11,6 +11,22 @@
   min-width: 400px;
 }
 
+
+
+@media (max-width: 1000px) {
+  .results-row {
+    > div {
+      width: 100%;
+      max-width: 500px;
+    }
+  }
+
+  .next-set {
+    margin-top: 32px;
+  }
+}
+
+
 .stats {
   #stats {
     text-align: center;
