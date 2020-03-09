@@ -5,9 +5,13 @@ require 'faker'
 require 'open-uri'
 
 puts "CLEANING DB"
+Group.destroy_all
+GroupMembership.destroy_all
+UserSet.destroy_all
+UserAnswer.destroy_all
 User.destroy_all
-Flashcard.destroy_all
 CardSet.destroy_all
+Flashcard.destroy_all
 Language.destroy_all
 
 puts "SEEDING USERS"
@@ -26,7 +30,6 @@ f.each_line do |line|
   fields = line.split("|")
   lang = Language.new(name: fields[0].tr_s('"', '').strip, description: fields[1].tr_s('"', '').strip)
   file = URI.open(fields[2])
-  # binding.pry
   puts "attaching image"
   lang.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
   begin
@@ -39,7 +42,6 @@ end
 
 puts "SEEDING FLASHCARDS AND CARD SETS"
 
-
 Language.all.each do |lang|
   10.times do
     set = CardSet.new(title: "#{Faker::Hacker.ingverb} #{Faker::Hacker.noun}".capitalize, description: Faker::Hacker.say_something_smart, difficulty: ["Easy","Medium","Hard"].sample)
@@ -51,4 +53,11 @@ Language.all.each do |lang|
       card.save
     end
   end
+end
+
+puts "Seeding Groups"
+
+Language.all.each do |lang|
+  group = Group.new(name: Faker::Hacker.say_something_smart, full: false)
+  group.save
 end
