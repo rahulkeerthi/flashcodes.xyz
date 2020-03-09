@@ -10,13 +10,16 @@ class GroupMembership < ApplicationRecord
 
   def recipients
     raise
-    self.group.group_memberships.map { |membership| membership.user } - self
+    memberships = GroupMembership.where(user: current_user)
+    groups = Group.where(language: self.card_set.language).to_set.superset?(self.to_set)
+
+    recipients = User.where(group_membership: membership)
   end
 
   def create_notifications
     recipients.each do |recipient|
       Notification.create(recipient: recipient, actor: current_user,
-        action: 'posted', notifiable: self)
+        action: 'joined', notifiable: self)
     end
   end
 end

@@ -58,6 +58,6 @@ end
 puts "Seeding Groups"
 
 Language.all.each do |lang|
-  group = Group.new(name: Faker::Hacker.say_something_smart, full: false)
+  group = Group.new(name: "The #{Faker::Space.constellation} #{Faker::Science.element.capitalize} #{Faker::Team.creature.split.map(&:capitalize).join(' ')}", full: false, language: lang)
   group.save
 end
