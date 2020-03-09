@@ -74,7 +74,10 @@ ActiveRecord::Schema.define(version: 2020_03_09_154249) do
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "full"
     t.bigint "language_id", null: false
+<<<<<<< HEAD
     t.integer "target_points", default: 5000
+=======
+>>>>>>> master
     t.index ["language_id"], name: "index_groups_on_language_id"
   end
 
