@@ -1,9 +1,10 @@
 class User < ApplicationRecord
   attr_writer :login
   has_many :user_sets, dependent: :destroy
+  has_many :card_sets, through: :user_sets
   has_many :group_memberships
   has_many :groups, through: :group_memberships
-  has_many :languages, through: :groups
+  # has_many :languages, through: :groups
   has_one_attached :photo
   validates :photo, presence: :true
   validates :username, presence: :true, uniqueness: { case_sensitive: false }
