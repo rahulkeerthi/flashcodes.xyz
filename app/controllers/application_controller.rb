@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :set_footer_languages, :authenticate_user!
+  before_action :set_footer_languages, :test_langs, :authenticate_user!
   before_action :user_level, if: :signed_in?
   include Pundit
 
@@ -24,6 +24,11 @@ class ApplicationController < ActionController::Base
 
   def set_footer_languages
     @footerlangs = policy_scope(Language.all.limit(8))
+  end
+
+  def test_langs
+    @testlangs = Language.find_each(batch_size: 3)
+    @testlangs2 = Language.all.to_a.each_slice(3)
   end
 
   def user_level

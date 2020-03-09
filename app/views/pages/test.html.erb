@@ -7,10 +7,92 @@
 
 <hr>
 
-<h2>Quick Links for Dev</h2>
-<%= link_to "Languages List", languages_path %> | <%= link_to "Sets List", language_card_sets_path(Language.first) %>
+<h2>Card Sets</h2>
+<% count = 0 %>
+<% @testlangs2.map do |langset| %>
+  <div class="grid">
+    <% count += 1  %>
+    <div class="grid__item" tabindex="<%= count  %>">
+      <%= langset.first[:name] %>
+    </div>
+    <div class="grid__description slide">
+      <div>
+        <%= langset.first[:description] %>
+      </div>
+    </div>
+    <% if langset.count > 2 %>
+      <% count += 1  %>
+      <div class="grid__item" tabindex="<%= count  %>">
+        <%= langset.second[:name] %>
+      </div>
+      <div class="grid__description">
+        <div>
+          <%= langset.second[:description] %>
+        </div>
+      </div>
+      <% count += 1  %>
+      <div class="grid__item" tabindex="<%= count  %>">
+        <%= langset.third[:name] %>
+      </div>
+      <div class="grid__description">
+        <div>
+          <%= langset.third[:description] %>
+        </div>
+      </div>
+    <% elsif langset.count > 1 %>
+      <% count += 1  %>
+      <div class="grid__item" tabindex="<%= count  %>">
+        <%= langset.second[:name] %>
+      </div>
+      <div class="grid__description">
+        <div>
+          <%= langset.second[:description] %>
+        </div>
+      </div>
+    <% else %>
+    <% end %>
+  </div>
+<% end %>
 
+<hr>
 
+<!-- <hr>
+<div class="sets-grid2">
+<%# 2.times do %>
+  <div class="d-flex">
+    <div class="card-set2 mx-3">
+      <div class="card-set-left2">
+        <div class="card-set-title2">
+          <p class="light-font">TITLE OF THE CARD SET</p>
+        </div>
+        <div class="light-font card-set-description2">
+          This is a description of the card set to help you pick it. There is more info on the next line.
+        </div>
+      </div>
+      <div class="card-set-count2">
+        <p class="light-font">20 cards</p>
+      </div>
+    </div>
+    <div class="card-set2 mx-3">
+      <div class="card-set-left2">
+        <div class="card-set-title2">
+          <p class="light-font">TITLE OF THE CARD SET</p>
+        </div>
+        <div class="light-font card-set-description2">
+          This is a description of the card set to help you pick it. There is more info on the next line.
+        </div>
+      </div>
+      <div class="card-set-count2">
+        <p class="light-font">20 cards</p>
+      </div>
+    </div>
+  </div>
+<%# end %>
+</div>
+ -->
+
+<hr>
+<h2>Tooltip</h2>
 <div class="lang-tooltip">HOVER OVER ME
   <span class="lang-tooltiptext">Tooltip text</span>
 </div>
@@ -62,39 +144,6 @@
       <i class="btn text-white fas fa-info-circle"></i>
     </div>
   </div>
-</div>
-<br>
-<div class="sets-grid">
-<% 2.times do %>
-  <div class="d-flex">
-    <div class="card-set mx-3">
-      <div class="card-set-left">
-        <div class="card-set-title">
-          <p class="light-font">TITLE OF THE CARD SET</p>
-        </div>
-        <div class="light-font card-set-description">
-          This is a description of the card set to help you pick it. There is more info on the next line.
-        </div>
-      </div>
-      <div class="card-set-count">
-        <p class="light-font">20 cards</p>
-      </div>
-    </div>
-    <div class="card-set mx-3">
-      <div class="card-set-left">
-        <div class="card-set-title">
-          <p class="light-font">TITLE OF THE CARD SET</p>
-        </div>
-        <div class="light-font card-set-description">
-          This is a description of the card set to help you pick it. There is more info on the next line.
-        </div>
-      </div>
-      <div class="card-set-count">
-        <p class="light-font">20 cards</p>
-      </div>
-    </div>
-  </div>
-<% end %>
 </div>
 
 <hr>
