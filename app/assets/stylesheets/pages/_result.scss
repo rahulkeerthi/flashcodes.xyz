@@ -11,6 +11,12 @@
   min-width: 400px;
 }
 
+.header-back {
+  display: flex;
+  a {
+    margin-right: 40px;
+  }
+}
 
 
 @media (max-width: 1000px) {

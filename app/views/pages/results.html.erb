@@ -1,4 +1,11 @@
-<h1><%= @card_set.language.name %> - <%= @card_set.title %></h1>
+<div class="header-back">
+  <%= link_to language_card_sets_path(@card_set.language) do %>
+    <div class="btn nav light-font">
+      <span><i class="fas fa-arrow-left"></i> Back to all Cardsets</span>
+    </div>
+  <% end %>
+  <h1><%= @card_set.language.name %> - <%= @card_set.title %></h1>
+</div>
 
 <div class="row align-items-stretch results-row">
   <div class="results d-flex">
