@@ -83,6 +83,11 @@
   }
 }
 
+.flash-form label.correct {
+  background-color: $green !important;
+  color: white !important;
+}
+
 legend {
   display: none
 }
