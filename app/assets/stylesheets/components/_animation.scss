@@ -1,24 +1,25 @@
-.c-dashed-line__path {
-  animation: c-dashed-line-path 3s ease-in-out reverse infinite;
+.solid-line {
+  animation: solid-anim 2s ease-in-out forwards;
+  // animation-play-state: paused;
   fill: none;
-  stroke: #31CC89;
-  stroke-dasharray: 100%; /* this is the entire length of the line */
-  stroke-dashoffset: 100%; /* this is the entire length of the line */
-  stroke-width: 5;
+  stroke-width: 6;
+  stroke: #FFF;
+  stroke-linecap: round;
 }
 
-.c-dashed-line__dash {
+.dotted-line {
   fill: none;
-  stroke: #31CC89; /* this must match the background color */
-  stroke-dasharray: 16 10; /* draws a 10px dash line with a 16px gap between */
+  stroke: #FFF; /* this must match the background color */
+  stroke-dasharray:1 20; /* draws a 10px dash line with a 16px gap between */
   stroke-width: 5; /* make the dashed line slightly bigger than the one it's covering */
+  stroke-linecap: round;
 }
 
-@keyframes c-dashed-line-path {
-  from {
-    stroke-dashoffset: 50%;
-  }
-  to {
-    stroke-dashoffset: 100%;
+@keyframes solid-anim {
+  0% {
+    stroke-dasharray: 0 550;
   }
 }
+
+
+
