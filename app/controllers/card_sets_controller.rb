@@ -67,9 +67,9 @@ class CardSetsController < ApplicationController
       if group.nil?
       # if no free group exists, create group and add user to that group (via a group membership)
         new_group = Group.create(name: Faker::Hacker.say_something_smart, language: current_language, full: false)
-        GroupMembership.create(group: new_group, user: current_user, language: current_language)
+        GroupMembership.create(group: new_group, user: current_user)
       else
-        GroupMembership.create(group: group, user: current_user, language: current_language, points: 0)
+        GroupMembership.create(group: group, user: current_user, points: 0)
         group.full = group.group_memberships.count == 10
         group.save
       end
