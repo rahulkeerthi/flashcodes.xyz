@@ -1,3 +1,5 @@
+require 'faker'
+
 class CardSetsController < ApplicationController
   def index
     @difficulty_value = 0
@@ -11,7 +13,7 @@ class CardSetsController < ApplicationController
 
     @difficulties = CardSet.select(:difficulty).distinct.map { |set| set.difficulty }
     # ["Easy", "Medium", "Hard"]
-    @user_sets = current_user.user_sets if signed_in?
+    @user_sets = current_user.user_sets if user_signed_in?
     @temp
   end
 
@@ -34,6 +36,7 @@ class CardSetsController < ApplicationController
       @user_set.last_attempted = Time.now
       @user_set.save
       generate_user_answers(@user_set)
+      assign_user_to_free_group
     end
   end
 
@@ -51,6 +54,25 @@ class CardSetsController < ApplicationController
   def generate_user_answers(user_set)
     user_set.card_set.flashcards.each do |card|
       new_answer = UserAnswer.create(correct: false, flashcard: card, user_set: user_set)
+    end
+  end
+
+  def assign_user_to_free_group
+    current_language = @user_set.card_set.language
+    matches = current_user.user_sets.select { |set| set.card_set.language.name == current_language }
+    # check if user has completed any sets in this language before
+    if matches.empty?
+      # if not, then find last created group in that language that has less than 10 users
+      group = Group.find_by(language: current_language, full: false)
+      if group.nil?
+      # if no free group exists, create group and add user to that group (via a group membership)
+        new_group = Group.create(name: Faker::Hacker.say_something_smart, language: current_language, full: false)
+        GroupMembership.create(group: new_group, user: current_user, language: current_language)
+      else
+        GroupMembership.create(group: group, user: current_user, language: current_language, points: 0)
+        group.full = group.group_memberships.count == 10
+        group.save
+      end
     end
   end
 
