@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   attr_writer :login
   has_many :user_sets, dependent: :destroy
+  has_many :group_memberships
   has_many :groups, through: :group_memberships
   has_many :languages, through: :groups
   has_one_attached :photo
