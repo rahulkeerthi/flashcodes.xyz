@@ -1,11 +1,29 @@
+.quest-heading {
+  h3 {
+    color: white;
+  }
+}
+
 .quest-update-stats {
   h4 {
     font-weight: 400;
   }
 }
 
+.quest-graphic {
+  padding: 32px 0;
+  img {
+    width: 150px;
+  }
+}
+
 .quest-results {
-  background-color: $blue;
-  border-radius: 8px;
-  padding: 16px;
+  background: $blue url("pattern.png") repeat;
+  border-radius: 8px 8px 0 0 ;
+  padding: 32px;
+}
+.quest-update {
+  padding: 32px;
+  background-color: white;
+  border-radius: 0 0 8px 8px;
 }

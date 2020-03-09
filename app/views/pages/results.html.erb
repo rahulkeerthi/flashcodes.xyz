@@ -16,9 +16,9 @@
         <p id="correct"><strong>Correct</strong> <%= @correct %></p>
         <p id="incorrect"><strong>Incorrect</strong> <%= @incorrect %></p>
       </div>
-      <div class="link">
-        <%= link_to "Revisit set", card_set_path(@card_set), class: 'secondary-btn' %>
-      </div>
+      <%= link_to card_set_path(@card_set) do  %>
+        <div class="secondary-btn">Revisit set</div>
+      <% end %>
     </div>
     <div class="vertical-line">
     </div>
@@ -52,32 +52,34 @@
     <div class="quest-results">
       <div class="quest-banner">
         <div class="quest-heading d-flex">
-        <h2>Your <%= @card_set.language.name %> Adventure</h2>
-        <button class="secondary-btn ml-5">See all your adventures</button>
+        <h3>Your <%= @card_set.language.name %> Adventure</h3>
+        <%= link_to user_path(current_user) do  %>
+          <button class="secondary-btn ml-5">See all your adventures</button>
+        <% end %>
         </div>
-        <div class="quest-graphic d-flex mx-auto align-items-center">
-          <%= image_tag "town.png", alt: "alttext", width: '75', height: '75', class: "flex-grow-1"%>
+        <div class="quest-graphic d-flex justify-content-center align-items-center">
+          <%= image_tag "town.png", alt: "alttext", class: ""%>
           <svg class="c-dashed-line" width="517" height="96 " xmlns="http://www.w3.org/2000/svg">
             <defs>
               <path id="line" d="M4.90558 63.9268C49.3203 61.6248 59.7187 89.88 113.492 87.0931C167.264 84.3061 183.703 20.0423 243.302 16.9534C302.9 13.8645 341.13 75.295 395.351 72.4848C449.572 69.6746 458.136 40.4366 512.163 37.6365"/>
             </defs>
             <use class="dotted-line" xlink:href="#line"/>
-            <use class="solid-line" xlink:href="#line" stroke-dasharray="260, 550"/>
+            <use class="solid-line" xlink:href="#line" stroke-dasharray="400, 550"/>
           </svg>
-          <%= image_tag "town.png", alt: "alttext", width: '75', height: '75', class: "flex-grow-1"%>
+          <%= image_tag "town.png", alt: "alttext", class: ""%>
         </div>
       </div>
-      <div class="quest-update d-flex">
-        <div class="quest-update-headings">
-          <p><strong>Your <%= @card_set.language.name %> team points</strong></p>
-          <p><strong>Your contribution</strong></p>
-          <p><strong>Points to your <%= @card_set.language.name %> next.civilisation</strong></p>
-        </div>
-        <div class="quest-update-stats ml-5">
-          <p>234723</p>
-          <p>2345</p>
-          <p>78233</p>
-        </div>
+    </div>
+    <div class="quest-update d-flex">
+      <div class="quest-update-headings">
+        <p><strong>Your <%= @card_set.language.name %> team points</strong></p>
+        <p><strong>Your contribution</strong></p>
+        <p><strong>Points to your <%= @card_set.language.name %> next.civilisation</strong></p>
+      </div>
+      <div class="quest-update-stats ml-5">
+        <p>234723</p>
+        <p>2345</p>
+        <p>78233</p>
       </div>
     </div>
   </div>
