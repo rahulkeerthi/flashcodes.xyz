@@ -1,15 +1,59 @@
-
-<div class="pt-5">
-  <div class="border rounded-pill bg-white p-3 d-flex justify-content-center align-items-center">
-    <div class="mr-3">
-      <h1>Welcome, <%= @user.username.capitalize %>!</h1>
-      <h2><%= Time.now.strftime("%A") == "Friday"? "Happy Friday!" : "" %> How're you doing?</h2>
-      <h3>Your current points: <%= @user.points %></h3>
-      <h3>Your team: The Fiery Powder Kegs</h3>
-      <h3>Your next quest: Finish <%= link_to "Interators and Blocks", languages_path, style: "font-size: 2rem; font-weight: 700; color: darkorange;" %></h3>
+<div class="user-welcome">
+  <div class="profile">
+    <div class="icon">
+      <%= cl_image_tag current_user.photo.key, gravity: :face, class: "user-avatar" %>
     </div>
-    <div>
-      <%= cl_image_tag @user.photo.key, height: 300, width: 300, crop: :fill, class: "avatar-bordered ml-3" %>
-    </div>
+    <%= link_to edit_user_registration_path do %>
+      <div class="secondary-btn">Edit Profile</div>
+    <% end %>
   </div>
+  <div class="welcome">
+    <h3>Hey, <%= current_user.username %><br>Welcome to your profile</h1>
+  </div>
+</div>
+<div class="user-stats">
+  <div class="divided divided-blue">
+    <h3>Highlights</h3>
+    <table>
+      <tr>
+        <td>Total points</td>
+        <td><%= current_user.points %></td>
+      </tr>
+      <tr>
+        <td>Total groups</td>
+        <td><%= current_user.groups.count %></td>
+      </tr>
+      <tr>
+        <td>Joined on</td>
+        <td><%= current_user.created_at.strftime("%D") %></td>
+      </tr>
+    </table>
+  </div>
+  <div class="divided divided-orange">
+    <h3>Your next set</h3>
+    <div class="line"></div>
+    <p><%= @next_set.title %> - <%= @next_set.difficulty %></p>
+    <%= link_to card_set_path(@next_set) do %>
+     <span>Start now <i class="fas fa-arrow-right"></i></span>
+    <% end %>
+  </div>
+</div>
+<div class="user-groups">
+  <h3>Your Team Adventures</h3>
+  <table class="user-groups-table">
+    <tr>
+      <td>Team</td>
+      <td>Language</td>
+      <td>Civilisation</td>
+      <td>Points Contribution</td>
+    </tr>
+    <% current_user.group_memberships.order(points: :desc).each do |membership| %>
+      <tr>
+        <td><%= membership.group.name %></td>
+        <td><%= membership.language.name %></td>
+        <td>Town</td>
+        <td><%= membership.points %></td>
+      </tr>
+    <% end %>
+  </table>
 </div>
