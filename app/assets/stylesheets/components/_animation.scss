@@ -1,0 +1,24 @@
+.c-dashed-line__path {
+  animation: c-dashed-line-path 3s ease-in-out reverse infinite;
+  fill: none;
+  stroke: #31CC89;
+  stroke-dasharray: 100%; /* this is the entire length of the line */
+  stroke-dashoffset: 100%; /* this is the entire length of the line */
+  stroke-width: 5;
+}
+
+.c-dashed-line__dash {
+  fill: none;
+  stroke: #31CC89; /* this must match the background color */
+  stroke-dasharray: 16 10; /* draws a 10px dash line with a 16px gap between */
+  stroke-width: 5; /* make the dashed line slightly bigger than the one it's covering */
+}
+
+@keyframes c-dashed-line-path {
+  from {
+    stroke-dashoffset: 50%;
+  }
+  to {
+    stroke-dashoffset: 100%;
+  }
+}
