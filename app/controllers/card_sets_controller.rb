@@ -20,6 +20,8 @@ class CardSetsController < ApplicationController
   def show
     @answer = UserAnswer.new
     set_card_set
+    @count = @card_set.flashcards.count
+    @counter = @count
     # Check if the user has previously attempted the selected card set
     # Load the corresponding user set if attempted? returns true and resets points earned
     # points are reset so that we only hold points earned from current run

@@ -8,24 +8,52 @@
     <% @answers = [flashcard.correct_answer, flashcard.answer_1, flashcard.answer_2, flashcard.answer_3] %>
     <% @answers.shuffle! %>
     <div class="card-parent">
-      <%= render "question_form", options: @answers, flashcard: flashcard, user_set: @user_set %>
+      <%= render "question_form", options: @answers, flashcard: flashcard, user_set: @user_set, counter: @counter, count: @count, correct_answer: flashcard.correct_answer %>
     </div>
+    <% @counter -= 1 %>
   <% end %>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script type="text/javascript">
+// setting up some constants
+// options are the answer options / radio buttons
+const options = $('.flash-form input');
+const labels = $('.form-check-label');
+// long one, creates an arra of correct answers for current set, getting them from the hidden fields for each flashcard
+// using map function to create the array, only taking the value
+const correct_answers = $('input[name="user_answer[correct]"]').map(function() {return this.value;}).get()
+// array of labels with correct answers
+const answers = labels.map(function() {
+  if (jQuery.inArray( $(this).text(), correct_answers) !== -1 ) {
+    return this;
+  };
+});
 
 $(document).on('submit', '.flash-form', function() {
-  if($(this).parent().parent().siblings().length < 1) {
+  // card is the current flashcard div
+  let card = $(this).parent().parent();
+  // on submit, the buttons are disabled
+  options.prop('disabled', true);
+
+  if(card.siblings().length <= 1) {
+    answers.addClass('correct');
     let redirect = window.location.protocol + "//" + window.location.host + "/results"
     // timeout to prevent from the result page getting rendered before last answer is processed
     setTimeout (function () {
       window.location.replace(redirect)
-    }, 200);
+    }, 2000);
   }
   else {
-    $(this).parent().parent().remove();
+    // add green background to correct answers
+    answers.addClass('correct');
+    setTimeout (function () {
+      card.toggle("slow");
+      options.prop('disabled', false);
+      card.next().remove();
+      // remove green background from correct answers
+      answers.removeClass('correct');
+    }, 3000);
   }
 });
 </script>
