@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_05_143259) do
+ActiveRecord::Schema.define(version: 2020_03_09_102846) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,24 @@ ActiveRecord::Schema.define(version: 2020_03_05_143259) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["card_set_id"], name: "index_flashcards_on_card_set_id"
+  end
+
+  create_table "group_memberships", force: :cascade do |t|
+    t.integer "points"
+    t.bigint "language_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "group_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["group_id"], name: "index_group_memberships_on_group_id"
+    t.index ["language_id"], name: "index_group_memberships_on_language_id"
+    t.index ["user_id"], name: "index_group_memberships_on_user_id"
+  end
+
+  create_table "groups", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "languages", force: :cascade do |t|
@@ -107,6 +125,9 @@ ActiveRecord::Schema.define(version: 2020_03_05_143259) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "card_sets", "languages"
   add_foreign_key "flashcards", "card_sets"
+  add_foreign_key "group_memberships", "groups"
+  add_foreign_key "group_memberships", "languages"
+  add_foreign_key "group_memberships", "users"
   add_foreign_key "user_answers", "flashcards"
   add_foreign_key "user_answers", "user_sets"
   add_foreign_key "user_sets", "card_sets"
