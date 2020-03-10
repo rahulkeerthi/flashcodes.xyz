@@ -7,6 +7,36 @@
 
 <hr>
 
+<h2>Notifications</h2>
+
+<div class="container col-6">
+  <% if current_user.notifications.unread.empty? %>
+    <div class="text-center small">
+      No new notifications
+    </div>
+  <% else %>
+    <% Notification.all.each do |notification| %>
+      <div class="notification">
+        <%= cl_image_tag notification.actor.photo.key, class: "avatar-large" %>
+        <!-- <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-large" /> -->
+        <div class="notification-content">
+          <p><small><%= notification.created_at %></small></p>
+          <p><%= notification.content %></p>
+        </div>
+
+        <div class="notification-actions">
+          <!-- <a href="#">Edit <i class="fas fa-pencil-alt"></i></a> -->
+          <%= link_to notification_path(notification), method: :delete do %>
+            <i class="fas fa-times pr-3"></i>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+<hr>
+
 <h2>Card Sets</h2>
 <% count = 0 %>
 <% @testlangs2.map do |langset| %>

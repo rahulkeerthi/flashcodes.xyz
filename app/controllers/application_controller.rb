@@ -6,6 +6,12 @@ class ApplicationController < ActionController::Base
 
   # LEVEL THRESHOLD
   LEVEL_THRESHOLD = 500
+  LEVEL_NAMES = {
+    1 =>"Village",
+    2 => "Town",
+    3 => "City",
+    4 => "Planet"
+  }
 
 
   # after_action :verify_authorized, except: :index, unless: :skip_pundit?

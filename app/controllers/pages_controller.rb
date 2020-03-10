@@ -24,9 +24,16 @@ class PagesController < ApplicationController
     @membership = current_user.group_memberships.select { |membership| membership.group.language == @card_set.language }.first
     @group = @membership.group
     @group_points = group_points
+    @progress = ((@group_points - progress_points(@group)).to_f/(@group.target_points - progress_points(@group)))*550
+    @level = LEVEL_NAMES[@group.level]
+    @next_level = LEVEL_NAMES[@group.level+1]
   end
 
   private
+
+  def progress_points(group)
+    5000 * (@group.level - 1)
+  end
 
   def group_points
     @group.group_memberships.calculate(:sum, :points)
