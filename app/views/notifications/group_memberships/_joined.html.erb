@@ -1,0 +1,30 @@
+<li>
+  <%= link_to notification.notifiable, 'data-behavior': 'notification-link', id: notification.id do %>
+    <div class="media">
+      <div class="media-left media-middle">
+        <%= cl_image_tag notification.actor.photo.key, class: "avatar" %>
+      </div>
+      <div class="media-body">
+        <span class="small text-muted">
+          <%= notification.created_at %>
+        </span>
+        <p>
+          <strong>
+            <%= notification.actor.username %>
+          </strong>
+          <%= t("notifications.actions.#{notification.action}") %>
+          your group on your quest in
+          <strong>
+            <%= notification.notifiable.user_set.card_set.language %>!
+          </strong>
+        </p>
+        <p class="small text-muted">
+          <i>
+            <%= truncate(notification.notifiable.body, length: 100) %>
+          </i>
+        </p>
+      </div>
+    </div>
+  <% end %>
+</li>
+<li class="divider"></li>

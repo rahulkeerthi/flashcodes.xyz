@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :users, only: :show
   resources :user_answers, only: :create
   patch 'user_answers', to: 'user_answers#update'
+  resources :notifications, only: :destroy
 
   # STANDALONE ROUTES
   root to: 'pages#home'
