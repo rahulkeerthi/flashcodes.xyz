@@ -13,6 +13,7 @@ class UserAnswersController < ApplicationController
     answer = params[:user_answer][:answer]
     # find the membership where the language matches with the language of the set
     membership = current_user.group_memberships.select { |membership| membership.group.language == user_set.card_set.language }.first
+    group = membership.group
     if answer == flashcard.correct_answer
       user_answer = UserAnswer.where(flashcard: flashcard, user_set: user_set).first
       unless user_answer.correct
@@ -26,6 +27,11 @@ class UserAnswersController < ApplicationController
         # logic to add earned points to group points
         membership.points += POINTS[difficulty]
         membership.save
+        if (group.group_memberships.calculate(:sum, :points)) >= group.target_points
+          group.level += 1
+          group.target_points += 5000 * group.level
+          group.save
+        end
       end
     end
 

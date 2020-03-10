@@ -64,7 +64,7 @@
         <td><strong><%= membership.group.name %></strong></td>
         <td><%= link_to membership.group.language.name, language_card_sets_path(membership.group.language) %></td>
         <td><%= image_tag 'town.png', class: "avatar" %></td>
-        <td><%= membership.group.target_points - membership.points %></td>
+        <td><%= membership.group.target_points - membership.group.group_memberships.calculate(:sum, :points) %></td>
         <td><%= link_to language_card_sets_path(membership.group.language) do %><i class="fab fa-leanpub text-primary"></i><% end %></td>
       </tr>
     <% end %>
