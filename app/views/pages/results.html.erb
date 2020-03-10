@@ -1,4 +1,4 @@
-<div class="header-back">
+<div class="header-back mb-5">
   <%= link_to language_card_sets_path(@card_set.language) do %>
     <div class="btn nav light-font">
       <span><i class="fas fa-arrow-left"></i> Back to all Cardsets</span>
@@ -7,7 +7,7 @@
   <h1><%= @card_set.language.name %> - <%= @card_set.title %></h1>
 </div>
 
-<div class="row align-items-stretch results-row">
+<div class="row align-items-stretch results-row mb-4">
   <div class="results d-flex">
     <div class="stats">
       <div class="percentage">
@@ -37,7 +37,7 @@
       <h3>You have completed every set for this language!</h3>
     <% else %>
     <%= link_to card_set_path(@next_set) do %>
-      <h3>Start your next set ></h3>
+      <h3>Start your next set <i class="fas fa-arrow-right"></i></h3>
       <div class="line"></div>
       <p><%= @next_set.title %></p>
       <small><%= @next_set.description %></small>
@@ -53,11 +53,14 @@
   <div class="w-100 quest-container">
     <div class="quest-results">
       <div class="quest-banner">
-        <div class="quest-heading d-flex">
-        <h3>Your <%= @card_set.language.name %> Adventure</h3>
+        <div class="quest-heading d-flex justify-content-between">
+        <h3>Your <%= @card_set.language.name %> Adventure - <span>The <%= @group.name %></span></h3>
         <%= link_to user_path(current_user) do  %>
           <button class="secondary-btn ml-5">See all your adventures</button>
         <% end %>
+        </div>
+        <div class="quest-info">
+          <p><strong>Your contribution to date</strong> - <%= @membership.points %> points</p>
         </div>
         <div class="quest-graphic d-flex justify-content-center align-items-center">
           <div class="small-civ text-center">
@@ -72,7 +75,7 @@
               <use class="dotted-line" xlink:href="#line"/>
               <use class="solid-line" xlink:href="#line" stroke-dasharray="<%= @progress %>, 550"/>
             </svg>
-            <h4 class=""><%= @group_points %>/<%= @group.target_points %> points</h4>
+            <h4 class=""><%= @group.target_points - @group_points %> points to go!</h4>
           </div>
           <div class="large-civ text-center">
             <%= image_tag "level#{@group.level+1}.png", alt: "alttext"%>
@@ -82,7 +85,7 @@
 
       </div>
     </div>
-    <div class="quest-update d-flex">
+   <!--  <div class="quest-update d-flex">
       <div class="quest-update-headings">
         <p><strong>Your <%= @group.name %> team points</strong></p>
         <p><strong>Your contribution</strong></p>
@@ -93,7 +96,7 @@
         <p><%= @membership.points %></p>
         <p><%= @group.target_points - @group_points %></p>
       </div>
-    </div>
+    </div> -->
   </div>
 </div>
 
