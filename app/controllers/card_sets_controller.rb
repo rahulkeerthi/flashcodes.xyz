@@ -59,9 +59,10 @@ class CardSetsController < ApplicationController
 
   def assign_user_to_free_group
     current_language = @user_set.card_set.language
-    matches = current_user.user_sets.select { |set| set.card_set.language.name == current_language }
+    matches = current_user.user_sets.select { |set| set.card_set.language == current_language }
     # check if user has completed any sets in this language before
-    if matches.empty?
+    # should be equal to 1 if first time trying a card set for this language
+    if matches.count == 1
       # if not, then find last created group in that language that has less than 10 users
       group = Group.find_by(language: current_language, full: false)
       if group.nil?
