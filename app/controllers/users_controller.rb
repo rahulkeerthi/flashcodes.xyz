@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
-    @next_set = next_card_set
+    @next_set = next_card_set unless current_user.user_sets.empty?
   end
 
   private
