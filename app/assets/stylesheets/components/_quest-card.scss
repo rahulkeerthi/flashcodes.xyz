@@ -1,3 +1,9 @@
+.quest-container {
+  box-shadow: 0px 0px 10px rgba(0, 78, 137, 0.25);
+  border-radius: 8px;
+  overflow: hidden
+}
+
 .quest-heading {
   h3 {
     color: white;
@@ -19,11 +25,10 @@
 
 .quest-results {
   background: $blue url("pattern.png") repeat;
-  border-radius: 8px 8px 0 0 ;
   padding: 32px;
 }
+
 .quest-update {
   padding: 32px;
   background-color: white;
-  border-radius: 0 0 8px 8px;
 }
