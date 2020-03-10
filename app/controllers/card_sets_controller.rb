@@ -1,9 +1,11 @@
 require 'faker'
 
 class CardSetsController < ApplicationController
+  before_action :motivation, only: :index
   def index
     @difficulty_value = 0
     @language = Language.find(params[:language_id])
+    # sets the group to
     if params[:query].blank?
       @card_sets = CardSet.where(language: @language)
     else
@@ -41,6 +43,13 @@ class CardSetsController < ApplicationController
   end
 
   private
+
+  def motivation
+  # this method sets the friends and motivationbox depending on the members of your group and who has done it
+    @language = Language.find(params[:language_id])
+    @group = current_user.groups.find_by(language: @language)
+    @text = "Hello"
+  end
 
   def set_card_set
     @card_set = CardSet.find(params[:id])
