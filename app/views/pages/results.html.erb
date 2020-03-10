@@ -79,7 +79,7 @@
       <div class="quest-update-stats ml-5">
         <p><%= @group_points - @membership.points %></p>
         <p><%= @membership.points %></p>
-        <p><%= 5000 - (@group_points % 5000) %></p>
+        <p><%= @group.target_points - @group_points %></p>
       </div>
     </div>
   </div>

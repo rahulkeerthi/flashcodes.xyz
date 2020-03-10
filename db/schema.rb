@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_10_105441) do
+ActiveRecord::Schema.define(version: 2020_03_10_124116) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(version: 2020_03_10_105441) do
     t.boolean "full"
     t.bigint "language_id", null: false
     t.integer "target_points", default: 5000
+    t.integer "level", default: 1
     t.index ["language_id"], name: "index_groups_on_language_id"
   end
 
