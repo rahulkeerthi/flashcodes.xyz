@@ -67,15 +67,7 @@
         <td><%= membership.group.target_points - membership.points %></td>
         <td><%= link_to language_card_sets_path(membership.group.language) do %><i class="fab fa-leanpub text-primary"></i><% end %></td>
       </tr>
-      <% current_user.group_memberships.order(points: :desc).each do |membership| %>
-        <tr>
-          <td><%= membership.group.name %></td>
-          <td><%= membership.language.name %></td>
-          <td>Town</td>
-          <td><%= membership.points %></td>
-        </tr>
-      <% end %>
-    </table>
-  </div>
-<% end %>
+    <% end %>
+  </table>
+</div>
 <% end %>
