@@ -29,14 +29,23 @@
       </tr>
     </table>
   </div>
-  <div class="divided divided-orange">
-    <h3>Your next set</h3>
-    <div class="line"></div>
-    <p><%= @next_set.title %> - <%= @next_set.difficulty %></p>
-    <%= link_to card_set_path(@next_set) do %>
-     <span>Start now <i class="fas fa-arrow-right"></i></span>
+  <% if current_user.user_sets.empty? %>
+    <div class="divided divided-orange">
+      <h3>Get started with the flashcards</h3>
+      <%= link_to languages_path do %>
+       <span>Start now <i class="fas fa-arrow-right"></i></span>
+    </div>
     <% end %>
-  </div>
+  <% else %>
+    <div class="divided divided-orange">
+      <h3>Your next set</h3>
+      <div class="line"></div>
+      <p><%= @next_set.title %> - <%= @next_set.difficulty %></p>
+      <%= link_to card_set_path(@next_set) do %>
+       <span>Start now <i class="fas fa-arrow-right"></i></span>
+      <% end %>
+    </div>
+  <% end %>
 </div>
 <div class="user-groups">
   <h3>Your Team Adventures</h3>
