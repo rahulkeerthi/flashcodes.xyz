@@ -48,7 +48,7 @@
 </div>
 
 <div class="row">
-  <div class="col-12">
+  <div class="w-100 quest-container">
     <div class="quest-results">
       <div class="quest-banner">
         <div class="quest-heading d-flex">
@@ -72,14 +72,14 @@
     </div>
     <div class="quest-update d-flex">
       <div class="quest-update-headings">
-        <p><strong>Your <%= @card_set.language.name %> team points</strong></p>
+        <p><strong>Your <%= @group.name %> team points</strong></p>
         <p><strong>Your contribution</strong></p>
-        <p><strong>Points to your <%= @card_set.language.name %> next.civilisation</strong></p>
+        <p><strong>Points to your <%= @group.name %> next.civilisation</strong></p>
       </div>
       <div class="quest-update-stats ml-5">
-        <p>234723</p>
-        <p>2345</p>
-        <p>78233</p>
+        <p><%= @group_points - @membership.points %></p>
+        <p><%= @membership.points %></p>
+        <p><%= @group.target_points - @group_points %></p>
       </div>
     </div>
   </div>

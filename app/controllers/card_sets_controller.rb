@@ -59,14 +59,15 @@ class CardSetsController < ApplicationController
 
   def assign_user_to_free_group
     current_language = @user_set.card_set.language
-    matches = current_user.user_sets.select { |set| set.card_set.language.name == current_language }
+    matches = current_user.user_sets.select { |set| set.card_set.language == current_language }
     # check if user has completed any sets in this language before
-    if matches.empty?
+    # should be equal to 1 if first time trying a card set for this language
+    if matches.count == 1
       # if not, then find last created group in that language that has less than 10 users
       group = Group.find_by(language: current_language, full: false)
       if group.nil?
       # if no free group exists, create group and add user to that group (via a group membership)
-        new_group = Group.create(name: Faker::Hacker.say_something_smart, language: current_language, full: false)
+        new_group = Group.create(name: "#{Faker::Coffee.blend_name} #{Faker::Creature::Animal.name}s", language: current_language, full: false)
         GroupMembership.create(group: new_group, user: current_user)
       else
         GroupMembership.create(group: group, user: current_user, points: 0)

@@ -4,14 +4,18 @@ class UserAnswersController < ApplicationController
       "Medium": 20,
       "Hard": 30,
       "Impossible": 50
-    }
+  }
+
+  BASE_LEVEL_PTS = 5000
 
   def update
     flashcard = Flashcard.find(params[:user_answer][:flashcard])
     difficulty = flashcard.card_set.difficulty.to_sym
     user_set = UserSet.find(params[:user_answer][:user_set])
     answer = params[:user_answer][:answer]
-    # group = GroupMembership.find_by(user: current_user, language: user_set.card_set.language)
+    # find the membership where the language matches with the language of the set
+    membership = current_user.group_memberships.select { |membership| membership.group.language == user_set.card_set.language }.first
+    group = membership.group
     if answer == flashcard.correct_answer
       user_answer = UserAnswer.where(flashcard: flashcard, user_set: user_set).first
       unless user_answer.correct
@@ -23,8 +27,13 @@ class UserAnswersController < ApplicationController
         current_user.points += POINTS[difficulty]
         current_user.save
         # logic to add earned points to group points
-        # group.points += POINTS[difficulty]
-        # group.save
+        membership.points += POINTS[difficulty]
+        membership.save
+        if (group.group_memberships.calculate(:sum, :points)) >= group.target_points
+          group.level += 1
+          group.target_points += BASE_LEVEL_PTS * group.level
+          group.save
+        end
       end
     end
 
