@@ -38,22 +38,24 @@
     <% end %>
   </div>
 </div>
-<div class="user-groups">
-  <h3>Your Team Adventures</h3>
-  <table class="user-groups-table">
-    <tr>
-      <td>Team</td>
-      <td>Language</td>
-      <td>Civilisation</td>
-      <td>Points Contribution</td>
-    </tr>
-    <% current_user.group_memberships.order(points: :desc).each do |membership| %>
+<% if !current_user.groups.empty?%>
+  <div class="user-groups">
+    <h3>Your Team Adventures</h3>
+    <table class="user-groups-table">
       <tr>
-        <td><%= membership.group.name %></td>
-        <td><%= membership.language.name %></td>
-        <td>Town</td>
-        <td><%= membership.points %></td>
+        <td>Team</td>
+        <td>Language</td>
+        <td>Civilisation</td>
+        <td>Points Contribution</td>
       </tr>
-    <% end %>
-  </table>
-</div>
+      <% current_user.group_memberships.order(points: :desc).each do |membership| %>
+        <tr>
+          <td><%= membership.group.name %></td>
+          <td><%= membership.language.name %></td>
+          <td>Town</td>
+          <td><%= membership.points %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+<% end %>
