@@ -35,11 +35,13 @@
   color: $blue;
   line-height: 1;
   font-weight: 700;
+  transition: 0.2s;
   &:hover {
     color: $blue-dark;
     border: 2px solid $blue-dark;
     transition: 0.3s ease;
     text-decoration: none;
+    transform: scale(1.02)
   }
 }
 
@@ -66,6 +68,9 @@
   }
 }
 
+.fas {
+  font-size: 0.8em;
+}
 .index-back {
   position: absolute;
   top: 3px;
