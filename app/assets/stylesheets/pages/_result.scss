@@ -1,10 +1,11 @@
 .row {
-  justify-content: space-around;
+  justify-content: space-between;
   margin-top: 64px;
 }
 
 .results {
   box-shadow: 0px 0px 10px rgba(0, 78, 137, 0.25);
+  background-color: white;
   border-radius: 8px;
   padding: 30px;
   justify-content: space-between;

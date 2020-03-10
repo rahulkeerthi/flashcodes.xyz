@@ -1,15 +1,73 @@
-
-<div class="pt-5">
-  <div class="border rounded-pill bg-white p-3 d-flex justify-content-center align-items-center">
-    <div class="mr-3">
-      <h1>Welcome, <%= @user.username.capitalize %>!</h1>
-      <h2><%= Time.now.strftime("%A") == "Friday"? "Happy Friday!" : "" %> How're you doing?</h2>
-      <h3>Your current points: <%= @user.points %></h3>
-      <h3>Your team: The Fiery Powder Kegs</h3>
-      <h3>Your next quest: Finish <%= link_to "Interators and Blocks", languages_path, style: "font-size: 2rem; font-weight: 700; color: darkorange;" %></h3>
+<div class="user-welcome">
+  <div class="profile">
+    <div class="icon">
+      <%= cl_image_tag current_user.photo.key, gravity: :face, class: "user-avatar" %>
     </div>
-    <div>
-      <%= cl_image_tag @user.photo.key, height: 300, width: 300, crop: :fill, class: "avatar-bordered ml-3" %>
-    </div>
+    <%= link_to edit_user_registration_path do %>
+      <div class="secondary-btn">Edit Profile</div>
+    <% end %>
+  </div>
+  <div class="welcome">
+    <h3>Hey, <%= current_user.username %><br>Welcome to your profile</h3>
   </div>
 </div>
+<div class="user-stats">
+  <div class="divided divided-blue">
+    <h3>Highlights</h3>
+    <table>
+      <tr>
+        <td>Total points</td>
+        <td><%= current_user.points %></td>
+      </tr>
+      <tr>
+        <td>Total groups</td>
+        <td><%= current_user.groups.count %></td>
+      </tr>
+      <tr>
+        <td>Joined on</td>
+        <td><%= current_user.created_at.strftime("%D") %></td>
+      </tr>
+    </table>
+  </div>
+  <% if current_user.user_sets.empty? %>
+    <div class="divided divided-orange">
+      <h3>Get started with the flashcards</h3>
+      <%= link_to languages_path do %>
+       <span>Start now <i class="fas fa-arrow-right"></i></span>
+    </div>
+    <% end %>
+  <% else %>
+    <div class="divided divided-orange">
+      <h3>Your next set</h3>
+      <div class="line"></div>
+      <p><%= @next_set.title %> - <%= @next_set.difficulty %></p>
+      <%= link_to card_set_path(@next_set) do %>
+       <span>Start now <i class="fas fa-arrow-right"></i></span>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<% if !current_user.groups.empty?%>
+<div class="user-groups mb-3">
+  <h2>Your Team Adventures</h2>
+  <table class="user-groups-table mt-3">
+    <tr>
+      <td><h4>Team</h4></td>
+      <td><h4>Language</h4></td>
+      <td><h4>Civilisation</h4></td>
+      <td><h4>Points to Next Milestone</h4></td>
+      <td><h4>Next Set</h4></td>
+    </tr>
+    <% current_user.group_memberships.order(updated_at: :desc).each do |membership| %>
+      <tr>
+        <td><strong><%= membership.group.name %></strong></td>
+        <td><%= link_to membership.group.language.name, language_card_sets_path(membership.group.language) %></td>
+        <td><%= image_tag 'town.png', class: "avatar" %></td>
+        <td><%= membership.group.target_points - membership.group.group_memberships.calculate(:sum, :points) %></td>
+        <td><%= link_to language_card_sets_path(membership.group.language) do %><i class="fab fa-leanpub text-primary"></i><% end %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+<% end %>

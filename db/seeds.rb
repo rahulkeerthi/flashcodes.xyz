@@ -23,7 +23,14 @@ puts "SEEDING USERS"
   user.save!
 end
 
-puts "SEEDING LANGUAGES"
+puts "Adding ADMIN!"
+
+user = User.new(username: "admin", email: "admin@admin.com", password: "123456", password_confirmation: "123456", bio: Faker::Hacker.say_something_smart, admin: true)
+  file = URI.open("https://www.rd.com/wp-content/uploads/2017/09/01-shutterstock_476340928-Irina-Bg-1024x683.jpg")
+  user.photo.attach(io: file, filename: 'nes.png')
+  user.save!
+
+puts "DONE! SEEDING LANGUAGES"
 
 f = File.open("db/sourcedata/proglangs.csv", "r")
 f.each_line do |line|
@@ -40,7 +47,7 @@ f.each_line do |line|
   end
 end
 
-puts "SEEDING FLASHCARDS AND CARD SETS"
+puts "DONE! SEEDING FLASHCARDS AND CARD SETS"
 
 Language.all.each do |lang|
   10.times do
@@ -55,9 +62,3 @@ Language.all.each do |lang|
   end
 end
 
-puts "Seeding Groups"
-
-Language.all.each do |lang|
-  group = Group.new(name: "The #{Faker::Space.constellation} #{Faker::Science.element.capitalize} #{Faker::Team.creature.split.map(&:capitalize).join(' ')}", full: false, language: lang)
-  group.save
-end

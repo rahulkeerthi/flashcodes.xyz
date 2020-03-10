@@ -3,6 +3,7 @@ class UserSet < ApplicationRecord
   belongs_to :card_set
   has_many :user_answers, dependent: :destroy
   has_many :flashcards, through: :user_answers
+  has_many :group_memberships
   validates :completed, inclusion: {in: [true, false]}
   after_create :create_notifications
   after_update :create_notifications

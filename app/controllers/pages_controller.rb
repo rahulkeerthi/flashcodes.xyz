@@ -21,9 +21,16 @@ class PagesController < ApplicationController
     @flashcards = @most_recent_user_set.card_set.flashcards
     @percentage = ((@correct.to_f / @flashcards.length) * 100).round
     @next_set = next_card_set
+    @membership = current_user.group_memberships.select { |membership| membership.group.language == @card_set.language }.first
+    @group = @membership.group
+    @group_points = group_points
   end
 
   private
+
+  def group_points
+    @group.group_memberships.calculate(:sum, :points)
+  end
 
   # find current users most recent user set, which card set was last attempted
   def set_most_recent_user_set
@@ -57,11 +64,11 @@ class PagesController < ApplicationController
     set_most_recent_user_set
     card_set = @most_recent_user_set.card_set
     language = card_set.language
-    select = false
     # sets are cards sets sorted by difficulty, which not user has not yet completed
     # last attempted card set will be retained in the list, to find current proggress of user, even if he completed it
     sets = sort_by_difficulty(language) - (completed_sets(language) - [card_set])
-    sets[sets.index(card_set) + 1] unless sets.count == 1 && @most_recent_user_set.completed
+    index = (sets.index(card_set) + 1) == sets.count ? 0 : (sets.index(card_set) + 1)
+    sets[index] unless sets.count == 1 && @most_recent_user_set.completed
   end
 
 end
