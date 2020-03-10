@@ -93,7 +93,7 @@ class CardSetsController < ApplicationController
   def send_notifications(recipients, group)
     recipients.each do |recipient|
       Notification.create!(recipient: recipient,
-        action: "#{current_user.username.capitalize} has joined your group, #{group.name}.", sender: current_user)
+        content: "#{current_user.username.capitalize} has joined your group, #{group.name}.", sender: current_user)
       raise
     end
   end
