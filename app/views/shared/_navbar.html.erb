@@ -10,7 +10,33 @@
   <div class="" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
-        <li class="nav-item active">
+      <li class="nav-item dropdown notif-icon">
+        <div class="dropdown-toggle" id="alertDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-bell"></i></div>
+        <div class="dropdown-menu scrollable dropdown-menu-left" id="notif-icon-position" aria-labelledby="alertDropdown">
+          <% if current_user.notifications.empty? %>
+            <div class="text-center small">
+              No new notifications
+            </div>
+          <% else %>
+            <% @notifications.each do |notification| %>
+              <div class="notification">
+                <%= cl_image_tag notification.actor.photo.key, class: "avatar" %>
+                <div class="notification-content">
+                  <p><small>from <span class="text-dark"><%= notification.actor.username.capitalize %></span>, <%= time_ago_in_words(notification.created_at) %> ago</small></p>
+                  <p class="small"><%= notification.content %></p>
+                </div>
+
+                <div class="notification-actions">
+                  <%= link_to notification_path(notification), method: :delete do %>
+                    <i class="fas fa-times pr-3"></i>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </li>
+        <li class="nav-item">
           <%= link_to "Languages", languages_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
