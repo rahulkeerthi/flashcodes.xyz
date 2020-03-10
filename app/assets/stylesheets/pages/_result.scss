@@ -5,7 +5,6 @@
 
 .results {
   box-shadow: 0px 0px 10px rgba(0, 78, 137, 0.25);
-  background-color: white;
   border-radius: 8px;
   padding: 30px;
   justify-content: space-between;
@@ -66,10 +65,7 @@
   background: #E4740B;
   box-shadow: 0px 0px 10px rgba(0, 78, 137, 0.25);
   border-radius: 8px;
-  a {
-    font-size: 24px;
-    font-weight: bold;
-  }
+  transition: 0.3s;
   a, p,{
     text-decoration: none;
     color: white;
@@ -80,6 +76,9 @@
   }
   h3 {
     color: white;
+  }
+  &:hover {
+    transform: scale(1.02);
   }
 }
 .line {

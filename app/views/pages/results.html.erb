@@ -36,13 +36,15 @@
     <% if @next_set.nil? %>
       <h3>You have completed every set for this language!</h3>
     <% else %>
-    <h3><%= link_to "Start your next set >", card_set_path(@next_set) %></h3>
-    <div class="line"></div>
-    <p><%= @next_set.title %></p>
-    <small><%= @next_set.description %></small>
-    <div class="next-xp">
-      <p><%= @next_set.flashcards.count * 10 %> XP</p>
-    </div>
+    <%= link_to card_set_path(@next_set) do %>
+      <h3>Start your next set ></h3>
+      <div class="line"></div>
+      <p><%= @next_set.title %></p>
+      <small><%= @next_set.description %></small>
+      <div class="next-xp">
+        <p><%= @next_set.flashcards.count * 10 %> XP</p>
+      </div>
+    <% end %>
     <% end %>
   </div>
 </div>
@@ -58,16 +60,26 @@
         <% end %>
         </div>
         <div class="quest-graphic d-flex justify-content-center align-items-center">
-          <%= image_tag "town.png", alt: "alttext", class: ""%>
-          <svg class="c-dashed-line" width="517" height="96 " xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <path id="line" d="M4.90558 63.9268C49.3203 61.6248 59.7187 89.88 113.492 87.0931C167.264 84.3061 183.703 20.0423 243.302 16.9534C302.9 13.8645 341.13 75.295 395.351 72.4848C449.572 69.6746 458.136 40.4366 512.163 37.6365"/>
-            </defs>
-            <use class="dotted-line" xlink:href="#line"/>
-            <use class="solid-line" xlink:href="#line" stroke-dasharray="400, 550"/>
-          </svg>
-          <%= image_tag "town.png", alt: "alttext", class: ""%>
+          <div class="small-civ text-center">
+            <%= image_tag "level#{@group.level}.png", alt: "alttext"%>
+            <p>Level <%= @group.level %></p>
+          </div>
+          <div class="text-center">
+            <svg class="c-dashed-line" width="517" height="96 " xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <path id="line" d="M4.90558 63.9268C49.3203 61.6248 59.7187 89.88 113.492 87.0931C167.264 84.3061 183.703 20.0423 243.302 16.9534C302.9 13.8645 341.13 75.295 395.351 72.4848C449.572 69.6746 458.136 40.4366 512.163 37.6365"/>
+              </defs>
+              <use class="dotted-line" xlink:href="#line"/>
+              <use class="solid-line" xlink:href="#line" stroke-dasharray="<%= @progress %>, 550"/>
+            </svg>
+            <h4 class=""><%= @group_points %>/<%= @group.target_points %> points</h4>
+          </div>
+          <div class="large-civ text-center">
+            <%= image_tag "level#{@group.level+1}.png", alt: "alttext"%>
+            <p>Level <%= @group.level + 1 %></p>
+          </div>
         </div>
+
       </div>
     </div>
     <div class="quest-update d-flex">
