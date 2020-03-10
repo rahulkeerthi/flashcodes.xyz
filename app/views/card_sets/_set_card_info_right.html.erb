@@ -1,20 +1,24 @@
 <div class="set-card-info col-sm-12 set-tooltiptext-right">
   <div class="set-info-bg">
-    <div class="text-left head">
-      <div class="text-white">
-        <h1><%= set.title %></h1>
+    <div class="dropdown-header">
+      <h4><%= set.title %> - <%= set.difficulty %></h4>
+      <div class="dropdown-xp">
+        <p><%= set.flashcards.count * @difficulty_value %>XP</p>
       </div>
-      <h4 class="text-white">
-        <%= set.description %>
-      </h4>
+    </div>
+    <div class="dropdown-description">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis massa arcu, tincidunt in lectus interdum, dignissim congue magna. Nullam imperdiet sagittis mauris eget semper. Nunc maximus quis risus id eleifend. </p>
+    </div>
+    <div class="dropdown-line"></div>
+    <div class="dropdown-group">
+
+    </div>
+    <div class="dropdown-start">
       <%= link_to card_set_path(set) do %>
         <div class="btn secondary-btn">
           Start
         </div>
       <% end %>
-    </div>
-    <div class="set-card-info-exp btn btn-warning">
-      <%= set.flashcards.count * value %> XP
     </div>
   </div>
 </div>
