@@ -1,0 +1,25 @@
+.solid-line {
+  animation: solid-anim 2s ease-in-out forwards infinite alternate;
+  // animation-play-state: paused;
+  fill: none;
+  stroke-width: 6;
+  stroke: #FFF;
+  stroke-linecap: round;
+}
+
+.dotted-line {
+  fill: none;
+  stroke: #FFF; /* this must match the background color */
+  stroke-dasharray:1 20; /* draws a 10px dash line with a 16px gap between */
+  stroke-width: 5; /* make the dashed line slightly bigger than the one it's covering */
+  stroke-linecap: round;
+}
+
+@keyframes solid-anim {
+  0% {
+    stroke-dasharray: 0 550;
+  }
+}
+
+
+

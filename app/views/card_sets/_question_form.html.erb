@@ -1,14 +1,14 @@
 <div class="flashcard container">
   <div class="flashcard-question">
     <h3><%= flashcard.question %></h3>
-    <h3><%= counter %> / <%= count %></h3>
+    <h3><%= @counter %> / <%= @count %></h3>
   </div>
 
   <div class="flash-form">
-    <%= simple_form_for @answer, namespace: "flashcard"+flashcard.id.to_s, method: :patch, remote: true do |f| %>
-      <%= f.input :answer, as: :radio_buttons, collection: options, wrapper: :vertical_collection_inline, input_html: { class: "answer-buttons"}%>
+    <%= simple_form_for @answer, method: :patch, remote: true do |f| %>
+      <%= f.input :answer, as: :radio_buttons, collection: @answers, wrapper: :vertical_collection_inline, input_html: { class: "answer-buttons"}%>
       <%= f.hidden_field :flashcard, value: flashcard.id %>
-      <%= f.hidden_field :user_set, value: user_set.id %>
+      <%= f.hidden_field :user_set, value: @user_set.id %>
       <%= f.hidden_field :correct, value: correct_answer %>
       <%= f.submit "Submit", class: 'w-50 submit-btn mt-5' %>
     <% end %>

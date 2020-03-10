@@ -33,12 +33,13 @@
   border-radius: 26px;
   text-decoration: none;
   color: $blue;
+  line-height: 1;
+  font-weight: 700;
   &:hover {
-    color: lighten($blue, 10%);
+    color: $blue-dark;
     border: 2px solid $blue-dark;
     transition: 0.3s ease;
     text-decoration: none;
-    color: $blue;
   }
 }
 

@@ -11,7 +11,7 @@ class UserAnswersController < ApplicationController
     difficulty = flashcard.card_set.difficulty.to_sym
     user_set = UserSet.find(params[:user_answer][:user_set])
     answer = params[:user_answer][:answer]
-    group = GroupMembership.find_by(user: current_user, language: user_set.card_set.language)
+    # group = GroupMembership.find_by(user: current_user, language: user_set.card_set.language)
     if answer == flashcard.correct_answer
       user_answer = UserAnswer.where(flashcard: flashcard, user_set: user_set).first
       unless user_answer.correct
@@ -23,8 +23,8 @@ class UserAnswersController < ApplicationController
         current_user.points += POINTS[difficulty]
         current_user.save
         # logic to add earned points to group points
-        group.points += POINTS[difficulty]
-        group.save
+        # group.points += POINTS[difficulty]
+        # group.save
       end
     end
 
