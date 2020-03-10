@@ -8,7 +8,7 @@
     <% end %>
   </div>
   <div class="welcome">
-    <h3>Hey, <%= current_user.username %><br>Welcome to your profile</h1>
+    <h3>Hey, <%= current_user.username %><br>Welcome to your profile</h3>
   </div>
 </div>
 <div class="user-stats">
@@ -47,15 +47,25 @@
     </div>
   <% end %>
 </div>
+
 <% if !current_user.groups.empty?%>
-  <div class="user-groups">
-    <h3>Your Team Adventures</h3>
-    <table class="user-groups-table">
+<div class="user-groups mb-3">
+  <h2>Your Team Adventures</h2>
+  <table class="user-groups-table mt-3">
+    <tr>
+      <td><h4>Team</h4></td>
+      <td><h4>Language</h4></td>
+      <td><h4>Civilisation</h4></td>
+      <td><h4>Points to Next Milestone</h4></td>
+      <td><h4>Next Set</h4></td>
+    </tr>
+    <% current_user.group_memberships.order(updated_at: :desc).each do |membership| %>
       <tr>
-        <td>Team</td>
-        <td>Language</td>
-        <td>Civilisation</td>
-        <td>Points Contribution</td>
+        <td><strong><%= membership.group.name %></strong></td>
+        <td><%= link_to membership.group.language.name, language_card_sets_path(membership.group.language) %></td>
+        <td><%= image_tag 'town.png', class: "avatar" %></td>
+        <td><%= membership.group.target_points - membership.points %></td>
+        <td><%= link_to language_card_sets_path(membership.group.language) do %><i class="fab fa-leanpub text-primary"></i><% end %></td>
       </tr>
       <% current_user.group_memberships.order(points: :desc).each do |membership| %>
         <tr>
@@ -67,4 +77,5 @@
       <% end %>
     </table>
   </div>
+<% end %>
 <% end %>
