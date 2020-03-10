@@ -8,7 +8,7 @@
     <% @answers = [flashcard.correct_answer, flashcard.answer_1, flashcard.answer_2, flashcard.answer_3] %>
     <% @answers.shuffle! %>
     <div class="card-parent">
-      <%= render "question_form", options: @answers, flashcard: flashcard, user_set: @user_set, counter: @counter, count: @count, correct_answer: flashcard.correct_answer %>
+      <%= render "question_form", flashcard: flashcard, correct_answer: flashcard.correct_answer %>
     </div>
     <% @counter -= 1 %>
   <% end %>
@@ -18,8 +18,9 @@
 <script type="text/javascript">
 // setting up some constants
 // options are the answer options / radio buttons
-const options = $('.flash-form input');
+const options = $('.form-check-input');
 const labels = $('.form-check-label');
+const submit = $('.submit-btn')
 // long one, creates an arra of correct answers for current set, getting them from the hidden fields for each flashcard
 // using map function to create the array, only taking the value
 const correct_answers = $('input[name="user_answer[correct]"]').map(function() {return this.value;}).get()
@@ -33,8 +34,11 @@ const answers = labels.map(function() {
 $(document).on('submit', '.flash-form', function() {
   // card is the current flashcard div
   let card = $(this).parent().parent();
-  // on submit, the buttons are disabled
-  options.prop('disabled', true);
+  // on submit, the buttons are disabled, small delay added to allow for form submit
+  submit.hide();
+  setTimeout (function () {
+    options.prop('disabled', true);
+  }, 50);
 
   if(card.siblings().length <= 1) {
     answers.addClass('correct');
@@ -50,6 +54,7 @@ $(document).on('submit', '.flash-form', function() {
     setTimeout (function () {
       card.toggle("slow");
       options.prop('disabled', false);
+      submit.show();
       card.next().remove();
       // remove green background from correct answers
       answers.removeClass('correct');
