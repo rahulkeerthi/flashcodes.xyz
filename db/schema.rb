@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_09_154249) do
+ActiveRecord::Schema.define(version: 2020_03_09_202153) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,10 +74,7 @@ ActiveRecord::Schema.define(version: 2020_03_09_154249) do
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "full"
     t.bigint "language_id", null: false
-<<<<<<< HEAD
     t.integer "target_points", default: 5000
-=======
->>>>>>> master
     t.index ["language_id"], name: "index_groups_on_language_id"
   end
 
@@ -94,6 +91,7 @@ ActiveRecord::Schema.define(version: 2020_03_09_154249) do
     t.bigint "flashcard_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "answer"
     t.index ["flashcard_id"], name: "index_user_answers_on_flashcard_id"
     t.index ["user_set_id"], name: "index_user_answers_on_user_set_id"
   end
