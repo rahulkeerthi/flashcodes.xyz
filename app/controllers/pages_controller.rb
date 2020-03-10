@@ -21,9 +21,16 @@ class PagesController < ApplicationController
     @flashcards = @most_recent_user_set.card_set.flashcards
     @percentage = ((@correct.to_f / @flashcards.length) * 100).round
     @next_set = next_card_set
+    @membership = current_user.group_memberships.select { |membership| membership.group.language == @card_set.language }.first
+    @group = @membership.group
+    @group_points = group_points
   end
 
   private
+
+  def group_points
+    @group.group_memberships.calculate(:sum, :points)
+  end
 
   # find current users most recent user set, which card set was last attempted
   def set_most_recent_user_set
