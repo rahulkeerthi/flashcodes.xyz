@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :groups, through: :group_memberships
   has_many :notifications, foreign_key: :recipient_id
   has_one_attached :photo
+
   validates :photo, presence: :true
   validates :username, presence: :true, uniqueness: { case_sensitive: false }
   validate :validate_username

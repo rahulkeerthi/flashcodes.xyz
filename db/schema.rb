@@ -75,10 +75,7 @@ ActiveRecord::Schema.define(version: 2020_03_10_124116) do
     t.boolean "full"
     t.bigint "language_id", null: false
     t.integer "target_points", default: 5000
-<<<<<<< HEAD
-=======
     t.integer "level", default: 1
->>>>>>> master
     t.index ["language_id"], name: "index_groups_on_language_id"
   end
 
