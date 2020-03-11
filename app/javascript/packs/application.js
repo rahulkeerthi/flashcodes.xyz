@@ -14,19 +14,6 @@ document.addEventListener('turbolinks:load', () => {
 
 });
 
-// const userLevel = $('.progress-bar').data().level;
-// console.log(userLevel);
-
-// userLevel.addEventListener('change', function(){
-// })
-
-// const userLevel = document.querySelector('#levelPara')
-
-// userLevel.addEventListener('change', (event) => {
-//   console.log(event)
-// })
-
-
 initUpdateNavbarOnScroll();
 
 
