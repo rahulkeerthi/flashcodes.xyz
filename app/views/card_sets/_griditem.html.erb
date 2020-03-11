@@ -11,7 +11,6 @@
       <!-- <hr style="border-top: 1px solid #aaa"> -->
       <div class="">
         <% social = @group.users.where(@user_sets.find_by(card_set: cardset[cardset_count]) == cardset[cardset_count]) - [current_user] unless @group.nil? %>
-        <%# raise %>
         <p><% social.nil? ? "You're the first to attempt this!" : "" %></p>
         <% social.sample(3).each do |user| %>
           <div class="tooltippy">
