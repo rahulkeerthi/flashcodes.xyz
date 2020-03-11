@@ -1,3 +1,5 @@
+
+// Adventure Progress Bar Animation
 .solid-line {
   animation: solid-anim 2s ease-in-out forwards;
   // animation-play-state: paused;
@@ -9,9 +11,9 @@
 
 .dotted-line {
   fill: none;
-  stroke: #FFF; /* this must match the background color */
-  stroke-dasharray:1 20; /* draws a 10px dash line with a 16px gap between */
-  stroke-width: 5; /* make the dashed line slightly bigger than the one it's covering */
+  stroke: #FFF;
+  stroke-dasharray:1 20;
+  stroke-width: 5;
   stroke-linecap: round;
 }
 
@@ -21,5 +23,30 @@
   }
 }
 
+// Logo animation
+.big-bolt {
+  animation: logo-anim 1.5s forwards;
+  fill:none;
+  stroke:black;
+  stroke-width:10.1px;
+  stroke-dasharray: 0 300;
 
+}
 
+@keyframes logo-anim {
+  0% {
+    stroke-dasharray: 0 300;
+  }
+
+  50% {
+    stroke-dasharray: 0 300;
+  }
+
+  100% {
+    stroke-dasharray: 400 0;
+  }
+}
+
+.flash {
+  fill: $blue;
+}
