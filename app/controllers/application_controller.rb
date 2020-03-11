@@ -2,6 +2,8 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_footer_languages, :test_langs, :authenticate_user!
   before_action :user_level, if: :user_signed_in?
+  before_action :set_notifications, if: :user_signed_in?
+
   include Pundit
 
   # LEVEL THRESHOLD
@@ -33,7 +35,6 @@ class ApplicationController < ActionController::Base
   end
 
   def test_langs
-    @testlangs = Language.find_each(batch_size: 3)
     @testlangs2 = Language.all.to_a.each_slice(3)
   end
 
@@ -43,7 +44,12 @@ class ApplicationController < ActionController::Base
     @level_percentage = (user_points%LEVEL_THRESHOLD.to_f / LEVEL_THRESHOLD) * 100
   end
 
+
   private
+
+  def set_notifications
+    @notifications = Notification.where(recipient: current_user)
+  end
 
   def skip_pundit?
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
