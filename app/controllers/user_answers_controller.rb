@@ -6,8 +6,6 @@
       "Impossible": 50
   }
 
-  BASE_LEVEL_PTS = 5000
-
   def update
     flashcard = Flashcard.find(params[:user_answer][:flashcard])
     difficulty = flashcard.card_set.difficulty.to_sym

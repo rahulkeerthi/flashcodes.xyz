@@ -34,20 +34,20 @@
                   </div>
                 </div>
               <% else %>
-                <%= link_to notification.action do %>
-                  <div class="notification">
-                    <%= cl_image_tag notification.actor.photo.key, class: "avatar" %>
+                <div class="notification">
+                  <%= cl_image_tag notification.actor.photo.key, class: "avatar" %>
+                  <%= link_to notification.action do %>
                     <div class="notification-content">
                       <p><small>from <span class="text-dark"><%= notification.actor.username.capitalize %></span>, <%= time_ago_in_words(notification.created_at) %> ago</small></p>
                       <p class="small"><%= notification.content %></p>
                     </div>
-                    <div class="notification-actions">
-                      <%= link_to notification_path(notification), method: :delete do %>
-                        <i class="fas fa-times pr-3"></i>
-                      <% end %>
-                    </div>
+                  <% end %>
+                  <div class="notification-actions">
+                    <%= link_to notification_path(notification), method: :delete do %>
+                      <i class="fas fa-times pr-3"></i>
+                    <% end %>
                   </div>
-                <% end %>
+                </div>
               <% end %>
             <% end %>
           <% end %>

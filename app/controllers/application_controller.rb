@@ -15,6 +15,7 @@ class ApplicationController < ActionController::Base
     3 => "City",
     4 => "Planet"
   }
+  BASE_LEVEL_PTS = 5000
 
 
   # after_action :verify_authorized, except: :index, unless: :skip_pundit?
