@@ -65,7 +65,7 @@
         <div class="quest-graphic d-flex justify-content-center align-items-center">
           <div class="small-civ text-center">
             <%= image_tag "level#{@group.level}.png", alt: "alttext"%>
-            <p><%= @level %></p>
+            <p><%= @level_names[@group.level] %></p>
           </div>
           <div class="text-center">
             <svg class="c-dashed-line" width="517" height="96 " xmlns="http://www.w3.org/2000/svg">

@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :set_footer_languages, :test_langs, :authenticate_user!
   before_action :user_level, if: :user_signed_in?
   before_action :set_notifications, if: :user_signed_in?
+  before_action :set_level_names
 
   include Pundit
 
@@ -46,6 +47,10 @@ class ApplicationController < ActionController::Base
 
 
   private
+
+  def set_level_names
+    @level_names = LEVEL_NAMES
+  end
 
   def set_notifications
     @notifications = Notification.where(recipient: current_user)
