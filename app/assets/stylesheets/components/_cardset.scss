@@ -11,11 +11,10 @@
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 101px;
   font: $headers-font;
-  transition: max-height 2.3s linear;
 
   &:focus + .grid__description {
     max-height: 400px;
-    transition: max-height 0.8s ease;
+    transition: 0.8s ease-in;
   }
 
 }
@@ -25,6 +24,7 @@
   margin: 0.5rem 0;
   overflow: hidden;
   background: $orange;
+  transition: 0.2s ease-out;
   &:hover {
     max-height: 400px;
   }
