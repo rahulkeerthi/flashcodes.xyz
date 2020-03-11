@@ -26,7 +26,6 @@ class PagesController < ApplicationController
     @group = @membership.group
     @group_points = group_points
     @progress = ((@group_points - progress_points(@group)).to_f/(@group.target_points - progress_points(@group)))*550
-    @level = LEVEL_NAMES[@group.level]
     @next_level = LEVEL_NAMES[@group.level+1]
   end
 

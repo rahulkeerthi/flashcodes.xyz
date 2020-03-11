@@ -14,11 +14,20 @@ document.addEventListener('turbolinks:load', () => {
 
 });
 
-const userPoints = $('.progress-bar').data().points;
+// const userLevel = $('.progress-bar').data().level;
+// console.log(userLevel);
 
-if (userPoints == 0.0) {
-  $('.toast').toast('show')
-}
+// userLevel.addEventListener('change', function(){
+//   $('.toast').toast('show')
+// })
+
+// const userLevel = document.querySelector('#levelPara')
+
+// userLevel.addEventListener('change', (event) => {
+//   console.log(event)
+// })
+
+
 initUpdateNavbarOnScroll();
 
 
