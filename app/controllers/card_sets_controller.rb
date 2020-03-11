@@ -1,7 +1,7 @@
 require 'faker'
 
 class CardSetsController < ApplicationController
-  before_action :motivation, only: [:index, :show]
+  before_action :motivation, only: :index
   def index
     @difficulty_value = 0
     @language = Language.find(params[:language_id])

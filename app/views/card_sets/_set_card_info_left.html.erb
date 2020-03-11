@@ -1,4 +1,4 @@
-<div class="set-card-info col-sm-12 set-tooltiptext-left">
+<div class="set-card-info col-sm-12 <%= class_name %>">
   <div class="set-info-bg">
     <div class="dropdown-header">
       <h4><%= set.title %> - <%= set.difficulty %></h4>
@@ -12,9 +12,12 @@
     <div class="dropdown-line"></div>
     <div class="dropdown-group">
       <div class="avatar-group">
-        <% @group_users.first(3).each do |user| %>
-          <%= cl_image_tag user.photo.key, gravity: :face, class: "dropdown-avatar" %>
+        <% @users_who_attempted = set.user_sets.map do |user_set| %>
+          <% User.find(user_set.user_id) %>
         <% end %>
+        <% @group_users_who_attempted = (@group_users & @users_who_attempted) %>
+        <% case @group_users_who_attempted %>
+        <% when %>
       </div>
       <div class="dropdown-motivation">
       </div>
@@ -26,11 +29,5 @@
         </div>
       <% end %>
     </div>
-    <% @users_who_attempted = set.user_sets.map do |user_set| %>
-      <% User.find(user_set.user_id) %>
-    <% end %>
-    <% (@group_users & @users_who_attempted).each do |user| %>
-      <h1><%= user.username %></h1>
-    <% end %>
   </div>
 </div>
