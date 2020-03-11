@@ -18,7 +18,7 @@ puts "SEEDING USERS"
 
 5.times do
   user = User.new(username: Faker::Internet.username, email: Faker::Internet.email, password: "123456", password_confirmation: "123456", bio: Faker::Hacker.say_something_smart)
-  file = URI.open("https://loremflickr.com/1000/1000")
+  file = URI.open("https://loremflickr.com/500/500/person")
   user.photo.attach(io: file, filename: 'nes.png')
   user.save!
 end
@@ -26,7 +26,7 @@ end
 puts "Adding ADMIN!"
 
 user = User.new(username: "admin", email: "admin@admin.com", password: "123456", password_confirmation: "123456", bio: Faker::Hacker.say_something_smart, admin: true)
-  file = URI.open("https://loremflickr.com/1000/1000")
+  file = URI.open("https://loremflickr.com/500/500/person")
   user.photo.attach(io: file, filename: 'nes.png')
   user.save!
 

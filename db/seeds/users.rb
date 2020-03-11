@@ -11,7 +11,7 @@ puts "SEEDING USERS"
   puts "Creating user"
   user = User.new(username: Faker::Internet.username, email: Faker::Internet.email, password: "123456", password_confirmation: "123456", bio: Faker::Hacker.say_something_smart)
   puts "Opening file"
-  file = URI.open("https://loremflickr.com/320/240")
+  file = URI.open("https://loremflickr.com/500/500/person")
   puts "Attaching image to the user"
   user.photo.attach(io: file, filename: 'nes.png')
   puts "Save the user to the DB"
