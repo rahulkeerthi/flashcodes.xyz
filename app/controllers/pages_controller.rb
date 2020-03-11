@@ -43,7 +43,7 @@ class PagesController < ApplicationController
   private
 
   def progress_points(group)
-    5000 * (@group.level - 1)
+    BASE_LEVEL_PTS * (@group.level - 1)
   end
 
   # returns group points by calculating how many points each of the members earned for the group
