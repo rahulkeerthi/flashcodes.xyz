@@ -18,7 +18,6 @@
 .user-stats {
   display: flex;
   justify-content: space-between;
-  margin-top: 64px;
   h3 {
     color: white;
   }
@@ -28,6 +27,13 @@
   td:first-of-type {
     width: 250px;
   }
+}
+
+.highlights {
+  background-color: $blue;
+  padding: 32px;
+  border-radius: 8px;
+
 }
 
 .divided {

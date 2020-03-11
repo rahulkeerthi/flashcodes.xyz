@@ -1,40 +1,29 @@
-<div class="header-back mb-5">
-  <%= link_to language_card_sets_path(@card_set.language) do %>
-    <div class="btn nav light-font">
-      <span><i class="fas fa-arrow-left"></i> Back to all Cardsets</span>
-    </div>
-  <% end %>
-  <h1><%= @card_set.language.name %> - <%= @card_set.title %></h1>
-</div>
+<h1>Your <%= @group.language.name %> Adventure</h1>
+<p>Find me in app/views/groups/show.html.erb</p>
 
 <div class="row align-items-stretch results-row mb-4">
-  <div class="results d-flex">
-    <div class="stats">
-      <div class="percentage">
-        <h4>Stats</h4>
-        <p id="stats"><%= @percentage %>%</p>
-        <p id="correct"><strong>Correct</strong> <%= @correct %></p>
-        <p id="incorrect"><strong>Incorrect</strong> <%= @incorrect %></p>
-      </div>
-      <%= link_to card_set_path(@card_set) do  %>
-        <div class="secondary-btn">Revisit set</div>
-      <% end %>
-    </div>
-    <div class="vertical-line">
-    </div>
-    <div class="experience">
-      <h4>Experience</h4>
-      <div class="xp-earned">
-        <p><%= @most_recent_user_set.points_earned %> XP</p>
-      </div>
-      <div class="xp-total">
-        <p>Total XP <%= current_user.points %></p>
-      </div>
+  <div class="user-stats mt-5 mb-3">
+    <div class="highlights">
+      <h3>Highlights</h3>
+      <table>
+        <tr>
+          <td>Total points</td>
+          <td><%= current_user.points %></td>
+        </tr>
+        <tr>
+          <td>Total groups</td>
+          <td><%= current_user.groups.count %></td>
+        </tr>
+        <tr>
+          <td>Joined on</td>
+          <td><%= current_user.created_at.strftime("%D") %></td>
+        </tr>
+      </table>
     </div>
   </div>
   <div class="next-set">
     <% if @next_set.nil? %>
-      <h3>You have completed every set for this language!</h3>
+      <h4>You have completed every set for this language!</h4>
     <% else %>
     <%= link_to card_set_path(@next_set) do %>
       <h3>Start your next set <i class="fas fa-arrow-right"></i></h3>
@@ -47,18 +36,14 @@
     <% end %>
     <% end %>
   </div>
-</div>
 
+</div>
 <div class="row">
-  <div class="w-100 quest-container">
+<h2>Progress</h2>
+  <div class="w-100 quest-container mt-3">
+
     <div class="quest-results">
       <div class="quest-banner">
-        <div class="quest-heading d-flex justify-content-between">
-        <h3>Your <%= @card_set.language.name %> Adventure - <span>The <%= @group.name %></span></h3>
-        <%= link_to user_path(current_user) do  %>
-          <button class="secondary-btn ml-5">See all your adventures</button>
-        <% end %>
-        </div>
         <div class="quest-info">
           <p><strong>Your contribution to date</strong> - <%= @membership.points %> points</p>
         </div>
@@ -68,7 +53,7 @@
             <p><%= @level_names[@group.level] %></p>
           </div>
           <div class="text-center">
-            <svg class="c-dashed-line" width="517" height="96 " xmlns="http://www.w3.org/2000/svg">
+            <svg class="c-dashed-line" width="517" height="96" xmlns="http://www.w3.org/2000/svg">
               <defs>
                 <path id="line" d="M4.90558 63.9268C49.3203 61.6248 59.7187 89.88 113.492 87.0931C167.264 84.3061 183.703 20.0423 243.302 16.9534C302.9 13.8645 341.13 75.295 395.351 72.4848C449.572 69.6746 458.136 40.4366 512.163 37.6365"/>
               </defs>
@@ -86,4 +71,3 @@
     </div>
   </div>
 </div>
-
