@@ -16,7 +16,6 @@ class CardSetsController < ApplicationController
     else
       set_card_sets_with_query
     end
-    @temp
     @group_users
   end
 
