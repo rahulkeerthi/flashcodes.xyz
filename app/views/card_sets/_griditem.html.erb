@@ -1,0 +1,29 @@
+<div class="grid__item <%= add %> mx-1" tabindex="<%= count %>">
+  <div class="card-description">
+    <h6><%= cardset[cardset_count][:title] %></h6>
+    <p><%= cardset[cardset_count].flashcards.count %> cards</p>
+  </div>
+</div>
+<div class="grid__description slide">
+  <div class="px-5 py-3 d-flex justify-content-between align-items-top">
+    <div class="">
+      <h5 class="mt-3"><%= cardset[cardset_count][:description] %></h5>
+      <hr style="border-top: 1px solid #aaa">
+      <div class="">
+        <% group_users_who_attempted = (@group_users & cardset[cardset_count].user_sets.map { |user_set| User.find(user_set.user_id) } - current_user) unless group_users_who_attempted.nil?%>
+<!--         <p><%# group_users_who_attempted.nil? : "You're the first to attempt this!" : "" %></p> -->
+        <%# raise %>
+      </div>
+      <div class="mt-5">
+        <%= link_to card_set_path(cardset[cardset_count]) do %>
+          <div class="btn secondary-btn">
+            Start
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="grid-xp">
+      <%= cardset[cardset_count].flashcards.count * @difficulty_value %>XP
+    </div>
+  </div>
+</div>

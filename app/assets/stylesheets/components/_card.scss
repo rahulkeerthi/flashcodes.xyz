@@ -152,11 +152,11 @@
 }
 
 .set-completed {
-  background-color: $green
+  background-color: $green !important;
 }
 
 .set-attempted {
-  border: 2px solid red;
+  border: 2px solid red !important;
 }
 
 .set-info-bg {
