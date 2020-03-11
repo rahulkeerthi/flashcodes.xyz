@@ -12,6 +12,7 @@ class PagesController < ApplicationController
   end
 
   def social
+
   end
 
   def results
