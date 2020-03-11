@@ -1,0 +1,55 @@
+<div class="dropdown-toggle" id="alertDropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-bell"></i></div>
+<div class="dropdown-menu scrollable dropdown-menu-left" id="notif-icon-position" aria-labelledby="alertDropdown">
+  <% if current_user.notifications.empty? %>
+    <div class="text-center small">
+      No new notifications
+    </div>
+  <% else %>
+    <% @notifications.order(created_at: :desc).each do |notification| %>
+      <% if notification.action.nil? %>
+        <div class="notification">
+          <%= cl_image_tag notification.actor.photo.key, class: "avatar" %>
+          <div class="notification-content">
+            <p><small>from <span class="text-dark"><%= notification.actor.username.capitalize %></span>, <%= time_ago_in_words(notification.created_at) %> ago</small></p>
+            <p class="small"><%= notification.content %></p>
+          </div>
+
+          <div class="notification-actions">
+            <%= link_to notification_path(notification), method: :delete, remote: true do %>
+              <i class="fas fa-times pr-3"></i>
+            <% end %>
+          </div>
+        </div>
+      <% else %>
+        <div class="notification">
+          <%= cl_image_tag notification.actor.photo.key, class: "avatar" %>
+          <%= link_to notification.action do %>
+            <div class="notification-content">
+              <p><small>from <span class="text-dark"><%= notification.actor.username.capitalize %></span>, <%= time_ago_in_words(notification.created_at) %> ago</small></p>
+              <p class="small"><%= notification.content %></p>
+            </div>
+          <% end %>
+          <div class="notification-actions">
+            <%= link_to notification_path(notification), method: :delete, remote: true do %>
+              <i class="fas fa-times pr-3"></i>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script type="text/javascript">
+// setting up some constants
+// options are the answer options / radio buttons
+$('.notification-actions a').click(function() {
+  $(this).parent().parent().remove()
+});
+
+$('#alertDropdown').click(function() {
+  $(this).next().toggle();
+})
+
+</script>
