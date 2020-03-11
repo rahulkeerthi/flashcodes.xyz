@@ -45,6 +45,18 @@
   }
 }
 
+// Tertiary Button
+
+.tertiary-btn {
+  color: white;
+  font-weight: bold;
+  transition: 0.2s;
+  &:hover {
+    border-bottom: 3px solid;
+    font-weight: bolder;
+  }
+}
+
 // BACK AND FWD NAV BUTTONS (ARROWS ARE VIA FONTAWESOME)
 
 .nav {

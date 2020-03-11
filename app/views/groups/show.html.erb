@@ -1,43 +1,33 @@
-<h1>Your <%= @group.language.name %> Adventure</h1>
-<p>Find me in app/views/groups/show.html.erb</p>
+<div class="row">
+  <h1 class="mb-4">Your <%= @group.language.name %> World</h1>
+</div>
 
-<div class="row align-items-stretch results-row mb-4">
-  <div class="user-stats mt-5 mb-3">
-    <div class="highlights">
-      <h3>Highlights</h3>
-      <table>
-        <tr>
-          <td>Total points</td>
-          <td><%= current_user.points %></td>
-        </tr>
-        <tr>
-          <td>Total groups</td>
-          <td><%= current_user.groups.count %></td>
-        </tr>
-        <tr>
-          <td>Joined on</td>
-          <td><%= current_user.created_at.strftime("%D") %></td>
-        </tr>
-      </table>
-    </div>
-  </div>
-  <div class="next-set">
-    <% if @next_set.nil? %>
-      <h4>You have completed every set for this language!</h4>
-    <% else %>
-    <%= link_to card_set_path(@next_set) do %>
-      <h3>Start your next set <i class="fas fa-arrow-right"></i></h3>
-      <div class="line"></div>
-      <p><%= @next_set.title %></p>
-      <small><%= @next_set.description %></small>
-      <div class="next-xp">
-        <p><%= @next_set.flashcards.count * 10 %> XP</p>
+<div class="row mb-4">
+  <div class="highlights w-100 d-flex justify-content-around align-items-center">
+      <div class="group-stat">
+        <h4><%= @group.name %></h4>
       </div>
+      <div class="group-stat">
+        <h5><%= @group_points %></h5>
+        <p>total points</p>
+      </div>
+      <div class="group-stat">
+        <h5><%= @group.group_memberships.count %></h5>
+        <p>Team Members</p>
+      </div>
+      <div class="group-stat">
+        <h5><%= @membership.points %></h5>
+        <p>Your contribution</p>
+      </div>
+      <%= link_to language_card_sets_path(@group.language) do  %>
+      <span class="tertiary-btn">Find set now <i class="fas fa-arrow-right"></i></span>
     <% end %>
-    <% end %>
+
   </div>
 
 </div>
+
+
 <div class="row">
 <h2>Progress</h2>
   <div class="w-100 quest-container mt-3">

@@ -119,6 +119,24 @@
   position: relative;
 }
 
+// Group Show Cards
+
+.highlights {
+  background-color: $orange;
+  padding: 24px 32px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+}
+
+.group-stat {
+  text-align: center;
+  margin-right: 24px;
+  h4, h5, p {
+    color: white;
+    margin: 0
+  }
+}
+
 .card-set-left {
   height: 90%;
   // width: auto;
