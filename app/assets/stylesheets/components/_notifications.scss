@@ -6,6 +6,10 @@
   padding: 8px 16px;
   border: 1px solid $orange;
   width: 350px;
+
+  &:hover {
+    max-height: 250px !important;
+  }
 }
 
 .notification .notification-content {

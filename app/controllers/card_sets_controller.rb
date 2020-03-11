@@ -2,22 +2,38 @@ require 'faker'
 
 class CardSetsController < ApplicationController
   before_action :motivation, only: :index
+  helper_method :attempted
+
   def index
     @difficulty_value = 0
     @language = Language.find(params[:language_id])
-    # sets the group to
-    if params[:query].blank?
-      @card_sets = CardSet.where(language: @language)
-    else
-      @card_sets = CardSet.search_by_title_and_description(params[:query]).select{ |set| set.language == @language }
-      @card_sets = CardSet.where(language: @language) if @card_sets.blank?
-    end
-
     @difficulties = CardSet.select(:difficulty).distinct.map { |set| set.difficulty }
     # ["Easy", "Medium", "Hard"]
     @user_sets = current_user.user_sets if user_signed_in?
-    @temp
+    # sets the group to
+    if params[:query].blank?
+      set_card_sets
+    else
+      set_card_sets_with_query
+    end
     @group_users
+  end
+
+  def set_card_sets
+      @easy_sets = CardSet.where(language: @language, difficulty: @difficulties[0]).each_slice(3)
+      @medium_sets = CardSet.where(language: @language, difficulty: @difficulties[1]).each_slice(3)
+      @hard_sets = CardSet.where(language: @language, difficulty: @difficulties[2]).each_slice(3)
+      @card_sets = [@easy_sets, @medium_sets, @hard_sets]
+  end
+
+  def set_card_sets_with_query
+    @easy_sets = CardSet.search_by_title_and_description(params[:query]).select{ |set| set.language == @language && set.difficulty == @difficulties[0] }.each_slice(3)
+    @medium_sets = CardSet.search_by_title_and_description(params[:query]).select{ |set| set.language == @language && set.difficulty == @difficulties[1] }.each_slice(3)
+    @hard_sets = CardSet.search_by_title_and_description(params[:query]).select{ |set| set.language == @language && set.difficulty == @difficulties[2] }.each_slice(3)
+    @easy_sets = CardSet.where(language: @language, difficulty: @difficulties[0]).each_slice(3) if @easy_sets.blank?
+    @medium_sets = CardSet.where(language: @language, difficulty: @difficulties[1]).each_slice(3) if @medium_sets.blank?
+    @hard_sets = CardSet.where(language: @language, difficulty: @difficulties[2]).each_slice(3) if @hard_sets.blank?
+    @card_sets = [@easy_sets, @medium_sets, @hard_sets]
   end
 
   def show
@@ -51,7 +67,8 @@ class CardSetsController < ApplicationController
     @language = Language.find(params[:language_id])
     @card_sets = CardSet.where(language: @language)
     @group = current_user.groups.find_by(language: @language)
-    @group_users = @group.users
+    @text = "Hello"
+    @group_users = @group.users unless @group.nil?
   end
 
   def set_card_set
@@ -103,5 +120,4 @@ class CardSetsController < ApplicationController
       end
     end
   end
-
 end
