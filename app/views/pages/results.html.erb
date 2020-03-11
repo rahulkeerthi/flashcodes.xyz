@@ -93,7 +93,7 @@
           </div>
           <div class="large-civ text-center">
             <%= image_tag "level#{@group.level+1}.png", alt: "alttext"%>
-            <p><%= @next_level %></p>
+            <p><%= @level_names[@group.level+1] %></p>
           </div>
         </div>
       </div>
