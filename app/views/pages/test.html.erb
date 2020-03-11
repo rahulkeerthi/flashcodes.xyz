@@ -10,7 +10,7 @@
 <h2>Notifications</h2>
 
 <div class="container col-6">
-  <% if current_user.notifications.unread.empty? %>
+  <% if current_user.notifications.empty? %>
     <div class="text-center small">
       No new notifications
     </div>
@@ -20,7 +20,7 @@
         <%= cl_image_tag notification.actor.photo.key, class: "avatar-large" %>
         <!-- <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-large" /> -->
         <div class="notification-content">
-          <p><small><%= notification.created_at %></small></p>
+          <p><small><%= time_ago_in_words(notification.created_at) %></small></p>
           <p><%= notification.content %></p>
         </div>
 

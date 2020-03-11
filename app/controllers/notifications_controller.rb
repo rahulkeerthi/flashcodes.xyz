@@ -8,13 +8,13 @@ class NotificationsController < ApplicationController
   def destroy
     @notification = Notification.find(params[:id])
     @notification.destroy
-    render template: "pages/test"
+    redirect_back(fallback_location:"/")
   end
 
   private
 
   def set_notifications
-    @notifications = Notification.where(recipient: current_user).unread
+    @notifications = Notification.where(recipient: current_user)
   end
 
 end

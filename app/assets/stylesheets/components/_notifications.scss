@@ -1,20 +1,21 @@
 .notification {
   display: flex;
   align-items: center;
-  margin-bottom: 8px;
+  // margin-bottom: 8px;
   background: white;
   padding: 8px 16px;
-  border: 1px solid rgb(235,235,235);
+  border: 1px solid $orange;
+  width: 350px;
 }
 
 .notification .notification-content {
   flex-grow: 1;
-  padding: 0 24px;
+  padding: 0 0 0 16px;
 }
 
 .notification p {
-  margin: 0;
-  line-height: 1.4;
+  margin: 0 0 4px 0;
+  line-height: 1;
 }
 
 .notification small {
@@ -23,7 +24,6 @@
 }
 .notification .notification-actions {
   opacity: 0;
-  display: flex;
   transition: ease .3s;
 }
 
@@ -33,10 +33,27 @@
 
 .notification .notification-actions a {
   color: #999999;
+  padding-right: 0;
   margin-left: 16px;
-  font-size: 14px;
+  font-size: 0.75rem;
 }
 
 .notification .notification-actions a:hover {
   color: #555555;
+}
+
+.scrollable {
+  overflow: auto;
+  max-height: 250px;
+}
+
+
+.notif-icon {
+  padding: 9px 5px 0px 0px;
+}
+
+#notif-icon-position {
+  margin-top: -16px;
+  padding: 4px;
+  background-color: $orange;
 }
