@@ -2,7 +2,7 @@ class User < ApplicationRecord
   attr_writer :login
   has_many :user_sets, dependent: :destroy
   has_many :card_sets, through: :user_sets
-  has_many :group_memberships
+  has_many :group_memberships, dependent: :destroy
   has_many :groups, through: :group_memberships
   has_many :notifications, foreign_key: :recipient_id
   has_one_attached :photo

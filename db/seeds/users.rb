@@ -8,8 +8,12 @@ User.destroy_all
 puts "SEEDING USERS"
 
 5.times do
+  puts "Creating user"
   user = User.new(username: Faker::Internet.username, email: Faker::Internet.email, password: "123456", password_confirmation: "123456", bio: Faker::Hacker.say_something_smart)
-  file = URI.open("https://www.rd.com/wp-content/uploads/2017/09/01-shutterstock_476340928-Irina-Bg-1024x683.jpg")
+  puts "Opening file"
+  file = URI.open("https://loremflickr.com/500/500/person")
+  puts "Attaching image to the user"
   user.photo.attach(io: file, filename: 'nes.png')
+  puts "Save the user to the DB"
   user.save!
 end
