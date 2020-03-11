@@ -82,11 +82,11 @@ class CardSetsController < ApplicationController
         new_group = Group.create(name: "#{Faker::Coffee.blend_name} #{Faker::Creature::Animal.name}s", language: current_language, full: false)
         GroupMembership.create(group: new_group, user: current_user)
       else
-        # Only for existing groups, set recipients for notification based on group memberships
-        recipients = group.users # before current user added
         membership = GroupMembership.create(group: group, user: current_user, points: 0)
         group.full = group.group_memberships.count == 10
         group.save
+        # Only for existing groups, set recipients for notification based on group memberships
+        recipients = group.users
         send_notifications(recipients, group)
       end
     end
@@ -95,9 +95,12 @@ class CardSetsController < ApplicationController
   # Iterate over recipients to create a new notification
   def send_notifications(recipients, group)
     recipients.each do |recipient|
-      Notification.create!(recipient: recipient,
-        content: "#{current_user.username.capitalize} has joined your group, #{group.name}.", sender: current_user)
-      raise
+      unless recipient == current_user
+        Notification.create(
+          recipient: recipient,
+          actor: current_user,
+          content: "#{current_user.username.capitalize} has joined your group, #{group.name}.")
+      end
     end
   end
 

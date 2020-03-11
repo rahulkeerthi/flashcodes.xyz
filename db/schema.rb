@@ -9,7 +9,6 @@
 # migrations use external dependencies or application code.
 #
 # It's strongly recommended that you check this file into your version control system.
-
 ActiveRecord::Schema.define(version: 2020_03_11_142738) do
 
   # These are extensions that must be enabled in order to support this database
@@ -92,6 +91,7 @@ ActiveRecord::Schema.define(version: 2020_03_11_142738) do
     t.string "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "action"
   end
 
   create_table "user_answers", force: :cascade do |t|

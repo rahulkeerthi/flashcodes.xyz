@@ -101,3 +101,13 @@
   </div>
 </div>
 
+<!-- NUDGE, not sure where it will go, how it will look yet
+<div>
+  <% @nudge_users.each do |user| %>
+    <div>
+      <%= cl_image_tag user.photo.key, class: "avatar" %>
+      <%= link_to "nudge", nudge_path(user), method: :post, remote: true %>
+    </div>
+  <% end %>
+</div>
+-->
