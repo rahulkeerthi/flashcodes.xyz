@@ -20,7 +20,7 @@
         <% end unless social.nil? %>
          <% if social.nil? %>
          <% else %>
-          and <strong><%= User.where(@user_sets.find_by(card_set: cardset[cardset_count]) == cardset[cardset_count]).count - social.count %></strong> others have attempted this set!
+          and <strong><%= User.where(@user_sets.find_by(card_set: cardset[cardset_count]) == cardset[cardset_count]).count - 3 %></strong> others have attempted this set!
         <% end %>
       </div>
       <div class="mt-5">
