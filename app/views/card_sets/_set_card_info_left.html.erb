@@ -1,4 +1,4 @@
-<div class="set-card-info col-sm-12 <%= class_name %>">
+<div class="set-card-info col-sm-12 set-tooltiptext-left">
   <div class="set-info-bg">
     <div class="dropdown-header">
       <h4><%= set.title %> - <%= set.difficulty %></h4>
@@ -16,8 +16,6 @@
           <% User.find(user_set.user_id) %>
         <% end %>
         <% @group_users_who_attempted = (@group_users & @users_who_attempted) %>
-        <% case @group_users_who_attempted %>
-        <% when %>
       </div>
       <div class="dropdown-motivation">
       </div>
