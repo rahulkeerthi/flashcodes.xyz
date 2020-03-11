@@ -17,9 +17,11 @@ class CardSetsController < ApplicationController
     # ["Easy", "Medium", "Hard"]
     @user_sets = current_user.user_sets if user_signed_in?
     @temp
+    @group_users
   end
 
   def show
+    #
     @answer = UserAnswer.new
     set_card_set
     @count = @card_set.flashcards.count
@@ -47,8 +49,9 @@ class CardSetsController < ApplicationController
   def motivation
   # this method sets the friends and motivationbox depending on the members of your group and who has done it
     @language = Language.find(params[:language_id])
+    @card_sets = CardSet.where(language: @language)
     @group = current_user.groups.find_by(language: @language)
-    @text = "Hello"
+    @group_users = @group.users
   end
 
   def set_card_set
