@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   get 'results', to: 'pages#results'
   get 'social', to: 'pages#social'
+  post 'results/:id', to: 'pages#nudge', as: 'nudge'
 
   # FOR TESTING CSS AND STYLES
   get 'test', to: 'pages#test'
