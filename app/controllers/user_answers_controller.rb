@@ -40,7 +40,7 @@
               Notification.create(
                 recipient: recipient,
                 actor: current_user,
-                content: "Your #{group.name} has leveled up! Level: #{group.level}")
+                content: "#{group.name} has leveled up while learning #{group.language}! New level: #{@level_names[group.level]}")
             end
           end
         end
