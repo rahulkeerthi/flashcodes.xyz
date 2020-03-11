@@ -19,19 +19,36 @@
             </div>
           <% else %>
             <% @notifications.each do |notification| %>
-              <div class="notification">
-                <%= cl_image_tag notification.actor.photo.key, class: "avatar" %>
-                <div class="notification-content">
-                  <p><small>from <span class="text-dark"><%= notification.actor.username.capitalize %></span>, <%= time_ago_in_words(notification.created_at) %> ago</small></p>
-                  <p class="small"><%= notification.content %></p>
-                </div>
+              <% if notification.action.nil? %>
+                <div class="notification">
+                  <%= cl_image_tag notification.actor.photo.key, class: "avatar" %>
+                  <div class="notification-content">
+                    <p><small>from <span class="text-dark"><%= notification.actor.username.capitalize %></span>, <%= time_ago_in_words(notification.created_at) %> ago</small></p>
+                    <p class="small"><%= notification.content %></p>
+                  </div>
 
-                <div class="notification-actions">
-                  <%= link_to notification_path(notification), method: :delete do %>
-                    <i class="fas fa-times pr-3"></i>
-                  <% end %>
+                  <div class="notification-actions">
+                    <%= link_to notification_path(notification), method: :delete do %>
+                      <i class="fas fa-times pr-3"></i>
+                    <% end %>
+                  </div>
                 </div>
-              </div>
+              <% else %>
+                <%= link_to notification.action do %>
+                  <div class="notification">
+                    <%= cl_image_tag notification.actor.photo.key, class: "avatar" %>
+                    <div class="notification-content">
+                      <p><small>from <span class="text-dark"><%= notification.actor.username.capitalize %></span>, <%= time_ago_in_words(notification.created_at) %> ago</small></p>
+                      <p class="small"><%= notification.content %></p>
+                    </div>
+                    <div class="notification-actions">
+                      <%= link_to notification_path(notification), method: :delete do %>
+                        <i class="fas fa-times pr-3"></i>
+                      <% end %>
+                    </div>
+                  </div>
+                <% end %>
+              <% end %>
             <% end %>
           <% end %>
         </div>
