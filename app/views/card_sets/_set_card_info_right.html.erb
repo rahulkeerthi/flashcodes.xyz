@@ -1,0 +1,33 @@
+<div class="set-card-info col-sm-12 set-tooltiptext-right">
+  <div class="set-info-bg">
+    <div class="dropdown-header">
+      <h4><%= set.title %> - <%= set.difficulty %></h4>
+      <div class="dropdown-xp">
+        <p><%= set.flashcards.count * @difficulty_value %>XP</p>
+      </div>
+    </div>
+    <div class="dropdown-description">
+      <p><%= set.description %></p>
+    </div>
+    <div class="dropdown-line"></div>
+    <div class="dropdown-group">
+      <div class="avatar-group">
+        <% @users_who_attempted = set.user_sets.map do |user_set| %>
+          <% User.find(user_set.user_id) %>
+        <% end %>
+        <% (@group_users & @users_who_attempted).each do |user| %>
+          <%= cl_image_tag current_user.photo.key, gravity: :face, class: "dropdown-avatar" %>
+        <% end %>
+      </div>
+      <div class="dropdown-motivation">
+      </div>
+    </div>
+    <div class="dropdown-start">
+      <%= link_to card_set_path(set) do %>
+        <div class="btn secondary-btn">
+          Start
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

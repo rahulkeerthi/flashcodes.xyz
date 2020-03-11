@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :set_footer_languages, :test_langs, :authenticate_user!
   before_action :user_level, if: :user_signed_in?
   before_action :set_notifications, if: :user_signed_in?
+  before_action :set_level_names
 
   include Pundit
 
@@ -14,6 +15,7 @@ class ApplicationController < ActionController::Base
     3 => "City",
     4 => "Planet"
   }
+  BASE_LEVEL_PTS = 5000
 
 
   # after_action :verify_authorized, except: :index, unless: :skip_pundit?
@@ -39,13 +41,21 @@ class ApplicationController < ActionController::Base
   end
 
   def user_level
+    old_level = current_user.level
     user_points = current_user.points
-    @level =  1 + user_points / LEVEL_THRESHOLD
+    current_user.level = 1 + user_points / LEVEL_THRESHOLD
+    current_user.save
+    new_level = current_user.level
+    old_level < new_level ? @celebrate = true : @celebrate = false
     @level_percentage = (user_points%LEVEL_THRESHOLD.to_f / LEVEL_THRESHOLD) * 100
   end
 
 
   private
+
+  def set_level_names
+    @level_names = LEVEL_NAMES
+  end
 
   def set_notifications
     @notifications = Notification.where(recipient: current_user)

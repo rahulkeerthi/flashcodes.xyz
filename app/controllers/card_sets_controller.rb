@@ -17,6 +17,7 @@ class CardSetsController < ApplicationController
       set_card_sets_with_query
     end
     @temp
+    @group_users
   end
 
   def set_card_sets
@@ -37,6 +38,7 @@ class CardSetsController < ApplicationController
   end
 
   def show
+    #
     @answer = UserAnswer.new
     set_card_set
     @count = @card_set.flashcards.count
@@ -64,6 +66,7 @@ class CardSetsController < ApplicationController
   def motivation
   # this method sets the friends and motivationbox depending on the members of your group and who has done it
     @language = Language.find(params[:language_id])
+    @card_sets = CardSet.where(language: @language)
     @group = current_user.groups.find_by(language: @language)
     @text = "Hello"
     @group_users = @group.users unless @group.nil?
@@ -97,11 +100,11 @@ class CardSetsController < ApplicationController
         new_group = Group.create(name: "#{Faker::Coffee.blend_name} #{Faker::Creature::Animal.name}s", language: current_language, full: false)
         GroupMembership.create(group: new_group, user: current_user)
       else
-        # Only for existing groups, set recipients for notification based on group memberships
-        recipients = group.users # before current user added
         membership = GroupMembership.create(group: group, user: current_user, points: 0)
         group.full = group.group_memberships.count == 10
         group.save
+        # Only for existing groups, set recipients for notification based on group memberships
+        recipients = group.users
         send_notifications(recipients, group)
       end
     end
@@ -110,9 +113,12 @@ class CardSetsController < ApplicationController
   # Iterate over recipients to create a new notification
   def send_notifications(recipients, group)
     recipients.each do |recipient|
-      Notification.create!(recipient: recipient,
-        content: "#{current_user.username.capitalize} has joined your group, #{group.name}.", sender: current_user)
+      unless recipient == current_user
+        Notification.create(
+          recipient: recipient,
+          actor: current_user,
+          content: "#{current_user.username.capitalize} has joined your group, #{group.name}.")
+      end
     end
   end
-
 end

@@ -10,6 +10,13 @@
   border-radius: 50%;
   border: white 1px solid;
 }
+
+.avatar-xl {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: $orange 3px solid;
+}
 .avatar-bordered {
   width: auto;
   height: 300px;
@@ -32,3 +39,5 @@
   border: 4px solid black;
   object-fit: cover;
 }
+
+

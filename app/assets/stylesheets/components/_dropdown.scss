@@ -1,0 +1,46 @@
+.dropdown-header {
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 32px;
+  h4, p {
+    color: white;
+    margin: 0;
+  }
+}
+
+.dropdown-xp {
+  background-color: $orange;
+  padding: 16px;
+  border-radius: 8px;
+  p {
+    margin: 0;
+  }
+}
+
+.dropdown-description {
+  margin-bottom: 40px;
+  p {
+    color: white;
+    opacity: 0.8;
+  }
+}
+
+.dropdown-line {
+  width: 60%;
+  border: 0.5px solid white;
+  margin-bottom: 40px;
+}
+
+.dropdown-motivation {
+  margin-bottom: 40px;
+}
+
+.dropdown-avatar {
+  height: 50px;
+  width: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid black;
+}

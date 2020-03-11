@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: :home
-  before_action :set_most_recent_user_set, only: :results
+  before_action :set_most_recent_user_set, only: [:results, :nudge]
 
   def home
     if user_signed_in?
@@ -12,6 +12,7 @@ class PagesController < ApplicationController
   end
 
   def social
+
   end
 
   def results
@@ -25,16 +26,27 @@ class PagesController < ApplicationController
     @group = @membership.group
     @group_points = group_points
     @progress = ((@group_points - progress_points(@group)).to_f/(@group.target_points - progress_points(@group)))*550
-    @level = LEVEL_NAMES[@group.level]
     @next_level = LEVEL_NAMES[@group.level+1]
+    @nudge_users = filter_group_members
+  end
+
+  def nudge
+    card_set = @most_recent_user_set.card_set
+    recipient = User.find(params[:id])
+    Notification.create(
+      recipient: recipient,
+      actor: current_user,
+      action: card_set_path(card_set),
+      content: "#{current_user.username.capitalize} has nudged you to do the #{card_set.title} set.")
   end
 
   private
 
   def progress_points(group)
-    5000 * (@group.level - 1)
+    BASE_LEVEL_PTS * (@group.level - 1)
   end
 
+  # returns group points by calculating how many points each of the members earned for the group
   def group_points
     @group.group_memberships.calculate(:sum, :points)
   end
@@ -76,6 +88,19 @@ class PagesController < ApplicationController
     sets = sort_by_difficulty(language) - (completed_sets(language) - [card_set])
     index = (sets.index(card_set) + 1) == sets.count ? 0 : (sets.index(card_set) + 1)
     sets[index] unless sets.count == 1 && @most_recent_user_set.completed
+  end
+
+  # method to filter out group members for nudge
+  # only members of current users group who haven't completed the set yet
+  def filter_group_members
+    members = []
+    @group.users.each do |user|
+      unless user == current_user
+        user_set = user.user_sets.find_by(card_set: @card_set)
+        members << user if user_set.nil? || !user_set.completed
+      end
+    end
+    members
   end
 
 end

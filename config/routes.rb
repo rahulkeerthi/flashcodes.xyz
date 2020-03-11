@@ -16,11 +16,14 @@ Rails.application.routes.draw do
   resources :user_answers, only: :create
   patch 'user_answers', to: 'user_answers#update'
   resources :notifications, only: :destroy
+  resources :groups, only: :show
+
 
   # STANDALONE ROUTES
   root to: 'pages#home'
   get 'results', to: 'pages#results'
   get 'social', to: 'pages#social'
+  post 'results/:id', to: 'pages#nudge', as: 'nudge'
 
   # FOR TESTING CSS AND STYLES
   get 'test', to: 'pages#test'
