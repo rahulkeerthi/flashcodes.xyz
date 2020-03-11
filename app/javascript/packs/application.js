@@ -11,7 +11,10 @@ import $ from 'jquery';
 
 document.addEventListener('turbolinks:load', () => {
   initUpdateNavbarOnScroll();
+});
 
+document.querySelector('#close-toast').addEventListener('click', () => {
+  document.querySelector('.toast').style.opacity = 0;
 });
 
 initUpdateNavbarOnScroll();
