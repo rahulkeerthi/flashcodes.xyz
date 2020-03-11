@@ -3,9 +3,9 @@ class PagesController < ApplicationController
   before_action :set_most_recent_user_set, only: [:results, :nudge]
 
   def home
-    if user_signed_in?
-      redirect_to languages_path
-    end
+    # if user_signed_in?
+    #   redirect_to languages_path
+    # end
   end
 
   def test
