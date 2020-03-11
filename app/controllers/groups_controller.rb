@@ -4,7 +4,7 @@ class GroupsController < ApplicationController
     @membership = current_user.group_memberships.select { |membership| membership.group.language == @group.language }.first
     @group_points = group_points
     @progress = ((@group_points - progress_points(@group)).to_f/(@group.target_points - progress_points(@group)))*550
-    @members = @group.group_memberships.reject
+    @members = @group.group_memberships.reject { |membership| membership.user == current_user }
   end
 end
 

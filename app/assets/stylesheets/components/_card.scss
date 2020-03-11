@@ -124,8 +124,10 @@
 .highlights {
   background-color: $orange;
   padding: 24px 32px;
-  border-radius: 8px;
+  border-radius: 8px 8px 0 0 ;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+  z-index: 1;
+  margin-bottom: -5px;
 }
 
 .group-stat {
@@ -140,6 +142,14 @@
 // TEAM MEMBER CARDS
 
 .team-members {
+  padding:32px;
+  background-color: $blue;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  p {
+    margin: 0;
+    color: white;
+  }
 
 }
 

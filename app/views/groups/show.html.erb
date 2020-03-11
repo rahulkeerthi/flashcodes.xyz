@@ -1,8 +1,8 @@
 <div class="row">
-  <h1 class="mb-4">Your <%= @group.language.name %> World</h1>
+  <h1 class="mb-5">Your <%= @group.language.name %> World</h1>
 </div>
 
-<div class="row mb-4">
+<div class="row">
   <div class="highlights w-100 d-flex justify-content-around align-items-center">
       <div class="group-stat">
         <h4><%= @group.name %></h4>
@@ -20,23 +20,16 @@
         <p>Your contribution</p>
       </div>
       <%= link_to language_card_sets_path(@group.language) do  %>
-      <span class="tertiary-btn">Find set now <i class="fas fa-arrow-right"></i></span>
+      <div class="secondary-btn">Find set now <i class="fas fa-arrow-right"></i></div>
     <% end %>
-
   </div>
-
 </div>
 
-
-<div class="row">
-<h2>Progress</h2>
-  <div class="w-100 quest-container mt-3">
+<div class="row mb-5">
+  <div class="w-100 quest-container">
 
     <div class="quest-results">
       <div class="quest-banner">
-        <div class="quest-info">
-          <p><strong>Your contribution to date</strong> - <%= @membership.points %> points</p>
-        </div>
         <div class="quest-graphic d-flex justify-content-center align-items-center">
           <div class="small-civ text-center">
             <%= image_tag "level#{@group.level}.png", alt: "alttext"%>
@@ -62,11 +55,18 @@
   </div>
 </div>
 
-<div class="row">
+<div class="row mb-5">
   <h2>Your Team Members</h2>
-  <div class="w-100 team-members">
-    <%  %>
-
+  <div class="team-members w-100 mt-2 d-flex justify-content-around">
+    <% @members.each do |member| %>
+    <div class="text-center">
+      <% if @members.count < 6 %>
+        <%= cl_image_tag member.user.photo.key, :width=>250, :height=>250, :gravity=>"faces", :crop=>"fill", class: "avatar-xl" %>
+      <% else %>
+        <%= cl_image_tag member.user.photo.key, :width=>250, :height=>250, :gravity=>"faces", :crop=>"fill", class: "avatar-large" %>
+      <% end %>
+      <p><strong><%= member.user.username %></strong></p>
+    </div>
+    <% end %>
   </div>
-
 </div>
