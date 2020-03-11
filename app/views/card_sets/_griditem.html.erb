@@ -14,7 +14,7 @@
         <p><% social.nil? ? "You're the first to attempt this!" : "" %></p>
         <% social.sample(3).each do |user| %>
           <div class="tooltippy">
-            <%= cl_image_tag user.photo.key, class: "avatar" %>
+            <%= cl_image_tag user.photo.key, class: "avatar", width: 50, height: 50, crop: :fill  %>
             <span class="tooltippytext"><%= user.username.capitalize %></span>
           </div>
         <% end unless social.nil? %>
