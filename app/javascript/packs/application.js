@@ -18,7 +18,6 @@ document.addEventListener('turbolinks:load', () => {
 // console.log(userLevel);
 
 // userLevel.addEventListener('change', function(){
-//   $('.toast').toast('show')
 // })
 
 // const userLevel = document.querySelector('#levelPara')
