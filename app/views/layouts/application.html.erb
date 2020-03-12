@@ -43,7 +43,7 @@
         <%= yield %>
       </div>
     </div>
-    <% unless controller_name == "card_sets" && action_name == "show" %>
+    <% unless current_page?(root_path) || controller_name == "card_sets" && action_name == "show" %>
       <%= render 'shared/footer'  %>
     <% end %>
     <%= javascript_pack_tag 'application' %>
