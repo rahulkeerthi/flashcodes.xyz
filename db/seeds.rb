@@ -37,7 +37,7 @@ Language.all.each do |lang|
     set = CardSet.new(title: "#{Faker::Hacker.ingverb} #{Faker::Hacker.noun}".capitalize, description: Faker::Hacker.say_something_smart, difficulty: ["Easy","Medium","Hard"].sample)
     set.language = lang
     set.save
-    rand(10..15).times do
+    rand(8..12).times do
       card = Flashcard.new(question: Faker::Lorem.question(word_count: 6), correct_answer: "Correct- #{Faker::Hacker.say_something_smart} #{Faker::Hacker.say_something_smart}", answer_1: "Wrong 1 - #{Faker::Hacker.say_something_smart} #{Faker::Hacker.say_something_smart}", answer_2: "Wrong 2 - #{Faker::Hacker.say_something_smart} #{Faker::Hacker.say_something_smart}", answer_3: "Wrong 3 - #{Faker::Hacker.say_something_smart} #{Faker::Hacker.say_something_smart}")
       card.card_set = set
       card.save
