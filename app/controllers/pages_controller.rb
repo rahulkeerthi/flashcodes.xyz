@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: :home
   before_action :set_most_recent_user_set, only: [:results, :nudge]
+  before_action :user_level, if: :user_signed_in?
 
   def home
     # if user_signed_in?

@@ -5,6 +5,7 @@
       "Hard": 30,
       "Impossible": 50
   }
+  LEVEL_THRESHOLD = 500
 
   def update
     flashcard = Flashcard.find(params[:user_answer][:flashcard])
@@ -23,8 +24,11 @@
         # logic for adding points
         user_set.points_earned += POINTS[difficulty]
         user_set.save
+        old_level = current_user.level = 1 + current_user.points / LEVEL_THRESHOLD
         current_user.points += POINTS[difficulty]
         current_user.save
+        new_level = current_user.level = 1 + current_user.points / LEVEL_THRESHOLD
+        current_user.update(leveled_up: true) if old_level < new_level
         # logic to add earned points to group points
         membership.points += POINTS[difficulty]
         membership.save
