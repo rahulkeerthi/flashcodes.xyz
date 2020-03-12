@@ -1,4 +1,6 @@
 class GroupsController < ApplicationController
+  include FlashHelper
+
   def show
     @group = Group.find(params[:id])
     @membership = current_user.group_memberships.select { |membership| membership.group.language == @group.language }.first
@@ -16,5 +18,5 @@ def group_points
 end
 
 def progress_points(group)
-  5000 * (@group.level - 1)
+  BASE_LEVEL_PTS * (@group.level - 1)
 end

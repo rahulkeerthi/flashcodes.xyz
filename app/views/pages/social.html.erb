@@ -1,17 +1,17 @@
-<h1 class="text-center">Your Adventures</h1>
+<h1 class="text-center">Your Coding Worlds</h1>
 
 <% current_user.group_memberships.each do |membership| %>
   <% group_points = membership.group.group_memberships.calculate(:sum, :points) %>
-  <% progress_points = 5000 * (membership.group.level - 1) %>
+  <% progress_points = BASE_LEVEL_PTS * (membership.group.level - 1) %>
   <% progress = ((group_points - progress_points).to_f/(membership.group.target_points - progress_points))*550 %>
 <div class="row adventure-index">
   <div class="w-100 quest-container ">
     <div class="quest-results">
       <div class="quest-banner">
         <div class="quest-heading d-flex justify-content-between">
-        <h3>Your <%= membership.group.language.name %> Adventure - <span>The <%= membership.group.name %></span></h3>
+        <h3>Your <%= membership.group.language.name %> World - <span>The <%= membership.group.name %></span></h3>
         <%= link_to group_path(membership.group) do  %>
-          <button class="secondary-btn ml-5">Go to adventure</button>
+          <button class="secondary-btn ml-5">Go to World</button>
         <% end %>
         </div>
         <div class="quest-info">

@@ -1,5 +1,6 @@
 class LanguagesController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
+
   def index
     @languages = policy_scope(Language).order(name: :asc)
     current_user.nil? ? @top3 = [] : top3

@@ -8,15 +8,17 @@ class ApplicationController < ActionController::Base
   include Pundit
 
   # LEVEL THRESHOLD
-  LEVEL_THRESHOLD = 500
-  LEVEL_NAMES = {
-    1 =>"Village",
-    2 => "Town",
-    3 => "City",
-    4 => "Planet"
-  }
-  BASE_LEVEL_PTS = 5000
 
+LEVEL_THRESHOLD = 500
+
+LEVEL_NAMES = {
+  1 =>"Village",
+  2 => "Town",
+  3 => "City",
+  4 => "Planet"
+}
+
+BASE_LEVEL_PTS = 1000
 
   # after_action :verify_authorized, except: :index, unless: :skip_pundit?
   # after_action :verify_policy_scoped, only: :index, unless: :skip_pundit?
