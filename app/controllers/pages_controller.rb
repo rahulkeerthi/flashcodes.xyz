@@ -4,9 +4,9 @@ class PagesController < ApplicationController
   before_action :user_level, if: :user_signed_in?
 
   def home
-    if user_signed_in?
-      redirect_to languages_path
-    end
+    # if user_signed_in?
+    #   redirect_to languages_path
+    # end
   end
 
   def test

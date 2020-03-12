@@ -5,7 +5,7 @@
       <i class="fas fa-arrow-left"> <span class="light-font">Back</span></i>
     </div>
     <% end %>
-    <h1 class="text-center">Pick a set of <%= @language.name %> flashcards!</h1>
+    <h1 class="text-center"><%= @language.name %> Flashcards!</h1>
   </div>
   <hr>
   <div class="container col-12 col-xs-8 col-sm-8 col-md-8 col-lg-8 col-xl-8">
@@ -25,70 +25,37 @@
     <% end %>
   </div>
 
-  <div>
-
-    <% @difficulties.each do |difficulty| %>
-      <% @difficulty_value += 10 %>
-
-      <div class="p-3">
-        <h2><%= difficulty unless @card_sets.select{ |set| set.difficulty == difficulty}.empty? %></h2>
-        <div class="row m-3 justify-content-start">
-          <% counter = 0 %>
-
-          <% @card_sets.select{ |set| set.difficulty == difficulty}.each do |set| %>
-            <% counter += 1 %>
-            <% @temp = set if counter.odd? %>
-
-            <div class="col-sm-12 col-md-6 d-flex justify-content-center">
-
-              <!--Check if the user has attempted this set-->
-              <% unless @user_sets.find{ |user_set| user_set.card_set.id == set.id }.nil? %>
-
-                <% if @user_sets.find{ |user_set| user_set.card_set.id == set.id }.completed %>
-                  <!--user has completed this set-->
-                  <%= render "set_card", { set: set, add: "set-completed"} %>
-                <% else %>
-                  <!--user has attempted, but didn't answer all cards correctly-->
-                  <%= render "set_card", { set: set, add: "set-attempted"} %>
-                <% end %>
-              <!--Else if user never attempted this set, render without adding any additional classes to card set div-->
-              <% else %>
-                <%= render "set_card", set: set, add: "" %>
-              <% end %>
-
-            </div>
-            <% if counter.even? %>
-              <%= render "set_card_info_left", set: @temp, value: @difficulty_value %>
-              <%= render "set_card_info_right", set: set, value: @difficulty_value %>
+<div>
+  <!-- for each array of difficulty-level cardsets (set of 3) -->
+  <% @card_sets.each do |diffcardsets| %>
+    <!-- increase the xp multiplier by 10 for each difficulty -->
+    <% @difficulty_value += 10 %>
+    <div>
+      <!-- check difficulty of first set -->
+      <h2><%= diffcardsets.first.first.difficulty unless diffcardsets.first.nil? %></h2>
+      <!-- for each set of 3 cardset -->
+      <% diffcardsets.map do |cardset| %>
+        <!-- create a grid (3 items) -->
+        <div class="grid">
+          <% cardset_count = 0 %>
+          <!-- in the grid row, create as many items as there are in the sliced array (max 3) -->
+          <% cardset.count.times do %>
+            <!-- if there is no matching user set then render normally -->
+            <% if @user_sets.find{ |user_set| user_set.card_set.id == cardset[cardset_count].id }.nil? %>
+              <%= render "griditem", { cardset: cardset, cardset_count: cardset_count, count: cardset_count, add: "" } %>
+              <!-- increment the counter (0, 1 or 2) before repeating the iterator -->
+              <% cardset_count += 1 %>
+            <% else %>
+              <!-- create variable add that contains completed or attempted class -->
+              <% add = @user_sets.find{ |user_set| user_set.card_set.id == cardset[cardset_count].id }.completed ? "set-completed" : "set-attempted"  %>
+              <!-- render the cardset and pass it the correct class via add -->
+              <%= render "griditem", { cardset: cardset, cardset_count: cardset_count, count: cardset_count, add: add } %>
+              <!-- increment the counter (0, 1 or 2) before repeating the iterator  -->
+              <% cardset_count += 1 %>
             <% end %>
           <% end %>
-
-          <% if counter.odd? %>
-            <%= render "set_card_info_left", set: @temp, value: @difficulty_value %>
-          <% end %>
-
         </div>
-      </div>
-    <% end %>
-  </div>
+      <% end %>
+    </div>
+  <% end %>
 </div>
-
-<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-<script type="text/javascript">
-  $(document).on('click', '.set-card', function(){
-    if($(this).parent().next().is(':last-child')) {
-      // hide siblings with same difficulty
-      $(this).parent().next().siblings().hide()
-      // hide siblings with different difficulty
-      $(this).parent().parent().parent().siblings().children().children().hide()
-      $(this).parent().next().toggle('active')
-    }
-    else {
-      // hide siblings with same difficulty
-      $(this).parent().next().next().siblings().hide()
-      // hide siblings with different difficulty
-      $(this).parent().parent().parent().siblings().children().children().hide()
-      $(this).parent().next().next().toggle('active')
-    }
-  })
-</script>

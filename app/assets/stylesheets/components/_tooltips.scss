@@ -37,51 +37,51 @@
   border-color: $blue transparent transparent transparent;
 }
 
+// TOOLTIPS
 
-//  DROPDOWN TIPS FOR CARD SETS
+/* Tooltip container */
+.tooltippy {
+  position: relative;
+  display: inline-block;
+}
 
-.set-tooltiptext-left {
-  padding: 5px 0;
+/* tooltippy text */
+.tooltippy .tooltippytext {
+  visibility: hidden;
+  width: 150px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0
+  ;
   border-radius: 6px;
-}
 
-.set-tooltiptext-left::after {
-  content: " ";
+  /* Position the tooltippy text */
   position: absolute;
-  top: 0%;
-  left: 24%;
-  margin-left: -5px;
-  border-width: 1rem;
-  border-style: solid;
-  border-color: $blue transparent transparent transparent;
-  .set-completed {
-    border: 2px solid green;
-  }
+  z-index: 1;
+  top: 125%;
+  left: 50%;
+  margin-left: -75px;
 
-  .set-attempted {
-    border: 2px solid red;
-  }
+  /* Fade in tooltippy */
+  // opacity: 0;
+  transition: opacity 0.3s;
 }
 
-.set-tooltiptext-right {
-  padding: 5px 0;
-  border-radius: 6px;
-}
-
-.set-tooltiptext-right::after {
-  content: " ";
+/* tooltippy arrow */
+.tooltippy .tooltippytext::after {
+  content: "";
   position: absolute;
-  top: 0%;
-  right: 23%;
+  bottom: 100%;
+  left: 50%;
   margin-left: -5px;
-  border-width: 1rem;
+  border-width: 5px;
   border-style: solid;
-  border-color: $blue transparent transparent transparent;
-  .set-completed {
-    border: 2px solid green;
-  }
+  border-color: transparent transparent #555 transparent;
+}
 
-  .set-attempted {
-    border: 2px solid red;
-  }
+/* Show the tooltippy text when you mouse over the tooltippy container */
+.tooltippy:hover .tooltippytext {
+  visibility: visible;
+  opacity: 1;
 }

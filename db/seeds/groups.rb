@@ -10,7 +10,7 @@ end
 
 puts "GROUPS DONE - CREATING MEMBERSHIPS"
 
-User.all.each do |user|
+User.first(5).each do |user|
   Group.all.sample(10).each do |group|
     random_points = (rand(1..10) * 10)
     GroupMembership.create(user: user, group: group, points: random_points)
