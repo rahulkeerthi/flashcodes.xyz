@@ -41,12 +41,10 @@ class ApplicationController < ActionController::Base
   end
 
   def user_level
-    old_level = current_user.level
     user_points = current_user.points
     current_user.level = 1 + user_points / LEVEL_THRESHOLD
     current_user.save
-    new_level = current_user.level
-    old_level < new_level ? @celebrate = true : @celebrate = false
+    current_user.leveled_up ? @celebrate = true : @celebrate = false
     @level_percentage = (user_points%LEVEL_THRESHOLD.to_f / LEVEL_THRESHOLD) * 100
   end
 

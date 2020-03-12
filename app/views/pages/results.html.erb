@@ -1,4 +1,4 @@
-<% if @celebrate %>
+<% if current_user.leveled_up %>
   <div role="alert" aria-live="assertive" aria-atomic="true" class="toast" data-animation="3000">
     <div class="toast-header">
       <strong class="mr-auto">Congratulations🎉</strong>
@@ -11,6 +11,8 @@
     </div>
   </div>
 <% end %>
+
+<% current_user.update(leveled_up: false) %>
 
 <div class="header-back mb-5">
   <%= link_to language_card_sets_path(@card_set.language) do %>
