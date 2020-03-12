@@ -14,7 +14,7 @@
     <% @answers.shuffle! %>
     <div class="card-parent">
       <%= render "question_form", flashcard: flashcard, correct_answer: flashcard.correct_answer %>
-    </div>
+        </div>
     <% @counter -= 1 %>
   <% end %>
 </div>
