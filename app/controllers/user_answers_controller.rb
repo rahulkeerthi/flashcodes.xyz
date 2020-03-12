@@ -30,6 +30,7 @@ class UserAnswersController < ApplicationController
         current_user.save
         new_level = current_user.level = 1 + current_user.points / LEVEL_THRESHOLD
         current_user.update(leveled_up: true) if old_level < new_level
+        current_user.update(leveled_up: false)
         # logic to add earned points to group points
         membership.points += POINTS[difficulty]
         membership.save
