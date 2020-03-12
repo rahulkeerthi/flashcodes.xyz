@@ -42,8 +42,8 @@
       <h3>Your next set</h3>
       <div class="line"></div>
       <p><%= @next_set.title %> - <%= @next_set.difficulty %></p>
-
-       <span>Start now <i class="fas fa-arrow-right"></i></span>
+      <p><%= @next_set.flashcards.count %> cards</p>
+      <span>Start now <i class="fas fa-arrow-right"></i></span>
     </div>
     <% end %>
   <% end %>

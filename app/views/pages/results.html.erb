@@ -12,8 +12,6 @@
   </div>
 <% end %>
 
-<% current_user.update(leveled_up: false) %>
-
 <div class="header-back mb-5">
   <%= link_to language_card_sets_path(@card_set.language) do %>
     <div class="btn nav light-font">
@@ -58,7 +56,7 @@
         <p><%= @next_set.title %></p>
         <small><%= @next_set.description %></small>
         <div class="next-xp">
-          <p><%= @next_set.flashcards.count * 10 %> XP</p>
+          <p><%= @next_set.flashcards.count %> cards</p>
         </div>
       <% end %>
     </div>
