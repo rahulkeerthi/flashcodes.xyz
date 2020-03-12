@@ -12,6 +12,8 @@
   </div>
 <% end %>
 
+<% current_user.update(leveled_up: false) %>
+
 <div class="header-back mb-5">
   <%= link_to language_card_sets_path(@card_set.language) do %>
     <div class="btn nav light-font">
