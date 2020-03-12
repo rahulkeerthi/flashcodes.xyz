@@ -7,6 +7,14 @@
   </div>
 
   <div class="flash-form">
+    <div class="container" style="width:90%">
+      <div class="d-flex justify-content-around">
+        <div class="ml-3 h1">A</div>
+        <div class="mx-3 h1">B</div>
+        <div class="mx-3 h1">C</div>
+        <div class="mr-3 h1">D</div>
+      </div>
+    </div>
     <%= simple_form_for @answer, method: :patch, remote: true do |f| %>
       <%= f.input :answer, as: :radio_buttons, collection: @answers, wrapper: :vertical_collection_inline, input_html: { class: "answer-buttons"}%>
       <%= f.hidden_field :flashcard, value: flashcard.id %>
