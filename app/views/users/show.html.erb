@@ -37,15 +37,15 @@
     </div>
     <% end %>
   <% else %>
+    <%= link_to card_set_path(@next_set) do %>
     <div class="divided divided-orange">
-      <%= link_to card_set_path(@next_set) do %>
       <h3>Your next set</h3>
       <div class="line"></div>
       <p><%= @next_set.title %> - <%= @next_set.difficulty %></p>
 
        <span>Start now <i class="fas fa-arrow-right"></i></span>
-      <% end %>
     </div>
+    <% end %>
   <% end %>
 </div>
 
