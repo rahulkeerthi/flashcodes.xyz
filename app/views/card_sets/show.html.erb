@@ -1,7 +1,12 @@
-<div class="d-flex align-items-center">
-  <div class="btn nav"><i class="fas fa-arrow-left"></i>   <%= link_to "Back",  language_card_sets_path(@card_set.language), class: "light-font" %></div>
-  <h1 class="flex-grow-1 flashcard-title"><%= @card_set.title %></h1>
-</div>
+<div class="container">
+  <div style="position: relative">
+    <%= link_to languages_path, class: "light-font index-back" do %>
+      <div class="btn nav">
+        <i class="fas fa-arrow-left"> <span class="light-font">Back</span></i>
+      </div>
+    <% end %>
+    <h1 class="text-center"><%= @card_set.title %></h1>
+  </div>
 <hr>
 <div class="flashcard-container">
   <% @card_set.flashcards.shuffle.each do |flashcard| %>
