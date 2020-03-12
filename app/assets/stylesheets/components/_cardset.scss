@@ -2,28 +2,29 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #aaa;
+  // border: 1px solid #aaa;
   min-height: 100px;
   font-size: 2em;
   text-decoration: none;
   color: white;
   background-color: #004E89;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 101px;
+  border-radius: 8px;
   font: $headers-font;
+  outline: none;
 
   &:focus + .grid__description {
     max-height: 400px;
     transition: 0.8s ease-in;
   }
-
 }
 
 .grid__description {
   max-height: 0;
   margin: 0.5rem 0;
   overflow: hidden;
-  background: $orange;
+  color: white;
+  background: $blue;
   transition: 0.2s ease-out;
   &:hover {
     max-height: 400px;
@@ -31,7 +32,7 @@
 }
 
 .grid-xp {
-  background-color: $blue;
+  background-color: $orange;
   color: white;
   padding: 1rem;
   border-radius: 8px;
