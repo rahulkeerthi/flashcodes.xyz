@@ -2,8 +2,8 @@
   display: flex;
   align-items: center;
   // margin-bottom: 8px;
+  padding: 6px;
   background: white;
-  padding: 4px 8px;
   border: 1px solid $orange;
   width: 350px;
 
@@ -18,7 +18,7 @@
 }
 
 .notification p {
-  margin: 0 0 0 0;
+  margin: 0;
   line-height: 1;
 }
 
@@ -58,6 +58,6 @@
 
 #notif-icon-position {
   margin-top: -16px;
-  // padding: 4px;
-  // background-color: $orange;
+  padding: 2px;
+  background-color: $orange;
 }
