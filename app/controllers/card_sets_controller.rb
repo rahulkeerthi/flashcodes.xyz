@@ -16,7 +16,7 @@ class CardSetsController < ApplicationController
     else
       set_card_sets_with_query
     end
-    @group_users
+    @group_users = []
   end
 
   def set_card_sets
