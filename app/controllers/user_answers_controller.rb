@@ -1,4 +1,5 @@
-  class UserAnswersController < ApplicationController
+class UserAnswersController < ApplicationController
+
   POINTS = {
       "Easy": 10,
       "Medium": 20,
@@ -60,5 +61,4 @@
       end
     end
   end
-
 end

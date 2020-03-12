@@ -17,7 +17,7 @@ Language.destroy_all
 puts "SEEDING USERS"
 
 5.times do
-  user = User.new(username: Faker::Internet.username, email: Faker::Internet.email, password: "123456", password_confirmation: "123456", bio: Faker::Hacker.say_something_smart)
+  user = User.new(username: Faker::Internet.username, email: Faker::Internet.email, password: "123456", password_confirmation: "123456", bio: Faker::Hacker.say_something_smart, admin: false)
   file = URI.open("https://loremflickr.com/500/500/person")
   user.photo.attach(io: file, filename: 'nes.png')
   user.save!
