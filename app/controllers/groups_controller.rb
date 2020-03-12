@@ -1,5 +1,4 @@
 class GroupsController < ApplicationController
-  include FlashHelper
 
   def show
     @group = Group.find(params[:id])
