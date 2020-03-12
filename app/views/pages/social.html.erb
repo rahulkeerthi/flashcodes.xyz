@@ -1,44 +1,51 @@
 <h1 class="text-center">Your Coding Worlds</h1>
-
-<% current_user.group_memberships.each do |membership| %>
-  <% group_points = membership.group.group_memberships.calculate(:sum, :points) %>
-  <% progress_points = BASE_LEVEL_PTS * (membership.group.level - 1) %>
-  <% progress = ((group_points - progress_points).to_f/(membership.group.target_points - progress_points))*550 %>
-<div class="row adventure-index">
-  <div class="w-100 quest-container ">
-    <div class="quest-results">
-      <div class="quest-banner">
-        <div class="quest-heading d-flex justify-content-between">
-        <h3>Your <%= membership.group.language.name %> World - <span>The <%= membership.group.name %></span></h3>
-        <%= link_to group_path(membership.group) do  %>
-          <button class="secondary-btn ml-5">Go to World</button>
-        <% end %>
-        </div>
-        <div class="quest-info">
-          <p><strong>Your contribution to date</strong> - <%= membership.points %> points</p>
-        </div>
-        <div class="quest-graphic d-flex justify-content-center align-items-center">
-          <div class="small-civ text-center">
-            <%= image_tag "level#{membership.group.level}.png", alt: "alttext"%>
-            <p><%= @level_names[membership.group.level] %></p>
+<% if current_user.group_memberships.empty? %>
+  <div class="container text-center">
+    <hr>
+    <h2 class="display-3">No Worlds Yet!</h2>
+    <p class=""><%= link_to "Start your first language!", languages_path, class: "btn primary-cta" %></p>
+  </div>
+<% else %>
+  <% current_user.group_memberships.each do |membership| %>
+    <% group_points = membership.group.group_memberships.calculate(:sum, :points) %>
+    <% progress_points = BASE_LEVEL_PTS * (membership.group.level - 1) %>
+    <% progress = ((group_points - progress_points).to_f/(membership.group.target_points - progress_points))*550 %>
+  <div class="row adventure-index">
+    <div class="w-100 quest-container ">
+      <div class="quest-results">
+        <div class="quest-banner">
+          <div class="quest-heading d-flex justify-content-between">
+          <h3>Your <%= membership.group.language.name %> World - <span>The <%= membership.group.name %></span></h3>
+          <%= link_to group_path(membership.group) do  %>
+            <button class="secondary-btn ml-5">Go to World</button>
+          <% end %>
           </div>
-          <div class="text-center">
-            <svg class="c-dashed-line" width="517" height="96 " xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <path id="line" d="M4.90558 63.9268C49.3203 61.6248 59.7187 89.88 113.492 87.0931C167.264 84.3061 183.703 20.0423 243.302 16.9534C302.9 13.8645 341.13 75.295 395.351 72.4848C449.572 69.6746 458.136 40.4366 512.163 37.6365"/>
-              </defs>
-              <use class="dotted-line" xlink:href="#line"/>
-              <use class="solid-line" xlink:href="#line" stroke-dasharray="<%= progress %>, 550"/>
-            </svg>
-            <h4 class=""><%= membership.group.target_points - group_points %> points to go!</h4>
+          <div class="quest-info">
+            <p><strong>Your contribution to date</strong> - <%= membership.points %> points</p>
           </div>
-          <div class="large-civ text-center">
-            <%= image_tag "level#{membership.group.level+1}.png", alt: "alttext"%>
-            <p><%= @level_names[membership.group.level+1] %></p>
+          <div class="quest-graphic d-flex justify-content-center align-items-center">
+            <div class="small-civ text-center">
+              <%= image_tag "level#{membership.group.level}.png", alt: "alttext"%>
+              <p><%= @level_names[membership.group.level] %></p>
+            </div>
+            <div class="text-center">
+              <svg class="c-dashed-line" width="517" height="96 " xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <path id="line" d="M4.90558 63.9268C49.3203 61.6248 59.7187 89.88 113.492 87.0931C167.264 84.3061 183.703 20.0423 243.302 16.9534C302.9 13.8645 341.13 75.295 395.351 72.4848C449.572 69.6746 458.136 40.4366 512.163 37.6365"/>
+                </defs>
+                <use class="dotted-line" xlink:href="#line"/>
+                <use class="solid-line" xlink:href="#line" stroke-dasharray="<%= progress %>, 550"/>
+              </svg>
+              <h4 class=""><%= membership.group.target_points - group_points %> points to go!</h4>
+            </div>
+            <div class="large-civ text-center">
+              <%= image_tag "level#{membership.group.level+1}.png", alt: "alttext"%>
+              <p><%= @level_names[membership.group.level+1] %></p>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+  <% end %>
 <% end %>
