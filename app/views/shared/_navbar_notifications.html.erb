@@ -1,7 +1,7 @@
-<div class="dropdown-toggle" id="alertDropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-bell"></i></div>
+<div class="dropdown-toggle <%= "phone red" unless @notifications.empty? %>" id="alertDropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-bell"></i></div>
 <div class="dropdown-menu scrollable dropdown-menu-left" id="notif-icon-position" aria-labelledby="alertDropdown">
   <% if current_user.notifications.empty? %>
-    <div class="text-center small">
+    <div class="text-center small no-notifications">
       No new notifications
     </div>
   <% else %>
@@ -49,7 +49,9 @@ $('.notification-actions a').click(function() {
 });
 
 $('#alertDropdown').click(function() {
-  $(this).next().toggle();
+  $(this).next().toggleClass("show");
+  $(this).removeClass("phone");
+  $(this).removeClass("red");
 })
 
 </script>
