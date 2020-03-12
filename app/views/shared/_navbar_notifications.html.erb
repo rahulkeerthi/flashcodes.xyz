@@ -8,7 +8,7 @@
     <% @notifications.order(created_at: :desc).each do |notification| %>
       <% if notification.action.nil? %>
         <div class="notification">
-          <%= cl_image_tag notification.actor.photo.key, class: "avatar" %>
+          <%= cl_image_tag notification.actor.photo.key, :width=>250, :height=>250, :gravity=>"faces", :crop=>"fill", class: "avatar" %>
           <div class="notification-content">
             <p><small>from <span class="text-dark"><%= notification.actor.username.capitalize %></span>, <%= time_ago_in_words(notification.created_at) %> ago</small></p>
             <p class="small"><%= notification.content %></p>
@@ -25,8 +25,8 @@
           <%= cl_image_tag notification.actor.photo.key, class: "avatar" %>
           <%= link_to notification.action do %>
             <div class="notification-content">
-              <p><small>from <span class="text-dark"><%= notification.actor.username.capitalize %></span>, <%= time_ago_in_words(notification.created_at) %> ago</small></p>
-              <p class="small"><%= notification.content %></p>
+              <p class="mb-1"><small>from <span class="text-dark"><%= notification.actor.username.capitalize %></span>, <%= time_ago_in_words(notification.created_at) %> ago</small></p>
+              <p class="small mb-1"><%= notification.content %></p>
             </div>
           <% end %>
           <div class="notification-actions">

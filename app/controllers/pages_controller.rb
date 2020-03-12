@@ -38,7 +38,7 @@ class PagesController < ApplicationController
       recipient: recipient,
       actor: current_user,
       action: card_set_path(card_set),
-      content: "#{current_user.username.capitalize} has nudged you to do the #{card_set.title} set.")
+      content: "#{current_user.username.capitalize} has nudged you to do the #{card_set.language.name} card set, #{card_set.title}")
   end
 
   private

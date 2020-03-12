@@ -20,11 +20,13 @@
 .notification p {
   margin: 0;
   line-height: 1;
+  color: $black;
 }
 
 .notification small {
   color: #999999;
   font-weight: bold;
+
 }
 .notification .notification-actions {
   opacity: 0;

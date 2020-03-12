@@ -116,7 +116,7 @@ class CardSetsController < ApplicationController
         Notification.create(
           recipient: recipient,
           actor: current_user,
-          content: "#{current_user.username.capitalize} has joined your group, #{group.name}.")
+          content: "#{current_user.username.capitalize} has joined your #{group.language.name} group, #{group.name}.")
       end
     end
   end
