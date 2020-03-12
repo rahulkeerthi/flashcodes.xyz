@@ -10,17 +10,51 @@
       <h5 class="mt-3"><%= cardset[cardset_count][:description] %></h5>
       <!-- <hr style="border-top: 1px solid #aaa"> -->
       <div class="">
-        <% social = @group.users.where(@user_sets.find_by(card_set: cardset[cardset_count]) == cardset[cardset_count]) - [current_user] unless @group.nil? %>
-        <p><% social.nil? ? "You're the first to attempt this!" : "" %></p>
-        <% social.sample(3).each do |user| %>
-          <div class="tooltippy">
-            <%= cl_image_tag user.photo.key, class: "avatar", width: 50, height: 50, crop: :fill  %>
-            <span class="tooltippytext"><%= user.username.capitalize %></span>
-          </div>
-        <% end unless social.nil? %>
-         <% if social.nil? %>
-         <% else %>
-          and <strong><%= User.where(@user_sets.find_by(card_set: cardset[cardset_count]) == cardset[cardset_count]).count - 3 %></strong> others have attempted this set!
+        <!--user_count is a list of all users who have attempted the current set, stores the user sets, not the users-->
+        <% user_count = UserSet.where(card_set: cardset[cardset_count]) %>
+        <!--2 branches depedning on whether you have a joined a group for the current language-->
+        <!--if not-->
+        <% if @group.nil? %>
+          <% user_count.sample(3).each do |user_set| %>
+            <div class="tooltippy">
+              <%= cl_image_tag user_set.user.photo.key, class: "avatar", width: 50, height: 50, crop: :fill  %>
+              <span class="tooltippytext"><%= user_set.user.username.capitalize %></span>
+            </div>
+          <% end %>
+          <!--When there are more than 3 users who have attempted this set-->
+          <% if user_count.count > 3 %>
+            and <strong><%= user_count.count - 3 %></strong> others have attempted this set!
+          <!--When no one has yet attempted this set-->
+          <% elsif user_count.count == 0 %>
+            Be the first to attempt this set!
+          <% else %>
+          <!--When between 1 to 3 users have attempted-->
+            <%= verb = user_count.count == 1 ? "has" : "have" %> attempted this set!
+          <% end %>
+        <!--If user has a group for given language-->
+        <% else %>
+          <!--List of users from my group who have attempted this set-->
+          <% my_group = @group.users.select { |user| user.user_sets.find_by(card_set: cardset[cardset_count]) } - [current_user] %>
+          <% my_group.sample(3).each do |user| %>
+            <div class="tooltippy">
+              <%= cl_image_tag user.photo.key, class: "avatar", width: 50, height: 50, crop: :fill  %>
+              <span class="tooltippytext"><%= user.username.capitalize %></span>
+            </div>
+          <% end %>
+          <!--If there are more than 3 people in my group that have attempted this set-->
+          <% if my_group.count > 3 %>
+             and <strong><%= my_group.count - 3 %></strong> others from your group have attempted this set!(<%= user_count.count %> attempts)
+          <!--If no one in my group has attempted this set-->
+          <% elsif my_group.count == 0 %>
+            <% if @user_sets.where(card_set: cardset[cardset_count]).blank? %>
+              You would be the first in your group to attempt this set! (<%= user_count.count %> attempts)
+            <% else %>
+              You're the only one in your group to have attempted this set! (<%= user_count.count %> attempts)
+            <% end %>
+          <!--If there are between 1 to 3 users in my group have attempted this set-->
+          <% else %>
+            from my group <%= verb = user_count.count == 1 ? "has" : "have" %> attempted this set! (<%= user_count.count %> attempts)
+          <% end %>
         <% end %>
       </div>
       <div class="mt-5">
