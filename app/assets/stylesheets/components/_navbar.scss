@@ -1,8 +1,13 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background-color: $navbar-color;
+  background-color: $blue;
   transition: 0.5s opacity ease;
-  max-height: 4rem;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+  border-bottom: 2px solid $orange;
+  height: 5rem;
+  p {
+    color: white;
+  }
 }
 
 .navbar-lewagon-trans {
@@ -15,11 +20,13 @@
 }
 
 .navbar-lewagon .navbar-brand img {
-  width: 80px;
+  width: 100px;
+  margin-left: 24px;
+  margin-right: 24px;
 }
 
 .game-progress {
-  width: 180px;
+  // width: 150px;
   height: 50px;
 }
 
@@ -32,7 +39,7 @@
 }
 .progress {
   width: 64px;
-  height: 10px;
+  height: 6px;
   margin-left: 8px;
   border-radius: 8px;
 }
@@ -41,6 +48,11 @@
   p {
     margin-left: 12px;
     margin-top: 15px;
-    font-size: 18px;
+    font-size: 0.9em;
   }
+}
+
+.nav-button {
+  font-weight: 700;
+  color: white;
 }
