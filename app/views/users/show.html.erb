@@ -57,16 +57,16 @@
       <td><h4>Team</h4></td>
       <td><h4>Language</h4></td>
       <td><h4>Civilisation</h4></td>
-      <td><h4>Points to Next Milestone</h4></td>
+      <td><h4>Next Milestone</h4></td>
       <td><h4>More sets</h4></td>
     </tr>
     <% current_user.group_memberships.order(updated_at: :desc).each do |membership| %>
       <tr>
         <td><strong><%= link_to membership.group.name, group_path(membership.group), class: "tertiary-btn" %></strong></td>
         <td><%= link_to membership.group.language.name, language_card_sets_path(membership.group.language), class: "tertiary-btn" %></td>
-        <td><%= image_tag "level#{membership.group.level}.png", class: "avatar" %></td>
-        <td><%= membership.group.target_points - membership.group.group_memberships.calculate(:sum, :points) %></td>
-        <td><%= link_to language_card_sets_path(membership.group.language) do %><i class="fab fa-leanpub text-primary"></i><% end %></td>
+        <td class="text-center"><%= image_tag "level#{membership.group.level}.png", class: "avatar" %></td>
+        <td class="text-center"><%= membership.group.target_points - membership.group.group_memberships.calculate(:sum, :points) %></td>
+        <td class="text-center"><%= link_to language_card_sets_path(membership.group.language) do %><i class="fab fa-leanpub text-primary"></i><% end %></td>
       </tr>
     <% end %>
   </table>

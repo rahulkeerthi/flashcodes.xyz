@@ -17,14 +17,8 @@
   }
   display: flex;
   justify-content: space-between;
-  h3 {
-    color: white;
-  }
-  td {
-    color: white;
-  }
   td:first-of-type {
-    width: 250px;
+    width: 220px;
   }
 }
 
@@ -72,9 +66,8 @@
 }
 
 .user-groups-table {
-  // border: 1px solid black;
   width: 100%;
-  text-align: center;
+  text-align: left;
 
   tr td {
     padding-bottom: 16px;
