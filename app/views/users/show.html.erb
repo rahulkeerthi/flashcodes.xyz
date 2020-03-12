@@ -38,10 +38,11 @@
     <% end %>
   <% else %>
     <div class="divided divided-orange">
+      <%= link_to card_set_path(@next_set) do %>
       <h3>Your next set</h3>
       <div class="line"></div>
       <p><%= @next_set.title %> - <%= @next_set.difficulty %></p>
-      <%= link_to card_set_path(@next_set) do %>
+
        <span>Start now <i class="fas fa-arrow-right"></i></span>
       <% end %>
     </div>
@@ -57,13 +58,13 @@
       <td><h4>Language</h4></td>
       <td><h4>Civilisation</h4></td>
       <td><h4>Points to Next Milestone</h4></td>
-      <td><h4>Next Set</h4></td>
+      <td><h4>More sets</h4></td>
     </tr>
     <% current_user.group_memberships.order(updated_at: :desc).each do |membership| %>
       <tr>
         <td><strong><%= membership.group.name %></strong></td>
-        <td><%= link_to membership.group.language.name, language_card_sets_path(membership.group.language) %></td>
-        <td><%= image_tag 'town.png', class: "avatar" %></td>
+        <td><%= link_to membership.group.language.name, language_card_sets_path(membership.group.language), class: "tertiary-btn" %></td>
+        <td><%= image_tag "level#{membership.group.level}.png", class: "avatar" %></td>
         <td><%= membership.group.target_points - membership.group.group_memberships.calculate(:sum, :points) %></td>
         <td><%= link_to language_card_sets_path(membership.group.language) do %><i class="fab fa-leanpub text-primary"></i><% end %></td>
       </tr>
