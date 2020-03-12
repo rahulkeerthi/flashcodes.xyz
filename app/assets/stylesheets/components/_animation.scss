@@ -81,7 +81,35 @@
   fill: white;
 }
 
+// Background animation
 
+
+.anim-back {
+  position: relative;
+  z-index: 0;
+  stroke: rgba(0, 0, 0, 0.1);
+  stroke-width:10.1px;
+  background-color: $blue;
+}
+.rect-anim {
+  animation: rotato 100s ease infinite alternate
+
+}
+
+.circ-anim {
+  animation: rotato 50s ease infinite alternate
+}
+
+.tri-anim {
+  animation: rotato 100s ease infinite alternate
+
+}
+
+@keyframes rotato {
+  to {
+    transform: rotate(30deg)
+  }
+}
 
 
 

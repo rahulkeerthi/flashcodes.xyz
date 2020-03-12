@@ -1,7 +1,7 @@
 <div class="banner d-flex align-items-center" style="background-image: url(<%= asset_path('background.png') %>)">
-
-
-<div class="container">
+  <%= render 'shared/back-svg' %>
+<div class="absolute">
+  <div class="container">
   <div class="text-center">
     <svg class= "svg-logo mb-4" width="90%" viewBox="0 0 2058 1146" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-miterlimit:1.5;">
         <defs>
@@ -34,5 +34,5 @@
       <%= link_to "See the Languages", languages_path ,class: 'btn secondary-btn' %>
     </div>
   </div>
-
+</div>
 </div>
