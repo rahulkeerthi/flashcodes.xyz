@@ -48,21 +48,21 @@
       </div>
     </div>
   </div>
-  <div class="next-set">
-    <% if @next_set.nil? %>
-      <h3>You have completed every set for this language!</h3>
-    <% else %>
-    <%= link_to card_set_path(@next_set) do %>
-      <h3>Start your next set <i class="fas fa-arrow-right"></i></h3>
-      <div class="line"></div>
-      <p><%= @next_set.title %></p>
-      <small><%= @next_set.description %></small>
-      <div class="next-xp">
-        <p><%= @next_set.flashcards.count * 10 %> XP</p>
-      </div>
-    <% end %>
-    <% end %>
-  </div>
+  <%= link_to card_set_path(@next_set) do %>
+    <div class="next-set">
+      <% if @next_set.nil? %>
+        <h3>You have completed every set for this language!</h3>
+      <% else %>
+        <h3>Start your next set <i class="fas fa-arrow-right"></i></h3>
+        <div class="line"></div>
+        <p><%= @next_set.title %></p>
+        <small><%= @next_set.description %></small>
+        <div class="next-xp">
+          <p><%= @next_set.flashcards.count * 10 %> XP</p>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 </div>
 
 <div class="row mb-4">

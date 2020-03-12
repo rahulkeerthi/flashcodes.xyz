@@ -12,6 +12,9 @@
 }
 
 .user-stats {
+  a {
+    width: 48%;
+  }
   display: flex;
   justify-content: space-between;
   h3 {
@@ -36,6 +39,11 @@
     background-color: $blue;
   }
   &-orange {
+    transition: 0.3s;
+    &:hover {
+      transform: scale(1.02);
+    }
+    width: 100%;
     background-color: $orange;
     p {
       color: white;
