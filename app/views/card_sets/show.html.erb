@@ -57,7 +57,7 @@ $(document).on('submit', '.flash-form', function() {
     // add green background to correct answers
     answers.addClass('correct');
     setTimeout (function () {
-      card.toggle("slow");
+      card.toggle("medium");
       options.prop('disabled', false);
       submit.show();
       card.next().remove();
