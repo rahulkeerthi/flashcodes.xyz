@@ -42,7 +42,7 @@ class UserAnswersController < ApplicationController
             group.users.each do |recipient|
               Notification.create(
                 recipient: recipient,
-                actor: current_user,
+                actor: User.find_by(email: "admin@admin.com"),
                 content: "#{group.name} has leveled up while learning #{group.language.name}! New level: #{@level_names[group.level]}")
             end
           end

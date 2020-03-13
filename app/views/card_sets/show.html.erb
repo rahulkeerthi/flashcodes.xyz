@@ -51,7 +51,7 @@ $(document).on('submit', '.flash-form', function() {
     // timeout to prevent from the result page getting rendered before last answer is processed
     setTimeout (function () {
       window.location.replace(redirect)
-    }, 100);
+    }, 2000);
   }
   else {
     // add green background to correct answers
@@ -63,7 +63,7 @@ $(document).on('submit', '.flash-form', function() {
       card.next().remove();
       // remove green background from correct answers
       answers.removeClass('correct');
-    }, 100);
+    }, 3000);
   }
 });
 </script>
