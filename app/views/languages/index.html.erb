@@ -7,7 +7,7 @@
   <div class="language-grid">
     <% @top3.each do |language| %>
       <%= link_to language_card_sets_path(language) do %>
-        <div class="card-language" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(<%= cl_image_path language.photo.key, height: 180, crop: :thumb ; %>)">
+        <div class="card-language" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(<%= cl_image_path language.photo.key, height: 500, crop: :thumb ; %>)">
           <%= language.name %>
         </div>
       <% end %>
@@ -20,7 +20,7 @@
 <div class="language-grid">
   <% @languages.each do |language| %>
     <%= link_to language_card_sets_path(language) do %>
-      <div class="card-language" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(<%= cl_image_path language.photo.key, height: 180, crop: :thumb ; %>)">
+      <div class="card-language" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(<%= cl_image_path language.photo.key, height: 500, crop: :thumb ; %>)">
         <%= language.name %>
         <div class="card-language-tooltip">
           <div class="lang-tooltip">
