@@ -12,6 +12,7 @@
       <div class="">
         <!--user_count is a list of all users who have attempted the current set, stores the user sets, not the users-->
         <% user_count = UserSet.where(card_set: cardset[cardset_count]) %>
+        <% attempt = user_count.count == 1 ? "attempt" : "attempts" %>
         <!--2 branches depedning on whether you have a joined a group for the current language-->
         <!--if not-->
         <% if @group.nil? %>
@@ -43,17 +44,17 @@
           <% end %>
           <!--If there are more than 3 people in my group that have attempted this set-->
           <% if my_group.count > 3 %>
-             and <strong><%= my_group.count - 3 %></strong> others from your group have attempted this set! (<%= user_count.count %> global attempts)
+             and <strong><%= my_group.count - 3 %></strong> others from your group have attempted this set! (<%= user_count.count %> global <%= attempt %>)
           <!--If no one in my group has attempted this set-->
           <% elsif my_group.count == 0 %>
             <% if @user_sets.where(card_set: cardset[cardset_count]).blank? %>
-              You would be the first in your group to attempt this set! (<%= user_count.count %> global attempts)
+              You would be the first in your group to attempt this set! (<%= user_count.count %> global <%= attempt %>)
             <% else %>
-              You're the only one in your group to have attempted this set! (<%= user_count.count %> global attempts)
+              You're the only one in your group to have attempted this set! (<%= user_count.count %> global <%= attempt %>)
             <% end %>
           <!--If there are between 1 to 3 users in my group have attempted this set-->
           <% else %>
-            from your group <%= verb = user_count.count == 1 ? "has" : "have" %> attempted this set! (<%= user_count.count %> global attempts)
+            from your group <%= verb = user_count.count == 1 ? "has" : "have" %> attempted this set! (<%= user_count.count %> global <%= attempt %>)
           <% end %>
         <% end %>
       </div>
