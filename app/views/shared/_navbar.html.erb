@@ -53,9 +53,9 @@
         <%= render 'shared/navbar_notifications' %>
       </li>
       <% else %>
-        <li class="nav-item">
-          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-        </li>
+        <%= link_to new_user_session_path do %>
+        <p class="mr-3 mb-0 tertiary-btn">Login</p>
+        <% end %>
       <% end %>
     </ul>
   </div>
