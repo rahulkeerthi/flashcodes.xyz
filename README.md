@@ -2,4 +2,4 @@ Flashcodes is a gamified, social quiz app to help you learn and remember coding 
 
 You can see the application's core user journeys as presented during London 360 + 361's [demo day](https://www.youtube.com/watch?v=L9Pvj2iJ6po). The presention is done by myself (Rahul), supported by team-mate Shane W. Also on our team are Tomas K and Max JV.
 
-Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), during the [Le Wagon coding bootcamp](https://www.lewagon.com) in London (Batch 361).
+Rails app amde during the [Le Wagon coding bootcamp](https://www.lewagon.com) in London (Batch 361).
